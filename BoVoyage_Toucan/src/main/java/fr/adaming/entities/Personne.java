@@ -1,8 +1,9 @@
 package fr.adaming.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Personne {
+public abstract class Personne implements Serializable {
 
 	// Declaration des attributs
 	protected int id;

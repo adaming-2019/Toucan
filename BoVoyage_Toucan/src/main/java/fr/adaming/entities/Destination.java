@@ -1,6 +1,8 @@
 package fr.adaming.entities;
 
-public class Destination {
+import java.io.Serializable;
+
+public class Destination implements Serializable{
 
 	// declaration des attributs
 	private int id;

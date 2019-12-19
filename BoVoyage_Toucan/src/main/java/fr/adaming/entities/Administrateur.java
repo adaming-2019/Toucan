@@ -1,12 +1,14 @@
 package fr.adaming.entities;
 
-public class Administrateur {
-	
+import java.io.Serializable;
+
+public class Administrateur implements Serializable {
+
 	// declaration attributs
 	private int id;
 	private String login;
 	private String mdp;
-	
+
 	// declaration des constructeurs
 	public Administrateur() {
 		super();
@@ -54,10 +56,5 @@ public class Administrateur {
 	public String toString() {
 		return "Administrateur [id=" + id + ", login=" + login + ", mdp=" + mdp + "]";
 	}
-	
-	
-	
-	
-	
 
 }

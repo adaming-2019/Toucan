@@ -1,9 +1,11 @@
 package fr.adaming.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 
 
-public class Prestation {
+public class Prestation implements Serializable{
 	
 	//declaration des attributs
 	private int id;

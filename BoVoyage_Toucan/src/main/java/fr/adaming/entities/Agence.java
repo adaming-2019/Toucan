@@ -1,6 +1,8 @@
 package fr.adaming.entities;
 
-public class Agence {
+import java.io.Serializable;
+
+public class Agence implements Serializable{
 
 	// declaration des attributs
 	private int id;
