@@ -25,37 +25,40 @@ public class VoyageServiceImpl implements IVoyageService{
 	@Override
 	public List<Voyage> getAllVoyages() {
 		// appel de la méthode dao
-		return voyageDao.getAllVoyages();
+		return voyageDao.getAll();
 	}
 
 	@Override
 	public Voyage getVoyageById(Voyage vIn) {
 		// appel de la méthode dao
-		return voyageDao.getVoyageById(vIn);
+		return voyageDao.getById(vIn.getId());
 	}
 
 	@Override
 	public Voyage addVoyage(Voyage vIn) {
 		//appel de la méthode Dao
-		return voyageDao.addVoyage(vIn);
+		return voyageDao.add(vIn);
 	}
 
 	@Override
 	public boolean deleteVoyage(Voyage vIn) {
-		Voyage vOut = voyageDao.getVoyageById(vIn);
+		voyageDao.delete(vIn.getId());
 		
+		/**
 		if (vOut!=null){
 			//appel de la methode Dao pour supprimer le voyage
-			voyageDao.deleteVoyage(vOut);
+			voyageDao.delete(id);
 			return true; 
 		}
 		return false;
+		**/
+		return true;
 	}
 
 	@Override
 	public boolean updateVoyage(Voyage vIn) {
 		// recuperer le voyage
-		Voyage vOut = voyageDao.getVoyageById(vIn);
+		Voyage vOut = voyageDao.getById(vIn.getId());
 		
 		if (vOut!=null){
 			
@@ -71,7 +74,7 @@ public class VoyageServiceImpl implements IVoyageService{
 			vOut.setPhotos(vIn.getPhotos());
 
 			//appel de la methode Dao pour supprimer le voyage
-			voyageDao.updateVoyage(vOut);
+			voyageDao.update(vOut);
 			return true; 
 		}
 		return false;
