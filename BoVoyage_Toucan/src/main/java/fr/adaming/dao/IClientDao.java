@@ -1,19 +1,18 @@
 package fr.adaming.dao;
 
-import java.util.List;
-
+import fr.adaming.entities.Dossier;
 import fr.adaming.entities.Voyage;
 
 public interface IClientDao {
 
-	public List<Voyage> getAllVoyages();
-
-	public Voyage getVoyageById(Voyage vIn);
-	
 	public Voyage addVoyage(Voyage vIn);
 
 	public void deleteVoyage(Voyage vIn);
 	
 	public void updateVoyage(Voyage vIn);
+	
+	public Dossier getDossierById(Dossier dIn);
+	
+	public void updateDossier(Dossier dIn);
 	
 }
