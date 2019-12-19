@@ -37,6 +37,7 @@ public class Voyage implements Serializable {
 	// Transformations des associations UML en JAVA
 	// ... plus tard ...
 	
+	
 	// Constructeurs
 	// constructeur vide
 	public Voyage() {
