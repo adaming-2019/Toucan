@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.adaming.dao.IVoyageDao;
 import fr.adaming.dao.IVoyageurDao;
-import fr.adaming.entities.Voyage;
 import fr.adaming.entities.Voyageur;
 
 @Service
@@ -49,21 +47,20 @@ public class VoyageurServiceImpl implements IVoyageurService {
 
 	@Override
 	public boolean updateVoyageur(Voyageur vrIn) {
-		// recuperer le voyage
+		// recuperer le voyageur
 		Voyageur vrOut = voyageurDao.getById(vrIn.getId());
 		
 		if (vrOut!=null){
 			
 			// modifier l'objet récupéré avec les nouvelles valeurs en java
-			vrOut.setDateDebut(vrIn.getDateDebut());
-			vrOut.setDateRetour(vrIn.getDateRetour());
+			vrOut.setDossier(vrIn.getDossier());
+			vrOut.setNumSiege(vrIn.getNumSiege());
 
-			//appel de la methode Dao pour supprimer le voyage
-			voyageDao.update(vOut);
+			//appel de la methode Dao pour supprimer le voyageur
+			voyageurDao.update(vrOut);
 			return true; 
 		}
 		return false;
-	}
 	}
 
 }

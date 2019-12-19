@@ -35,7 +35,7 @@ public class Dossier implements Serializable {
 	private List<Voyageur> voyageurs;
 	
 	@ManyToOne
-	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
+	@JoinColumn(name="cl_id", referencedColumnName="id")
 	private Client client;
 	
 	@ManyToOne
