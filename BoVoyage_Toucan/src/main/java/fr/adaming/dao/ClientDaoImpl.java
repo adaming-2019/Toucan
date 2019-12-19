@@ -1,17 +1,17 @@
 package fr.adaming.dao;
 
-import java.util.List;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fr.adaming.entities.Voyage;
+import fr.adaming.entities.Client;
+import fr.adaming.entities.Traveller;
+
 
 @Repository
-public class ClientDaoImpl implements IClientDao{
+public class ClientDaoImpl extends GenericDaoImpl<Client>implements IClientDao{
 
+	// specifier le vrai type de T (la vraie Entity à utiliser ) ici c'est Client
+	public ClientDaoImpl() {
+		clazz=Client.class;
+	}
 }
 
