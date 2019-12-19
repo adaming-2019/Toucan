@@ -3,7 +3,6 @@ package fr.adaming.dao;
 import org.springframework.stereotype.Repository;
 
 import fr.adaming.entities.Client;
-import fr.adaming.entities.Traveller;
 
 
 @Repository
