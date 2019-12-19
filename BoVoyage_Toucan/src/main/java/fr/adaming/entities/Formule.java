@@ -1,10 +1,31 @@
 package fr.adaming.entities;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="formules")
 public class Formule {
 
-	//déclaration des attributs 
+	//déclaration des attributs
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_f")
 	public String id;
+	
+	@Column(name="formule_f")
 	Formules formule;
+	
+	// transformation de l'association UML en JAVA
+	@OneToMany(mappedBy="formule")
+	private List<Voyage> voyages;
 	
 	//déclaration du constructeur vide
 	public Formule() {
@@ -38,6 +59,14 @@ public class Formule {
 
 	public void setFormule(Formules formule) {
 		this.formule = formule;
+	}
+
+	public List<Voyage> getVoyages() {
+		return voyages;
+	}
+
+	public void setVoyages(List<Voyage> voyages) {
+		this.voyages = voyages;
 	}
 
 	//redéfinition de ToString

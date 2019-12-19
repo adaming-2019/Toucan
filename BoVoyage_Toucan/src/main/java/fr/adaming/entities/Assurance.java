@@ -3,14 +3,35 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="assurances")
 public class Assurance implements Serializable {
 	
 	// déclaration des attributs
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_as")
 	private int id;
+	
+	@Column(name="type_as")
 	private String type;
+	
+	@Column(name="montant_as")
 	private double montant;
 	
 	// transformation de l'association UML en Java
+	@ManyToMany
+	@JoinTable(name="dossiersassurances", joinColumns=@JoinColumn(name="as_id"), inverseJoinColumns=@JoinColumn(name="do_id"))
 	private List<Dossier> dossiers;
 	
 	// déclaration des constructeurs

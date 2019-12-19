@@ -1,10 +1,31 @@
 package fr.adaming.entities;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="loueursvehicules")
 public class LoueurVehicule {
 
 	//déclaration des attributs 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_lv")
 	private int id;
-	LoueurVehicules loueurVéhicule;
+	
+	@Column(name="loueurVehicule_lv")
+	LoueurVehicules loueurVehicule;
+	
+	// transformation de l'association UML en Java
+	@OneToMany(mappedBy="loueurVehicule")
+	private List<Voyage> voyages;
 	
 	//définition du constructeur vide
 	public LoueurVehicule() {
@@ -12,15 +33,15 @@ public class LoueurVehicule {
 	}
 
 	//définition du constructeur avec paramètres
-	public LoueurVehicule(int id, LoueurVehicules loueurVéhicule) {
+	public LoueurVehicule(int id, LoueurVehicules loueurVehicule) {
 		super();
 		this.id = id;
-		this.loueurVéhicule = loueurVéhicule;
+		this.loueurVehicule = loueurVehicule;
 	}
 
-	public LoueurVehicule(LoueurVehicules loueurVéhicule) {
+	public LoueurVehicule(LoueurVehicules loueurVehicule) {
 		super();
-		this.loueurVéhicule = loueurVéhicule;
+		this.loueurVehicule = loueurVehicule;
 	}
 
 	
@@ -33,18 +54,26 @@ public class LoueurVehicule {
 		this.id = id;
 	}
 
-	public LoueurVehicules getLoueurVéhicule() {
-		return loueurVéhicule;
+	public LoueurVehicules getLoueurVehicule() {
+		return loueurVehicule;
 	}
 
-	public void setLoueurVéhicule(LoueurVehicules loueurVéhicule) {
-		this.loueurVéhicule = loueurVéhicule;
+	public void setLoueurVéhicule(LoueurVehicules loueurVehicule) {
+		this.loueurVehicule = loueurVehicule;
+	}
+
+	public List<Voyage> getVoyages() {
+		return voyages;
+	}
+
+	public void setVoyages(List<Voyage> voyages) {
+		this.voyages = voyages;
 	}
 
 	//redéfintion de toString 
 	@Override
 	public String toString() {
-		return "LoueurVehicule [id=" + id + ", loueurVéhicule=" + loueurVéhicule + "]";
+		return "LoueurVehicule [id=" + id + ", loueurVehicule=" + loueurVehicule + "]";
 	}
 	
 	  

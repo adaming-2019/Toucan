@@ -3,9 +3,17 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Personne implements Serializable {
 
 	// Declaration des attributs
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int id;
 	protected String civilite;
 	protected String nom;

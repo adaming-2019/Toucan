@@ -3,12 +3,16 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,21 +25,53 @@ public class Voyage implements Serializable {
 	// Declaration des attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_v")
+	@Column(name="id_vg")
 	private int id;
 	@Temporal(TemporalType.DATE)
+	@Column(name="dateDebut_vg")
 	private Date dateDebut;
 	@Temporal(TemporalType.DATE)
+	@Column(name="dateRetour_vg")
 	private Date dateRetour;
+	@Column(name="nombrePlace_vg")
 	private int nombrePlace;
+	@Column(name="prixAgence_vg")
 	private double prixAgence;
+	@Column(name="prixBoVoyage_vg")
 	private double prixBoVoyage;
+	@Column(name="statut_vg")
 	private boolean statut;
+	@Column(name="photos_vg")
 	private byte[] photos;
 	
 	
 	// Transformations des associations UML en JAVA
-	// ... plus tard ...
+	@OneToMany(mappedBy="voyage")
+	private List<Dossier> dossiers;
+	
+	@ManyToOne
+	@JoinColumn(name="ag_id", referencedColumnName="id_ag")
+	private Agence agence;
+	
+	@ManyToOne
+	@JoinColumn(name="lv_id", referencedColumnName="id_lv")
+	private LoueurVehicule loueurVehicule;
+	
+	@ManyToOne
+	@JoinColumn(name="cv_id", referencedColumnName="id_cv")
+	private CategorieVehicule categorieVehicule;
+	
+	@ManyToOne
+	@JoinColumn(name="f_id", referencedColumnName="id_f")
+	private Formule formule;
+	
+	@ManyToOne
+	@JoinColumn(name="de_id", referencedColumnName="id_de")
+	private Destination destination;
+	
+	@ManyToOne
+	@JoinColumn(name="p_id", referencedColumnName="id_p")
+	private Prestation prestation;
 	
 	
 	// Constructeurs
@@ -138,6 +174,63 @@ public class Voyage implements Serializable {
 
 	public void setPhotos(byte[] photos) {
 		this.photos = photos;
+	}
+	
+
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+
+	public LoueurVehicule getLoueurVehicule() {
+		return loueurVehicule;
+	}
+
+	public void setLoueurVehicule(LoueurVehicule loueurVehicule) {
+		this.loueurVehicule = loueurVehicule;
+	}
+
+	public CategorieVehicule getCategorieVehicule() {
+		return categorieVehicule;
+	}
+
+	public void setCategorieVehicule(CategorieVehicule categorieVehicule) {
+		this.categorieVehicule = categorieVehicule;
+	}
+
+	public Formule getFormule() {
+		return formule;
+	}
+
+	public void setFormule(Formule formule) {
+		this.formule = formule;
+	}
+
+	public Destination getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Destination destination) {
+		this.destination = destination;
+	}
+
+	public Prestation getPrestation() {
+		return prestation;
+	}
+
+	public void setPrestation(Prestation prestation) {
+		this.prestation = prestation;
 	}
 
 	// methodes metiers

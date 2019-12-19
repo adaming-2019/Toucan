@@ -1,13 +1,30 @@
 package fr.adaming.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="clients")
 public class Client extends Personne {
 
 	// Declaration des attributs
+	@Column(name="cb_cl")
 	private int cb;
+	
+	@Column(name="login_cl")
 	private String login;
+	
+	@Column(name="mdp_cl")
 	private String mdp;
+	
+	// transformation de l'association UML en Java
+	@OneToMany(mappedBy="client")
+	private List<Dossier> dossiers;
 
 	// Declaration des constucteurs
 	public Client() {
@@ -53,6 +70,14 @@ public class Client extends Personne {
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public List<Voyage> getVoyages() {
+		return voyages;
+	}
+
+	public void setVoyages(List<Voyage> voyages) {
+		this.voyages = voyages;
 	}
 
 	@Override

@@ -1,10 +1,31 @@
 package fr.adaming.entities;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="categoriesvehicules")
 public class CategorieVehicule {
 
 	//Déclaration de l'énumération CategorieVehicule
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_cv")
 	private int id;
+	
+	@Column(name="categorievehicule_cv")
 	CategorieVehicules categorieVehicule;
+	
+	// transformation de l'association UML en Java
+	@OneToMany(mappedBy="categorieVehicule")
+	private List<Voyage> voyages;
 
 	
 	//déclaration des constructeurs
@@ -39,6 +60,14 @@ public class CategorieVehicule {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Voyage> getVoyages() {
+		return voyages;
+	}
+
+	public void setVoyages(List<Voyage> voyages) {
+		this.voyages = voyages;
 	}
 
 	@Override

@@ -2,10 +2,24 @@ package fr.adaming.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="voyageurs")
 public class Voyageur extends Personne {
 
 	// Declaration des attributs
+	@Column(name="numSiege_vr")
 	private String numSiege;
+	
+	// transformation de l'association UML en Java
+	@ManyToOne
+	@JoinColumn(name="do_id", referencedColumnName="id_do")
+	private Dossier dossier;
 
 	// Declaration des constructeurs
 	public Voyageur() {
@@ -31,6 +45,14 @@ public class Voyageur extends Personne {
 
 	public void setNumSiege(String numSiege) {
 		this.numSiege = numSiege;
+	}
+
+	public Dossier getDossier() {
+		return dossier;
+	}
+
+	public void setDossier(Dossier dossier) {
+		this.dossier = dossier;
 	}
 
 	// Methode toString
