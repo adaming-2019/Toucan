@@ -175,15 +175,15 @@ public class Voyage implements Serializable {
 	public void setPhotos(byte[] photos) {
 		this.photos = photos;
 	}
+
+	public List<Dossier> getDossiers() {
+		return dossiers;
+	}
+
+	public void setDossiers(List<Dossier> dossiers) {
+		this.dossiers = dossiers;
+	}
 	
-
-	public List<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
 
 	public Agence getAgence() {
 		return agence;

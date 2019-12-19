@@ -72,12 +72,12 @@ public class Client extends Personne {
 		this.mdp = mdp;
 	}
 
-	public List<Voyage> getVoyages() {
-		return voyages;
+	public List<Dossier> getDossiers() {
+		return dossiers;
 	}
 
-	public void setVoyages(List<Voyage> voyages) {
-		this.voyages = voyages;
+	public void setDossiers(List<Dossier> dossiers) {
+		this.dossiers = dossiers;
 	}
 
 	@Override

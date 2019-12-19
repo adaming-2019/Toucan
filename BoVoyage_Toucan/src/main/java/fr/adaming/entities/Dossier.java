@@ -83,6 +83,19 @@ public class Dossier implements Serializable {
 	public void setVoyageurs(List<Voyageur> voyageurs) {
 		this.voyageurs = voyageurs;
 	}
+	
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	public Voyage getVoyage() {
+		return voyage;
+	}
+	public void setVoyage(Voyage voyage) {
+		this.voyage = voyage;
+	}
 	// redéfinition de la méthode toString
 	@Override
 	public String toString() {
