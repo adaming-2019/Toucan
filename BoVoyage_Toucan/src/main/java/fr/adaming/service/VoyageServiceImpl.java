@@ -17,7 +17,7 @@ public class VoyageServiceImpl implements IVoyageService{
 	private IVoyageDao voyageDao;
 	
 	@Autowired
-	public void setEtuDao(IVoyageDao voyageDao) {
+	public void setVoyageDao(IVoyageDao voyageDao) {
 		this.voyageDao = voyageDao;
 	}
 	
