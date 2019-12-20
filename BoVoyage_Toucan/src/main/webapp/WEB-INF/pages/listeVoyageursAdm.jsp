@@ -23,6 +23,7 @@
 
 <body>
 
+<h1 style="color: red; text-align: center;">Liste des voyageurs</h1>
 	<table class="table table-bordered">
 		<tr>
 			<th>Nom</th>
@@ -32,7 +33,7 @@
 			<th>Date de naissance</th>
 			<th>Adresse</th>
 			<th>Téléphone</th>
-			<th>Natiolnalité</th>
+			<th>Nationalité</th>
 			<th>Opérations</th>
 		</tr>
 
@@ -48,6 +49,8 @@
 				<td>${v.nationalite}</td>
 				<!-- pour accèder directement au dossier voyageur-->
 				<td><a href="<c:url value='  '/>"><b>Accès dossier</b></a> |
+				<a href="<c:url value='  '/>"><b>Modifier</b></a> |
+				<a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a>
 			</tr>
 		</c:forEach>
 	</table>
