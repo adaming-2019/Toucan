@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IFormuleDao;
 import fr.adaming.entities.Formule;
 
 
@@ -13,11 +14,11 @@ import fr.adaming.entities.Formule;
 @Transactional
 public class FormuleServiceImpl implements IFormuleService {
 	// transformation de l'association UML en java
-	private IFormuleService formDao;
+	private IFormuleDao formDao;
 
 	
 	@Autowired
-	public void setFormDao(IFormuleService formDao) {
+	public void setFormDao(IFormuleDao formDao) {
 		this.formDao = formDao;
 	}
 
@@ -25,7 +26,7 @@ public class FormuleServiceImpl implements IFormuleService {
 	@Override
 	public List<Formule> getall() {
 		
-		return formDao.getall();
+		return formDao.getAll();
 	}
 
 

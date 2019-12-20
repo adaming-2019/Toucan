@@ -42,6 +42,7 @@ fr\adaming\dao\AgenceDaoImpl.class
 fr\adaming\entities\Assurance.class
 fr\adaming\service\IDossierService.class
 fr\adaming\entities\CategorieVehicule.class
+fr\adaming\controllers\VoyageurController.class
 fr\adaming\dao\IVoyageurDao.class
 fr\adaming\dao\PrestationDaoImpl.class
 fr\adaming\dao\ICatVehiculeDao.class
