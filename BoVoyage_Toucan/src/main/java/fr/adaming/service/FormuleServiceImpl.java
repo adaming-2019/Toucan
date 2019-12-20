@@ -14,9 +14,10 @@ import fr.adaming.entities.Formule;
 @Transactional
 public class FormuleServiceImpl implements IFormuleService {
 	// transformation de l'association UML en java
+	
 	private IFormuleDao formDao;
 
-	
+	// le setter pour l'injection de dependance
 	@Autowired
 	public void setFormDao(IFormuleDao formDao) {
 		this.formDao = formDao;

@@ -16,11 +16,12 @@ import fr.adaming.entities.Destination;
 public class DestinationServiceImpl implements IDestinationService{
 
 	// transformation de l'association UML en java
-	@Autowired
+
 	private IDestinationDao destinationDao;
 	
 
 	// le setter pour l'injection de dependance
+	@Autowired
 	public void setDestinationDao(IDestinationDao destinationDao) {
 		this.destinationDao = destinationDao;
 	}

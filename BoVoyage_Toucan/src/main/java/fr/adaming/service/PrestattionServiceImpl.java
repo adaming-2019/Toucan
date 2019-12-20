@@ -2,14 +2,25 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import fr.adaming.entities.Prestation;
 
+@Service
+@Transactional
 public class PrestattionServiceImpl implements IPrestationService{
 
 	//transformation de l'asscoiation UML en java
 	private IPrestationService prestDao;
 	
 	
+	@Autowired
+	public void setPrestDao(IPrestationService prestDao) {
+		this.prestDao = prestDao;
+	}
+
 	@Override
 	public List<Prestation> getAll() {
 
