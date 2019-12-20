@@ -9,13 +9,16 @@
 <meta charset="ISO-8859-1">
 <title>Liste Agences</title>
 <!-- Lier lb bootstrap à ma page -->
-<link rel="stylesheet" href="assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/bootstrap.css" />
 </head>
 <body>
-	<table class="table table-striped">
+	<h1 style="color: red; text-align: center">Listes des agences de
+		voyages</h1>
+	<table class="table table-bordered">
 		<tr>
 			<th>ID</th>
 			<th>Nom</th>
+			<th>Fonctionnalités</th>
 		</tr>
 
 		<c:forEach var="a" items="${agences}">
@@ -23,12 +26,9 @@
 				<th>${a.id}</th>
 				<th>${a.nom}</th>
 				<td><a
-					href="<c:url value='/admin/submitAddAgence?pId=${a.id}'/>">Ajouter</a></td>
-				<td><a
+					href="<c:url value='/admin/submitAddAgence?pId=${a.id}'/>">Ajouter</a><a
 					href="<c:url value='/admin/submitUpdateAgence?pId=${a.id}'/>">Modifier</a>
-				</td>
-				<td><a
-					href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
+					<a href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
 				</td>
 			</tr>
 

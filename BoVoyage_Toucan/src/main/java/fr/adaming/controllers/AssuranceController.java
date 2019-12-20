@@ -24,16 +24,11 @@ public class AssuranceController {
 		this.AssuranceService = AssuranceService;
 	}
 
-	@PostConstruct
-	public void init() {
-
-	}
-
 	@RequestMapping(value = "/admin/listeAssurance", method = RequestMethod.GET)
 	public ModelAndView afficheListe() {
 		// recup de la liste des Assurance du formateur
 		List<Assurance> listeAssurance = AssuranceService.getAllAssurances();
-		return new ModelAndView("listeAssuranceAdm", "Assurances", listeAssurance);
+		return new ModelAndView("listeAssuranceAdm", "assurances", listeAssurance);
 	}
 
 }
