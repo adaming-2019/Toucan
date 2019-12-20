@@ -36,17 +36,20 @@
 			<th>Opérations</th>
 		</tr>
 
-		<c:forEach var="v" items="${etudiants}">
+		<c:forEach var="v" items="${voyageurs}">
 			<tr>
-				<td>${e.id}</td>
-				<td>${e.nom}</td>
-				<td>${e.prenom}</td>
-				<td><fmt:formatDate value="${e.dn}" pattern="dd/MM/yyyy"/> </td>
+				<td>${v.nom}</td>
+				<td>${v.prenom}</td>
+				<td>${v.numSiege}</td>
+				<td><fmt:formatDate value="${v.dn}" pattern="dd/MM/yyyy"/> </td>
+				<td>${v.numSiege}</td>
+				
+				
 				
 				<!-- pour supprimer directement l'étudiant on va mettre son paramètre pId et ${e.id}.
 				comme ça il nenous envoie pas sur la page mais supprime direct l'étudiant.-->
 				<td><a href="<c:url value='/ecole/submitDelete?pId=${e.id}'/>"><b>Supprimer</b></a> |
-				<a href="<c:url value='/ecole/linkUpdate?pId=${e.id}'/>"><b>Modifier</b></a></td>
+				
 			</tr>
 		</c:forEach>
 	</table>
