@@ -8,6 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Liste Agences</title>
+<!-- Lier lb bootstrap à ma page -->
+<link rel="stylesheet" href="assets/css/bootstrap.css" />
 </head>
 <body>
 	<table class="table table-striped">

@@ -28,6 +28,8 @@ public class AgenceController {
 	public ModelAndView afficheListe() {
 		// recup de la liste des agence du formateur
 		List<Agence> listeAgence = agenceService.getAllAgence();
+		
+		System.out.println(listeAgence);
 		return new ModelAndView("listeAgenceAdm", "agences", listeAgence);
 	}
 
