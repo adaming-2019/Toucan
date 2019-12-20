@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IClientDao;
-import fr.adaming.dao.IVoyageDao;
 import fr.adaming.entities.Client;
 
 @Service
@@ -24,31 +23,44 @@ public class ClientServiceImpl implements IClientService{
 	
 	@Override
 	public List<Client> getAllClients() {
-		// TODO Auto-generated method stub
-		return null;
+		// appel de la méthode dao
+		return clientDao.getAll();
 	}
 
 	@Override
 	public Client getClientById(Client clIn) {
-		// TODO Auto-generated method stub
-		return null;
+		// appel de la méthode dao
+		return clientDao.getById(clIn.getId());
 	}
 
 	@Override
 	public Client addClient(Client clIn) {
-		// TODO Auto-generated method stub
-		return null;
+		//appel de la méthode Dao
+		return clientDao.add(clIn);
 	}
 
 	@Override
 	public boolean deleteClient(Client clIn) {
-		// TODO Auto-generated method stub
-		return false;
+		clientDao.delete(clIn.getId());
+		return true;
 	}
 
 	@Override
 	public boolean updateClient(Client clIn) {
-		// TODO Auto-generated method stub
+		// recuperer le voyage
+		Client clOut = clientDao.getById(clIn.getId());
+		
+		if (clOut!=null){
+			
+			// modifier l'objet récupéré avec les nouvelles valeurs en java
+			clOut.setCb(clIn.getCb());
+			clOut.setLogin(clIn.getLogin());
+			clOut.setMdp(clIn.getMdp());
+
+			//appel de la methode Dao pour supprimer le client
+			clientDao.update(clOut);
+			return true; 
+		}
 		return false;
 	}
 
