@@ -46,7 +46,7 @@
 				<td>${v.adresse}</td>
 				<td>${v.telephone}</td>
 				<td>${v.nationalite}</td>
-				<!-- pour supprimer directement l'étudiant on va mettre son paramètre pId et ${e.id}.
+				<!-- pour supprimer directement le voyageur on va mettre son paramètre pId et ${e.id}.
 				comme ça il nenous envoie pas sur la page mais supprime direct l'étudiant.-->
 				<td><a href="<c:url value='  '/>"><b>Accès dossier</b></a> |
 			</tr>
