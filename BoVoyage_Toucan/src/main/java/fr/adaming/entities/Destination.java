@@ -16,6 +16,7 @@ import javax.persistence.Table;
 public class Destination implements Serializable{
 
 	// declaration des attributs
+	Continent continents;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_de")

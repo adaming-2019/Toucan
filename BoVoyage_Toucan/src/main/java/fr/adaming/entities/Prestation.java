@@ -17,6 +17,7 @@ import javax.persistence.Table;
 public class Prestation implements Serializable{
 	
 	//declaration des attributs
+	Prestations prestation;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_p")
