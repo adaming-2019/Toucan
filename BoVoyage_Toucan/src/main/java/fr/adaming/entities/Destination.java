@@ -16,14 +16,13 @@ import javax.persistence.Table;
 public class Destination implements Serializable{
 
 	// declaration des attributs
-	Continent continents;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_de")
 	private int id;
 	
 	@Column(name="continent_de")
-	private String continent;
+	Continent continent;
 	
 	@Column(name="pays_de")
 	private String pays;
@@ -37,13 +36,13 @@ public class Destination implements Serializable{
 		super();
 	}
 
-	public Destination(String continent, String pays) {
+	public Destination(Continent continent, String pays) {
 		super();
 		this.continent = continent;
 		this.pays = pays;
 	}
 
-	public Destination(int id, String continent, String pays) {
+	public Destination(int id, Continent continent, String pays) {
 		super();
 		this.id = id;
 		this.continent = continent;
@@ -59,11 +58,11 @@ public class Destination implements Serializable{
 	}
 
 	// declarations getters et setters
-	public String getContinent() {
+	public Continent getContinent() {
 		return continent;
 	}
 
-	public void setContinent(String continent) {
+	public void setContinent(Continent continent) {
 		this.continent = continent;
 	}
 

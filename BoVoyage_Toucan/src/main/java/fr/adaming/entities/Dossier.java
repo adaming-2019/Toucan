@@ -27,6 +27,9 @@ public class Dossier implements Serializable {
 	@Column(name="etat_do")
 	private String etat;
 	
+	@Column(name="nbplaces_do")
+	private int nbPlaces;
+	
 	// transformation de l'association UML en Java
 	@ManyToMany(mappedBy="dossiers")
 	private List<Assurance> assurances;
@@ -46,15 +49,17 @@ public class Dossier implements Serializable {
 	public Dossier() {
 		super();
 	}
-	public Dossier(String etat) {
+	public Dossier(String etat, int nbPlaces) {
 		super();
 		this.etat = etat;
+		this.nbPlaces = nbPlaces;
 	}
 	
-	public Dossier(int id, String etat) {
+	public Dossier(int id, String etat, int nbPlaces) {
 		super();
 		this.id = id;
 		this.etat = etat;
+		this.nbPlaces = nbPlaces;
 	}
 	// déclaration des getters et setters
 	public int getId() {
@@ -71,6 +76,12 @@ public class Dossier implements Serializable {
 		this.etat = etat;
 	}
 	
+	public int getNbPlaces() {
+		return nbPlaces;
+	}
+	public void setNbPlaces(int nbPlaces) {
+		this.nbPlaces = nbPlaces;
+	}
 	public List<Assurance> getAssurances() {
 		return assurances;
 	}
@@ -99,8 +110,9 @@ public class Dossier implements Serializable {
 	// redéfinition de la méthode toString
 	@Override
 	public String toString() {
-		return "Dossier [etat=" + etat + "]";
+		return "Dossier [id=" + id + ", etat=" + etat + ", nbPlaces=" + nbPlaces + "]";
 	}
+	
 	
 	
 
