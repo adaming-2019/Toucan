@@ -24,11 +24,6 @@ public class AgenceController {
 		this.agenceService = agenceService;
 	}
 
-	@PostConstruct
-	public void init() {
-
-	}
-
 	@RequestMapping(value = "/admin/listeAgence", method = RequestMethod.GET)
 	public ModelAndView afficheListe() {
 		// recup de la liste des agence du formateur
