@@ -29,7 +29,7 @@ public class AgenceController {
 
 	}
 
-	@RequestMapping(value = "/listeAgence", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/listeAgence", method = RequestMethod.GET)
 	public ModelAndView afficheListe() {
 		// recup de la liste des agence du formateur
 		List<Agence> listeAgence = agenceService.getAllAgence();

@@ -29,7 +29,7 @@ public class AssuranceController {
 
 	}
 
-	@RequestMapping(value = "/listeAssurance", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/listeAssurance", method = RequestMethod.GET)
 	public ModelAndView afficheListe() {
 		// recup de la liste des Assurance du formateur
 		List<Assurance> listeAssurance = AssuranceService.getAllAssurances();
