@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Continent</title>
+<title>Voyages</title>
 
 <!-- lier le fichier css de bootstrap à ma page -->
 <link rel="stylesheet"
@@ -17,26 +17,10 @@
 </head>
 <body>
 
+	<h1 style="color: red; text-align: center;">Voyages</h1>
+	
 
-	<h1 style="color: red; text-align: center;">Continents</h1>
-
-	<form:form action="">
-		<form:input path="destination.continent">
-			<select>
-				<c:forEach var="cont" items="${listeCont}">
-					<option>${cont}</option>
-
-
-				</c:forEach>
-
-
-			</select>
-		</form:input>
-	</form:form>
-
-
-
-
+	
 
 
 
