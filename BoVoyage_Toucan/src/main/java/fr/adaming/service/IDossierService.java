@@ -11,9 +11,9 @@ public interface IDossierService {
 
 	public Dossier getById(int id);
 
-	public Dossier addAssurance(Dossier dossierIn);
+	public Dossier addDossier(Dossier dossierIn);
 
-	public Dossier update(Dossier dossierIn);
+	public Dossier updateDossier(Dossier dossierIn);
 
 	public void deleteDossier(int id);
 	

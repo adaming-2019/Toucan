@@ -32,13 +32,13 @@ public class DossierServiceImpl implements IDossierService {
 	}
 
 	@Override
-	public Dossier addAssurance(Dossier dossierIn) {
+	public Dossier addDossier(Dossier dossierIn) {
 		// appel de la méthode
 		return dossierDao.add(dossierIn);
 	}
 
 	@Override
-	public Dossier update(Dossier dossierIn) {
+	public Dossier updateDossier(Dossier dossierIn) {
 		// appel de la méthode
 		return dossierDao.update(dossierIn);
 	}
