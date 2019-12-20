@@ -18,7 +18,7 @@ public class Formule {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_f")
-	public String id;
+	public int id;
 	
 	@Column(name="formule_f")
 	Formules formule;
@@ -38,18 +38,18 @@ public class Formule {
 		this.formule = formule;
 	}
 
-	public Formule(String id, Formules formule) {
+	public Formule(int id, Formules formule) {
 		super();
 		this.id = id;
 		this.formule = formule;
 	}
 
 	//déclaration des getters et setters 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
