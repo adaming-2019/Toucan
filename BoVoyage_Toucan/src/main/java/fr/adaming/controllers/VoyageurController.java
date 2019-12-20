@@ -2,6 +2,7 @@ package fr.adaming.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.adaming.service.IVoyageurService;
@@ -21,7 +22,9 @@ public class VoyageurController {
 	}
 	
 	//convertir les valeurs des paramètres en objet java (ici la date de naissance)
-	
+	public void initBinder(WebDataBinder binder) {
+		
+	}
 	
 	
 	

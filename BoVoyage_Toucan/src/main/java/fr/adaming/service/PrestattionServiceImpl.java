@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IPrestationDao;
 import fr.adaming.entities.Prestation;
 
 @Service
@@ -13,11 +14,11 @@ import fr.adaming.entities.Prestation;
 public class PrestattionServiceImpl implements IPrestationService{
 
 	//transformation de l'asscoiation UML en java
-	private IPrestationService prestDao;
+	private IPrestationDao prestDao;
 	
 	
 	@Autowired
-	public void setPrestDao(IPrestationService prestDao) {
+	public void setPrestDao(IPrestationDao prestDao) {
 		this.prestDao = prestDao;
 	}
 
