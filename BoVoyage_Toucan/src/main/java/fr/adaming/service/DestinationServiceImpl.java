@@ -2,21 +2,26 @@ package fr.adaming.service;
 
 import java.util.List;
 
-import javax.print.attribute.standard.Destination;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import fr.adaming.dao.IDestinationDao;
+import fr.adaming.entities.Destination;
 
 @Service
 @Transactional
 public class DestinationServiceImpl implements IDestinationService{
 
 	// transformation de l'association UML en java
-	private IDestinationService destinationDao;
-	
 	@Autowired
-	public void setDestinationDao(IDestinationService destinationDao) {
+	private IDestinationDao destinationDao;
+	
+
+	// le setter pour l'injection de dependance
+	public void setDestinationDao(IDestinationDao destinationDao) {
 		this.destinationDao = destinationDao;
 	}
 
@@ -27,9 +32,9 @@ public class DestinationServiceImpl implements IDestinationService{
 	}
 
 	@Override
-	public Destination getById(int Did) {
+	public Destination getById(int idD) {
 		
-		return destinationDao.getById(Did);
+		return destinationDao.getById(idD);
 	}
 
 	@Override
