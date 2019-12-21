@@ -11,11 +11,11 @@ import fr.adaming.entities.Agence;
 
 @Service
 @Transactional
-public class AgenceServiceImpl implements IAgenceService{
-	
+public class AgenceServiceImpl implements IAgenceService {
+
 	// transformation de l'association UML en JAVA
 	private IAgenceDao agenceDao;
-	
+
 	@Autowired
 	public void setAgenceDao(IAgenceDao agenceDao) {
 		this.agenceDao = agenceDao;
@@ -46,9 +46,10 @@ public class AgenceServiceImpl implements IAgenceService{
 	}
 
 	@Override
-	public void deleteAgence(int id) {
-		
-		
+	public boolean deleteAgence(int id) {
+		agenceDao.delete(id);
+		return true;
+
 	}
 
 }

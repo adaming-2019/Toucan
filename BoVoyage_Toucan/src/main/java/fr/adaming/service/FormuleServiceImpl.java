@@ -50,7 +50,9 @@ public class FormuleServiceImpl implements IFormuleService {
 	}
 
 	@Override
-	public void delete(Formule id) {
+	public boolean delete(Formule fIn) {
+		formDao.delete(fIn.getId());
+		return true;
 		
 
 	}

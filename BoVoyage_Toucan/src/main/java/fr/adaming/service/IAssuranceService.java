@@ -15,6 +15,6 @@ public interface IAssuranceService {
 
 	public Assurance update(Assurance assuranceIn);
 
-	public void deleteAssurance(int id);
+	public boolean deleteAssurance(int id);
 
 }

@@ -46,7 +46,9 @@ public class AssuranceServiceImpl implements IAssuranceService{
 	}
 
 	@Override
-	public void deleteAssurance(int id) {
+	public boolean deleteAssurance(int id) {
+		assuranceDao.delete(id);
+		return true;
 		
 	}
 	

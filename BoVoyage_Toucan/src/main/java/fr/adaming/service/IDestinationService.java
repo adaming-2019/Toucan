@@ -17,6 +17,6 @@ public interface IDestinationService {
 
 	public Destination update(Destination dIn);
 
-	public void delete(int id);
+	public boolean delete(int id);
 
 }

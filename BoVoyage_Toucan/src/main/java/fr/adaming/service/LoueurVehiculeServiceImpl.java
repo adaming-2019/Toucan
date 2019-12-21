@@ -40,7 +40,9 @@ public class LoueurVehiculeServiceImpl implements ILoueurVehiculeService {
 	}
 
 	@Override
-	public void delete(int id) {
+	public boolean delete(int id) {
+		cvService .delete(id);
+		return true;
 
 	}
 

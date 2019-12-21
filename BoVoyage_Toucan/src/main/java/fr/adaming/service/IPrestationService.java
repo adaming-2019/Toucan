@@ -14,6 +14,6 @@ public interface IPrestationService {
 	
 	public Prestation update(Prestation pId);
 
-	public void delete(Prestation id);
+	public boolean delete(Prestation id);
 	
 }

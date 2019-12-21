@@ -48,7 +48,9 @@ public class PrestattionServiceImpl implements IPrestationService{
 	}
 
 	@Override
-	public void delete(Prestation id) {
+	public boolean delete(Prestation pIn) {
+		prestDao.delete(pIn.getId());
+		return true;
 		
 		
 	}

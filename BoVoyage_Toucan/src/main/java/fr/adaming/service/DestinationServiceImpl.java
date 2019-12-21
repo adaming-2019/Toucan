@@ -51,7 +51,9 @@ public class DestinationServiceImpl implements IDestinationService{
 	}
 
 	@Override
-	public void delete(int id) {
+	public boolean delete(int id) {
+		destinationDao.delete(id);
+		return true;
 	
 		
 	}

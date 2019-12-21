@@ -27,9 +27,8 @@
 				<th>${as.id}</th>
 				<th>${as.montant}</th>
 				<th>${as.type}</th>
-				<td><a
-					href="<c:url value='/admin/submitAddAssurance?pId=${as.id}'/>">Ajouter</a><a
-					href="<c:url value='/admin/submitUpdateAssurance?pId=${as.id}'/>">Modifier</a>
+				<td><a href="<c:url value='/admin/afficherAddAssurance'/>">Ajouter</a><a
+					href="<c:url value='/admin/afficherUpdateAssurance?pId=${as.id}'/>">Modifier</a>
 					<a
 					href="<c:url value='/admin/submitDeleteAssurance?pId=${as.id}'/>">Supprimer</a>
 				</td>

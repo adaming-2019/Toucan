@@ -15,6 +15,6 @@ public interface ILoueurVehiculeService {
 
 	public LoueurVehicule update(LoueurVehicule cv);
 
-	public void delete(int id);
+	public boolean delete(int id);
 
 }

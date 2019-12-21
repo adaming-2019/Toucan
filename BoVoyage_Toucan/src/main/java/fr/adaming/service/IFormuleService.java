@@ -14,6 +14,6 @@ public interface IFormuleService {
 
 	public Formule update(Formule fId);
 
-	public void delete(Formule id);
+	public boolean delete(Formule id);
 
 }

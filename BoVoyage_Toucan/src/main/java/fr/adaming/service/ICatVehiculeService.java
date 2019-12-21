@@ -15,6 +15,6 @@ public interface ICatVehiculeService {
 
 	public CategorieVehicule update(CategorieVehicule cv);
 
-	public void delete(int id);
+	public boolean delete(int id);
 
 }

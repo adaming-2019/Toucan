@@ -39,7 +39,9 @@ public class CatVehiculeServiceImpl implements ICatVehiculeService {
 	}
 
 	@Override
-	public void delete(int id) {
+	public boolean delete(int id) {
+		cvService.delete(id);
+		return true;
 
 	}
 }

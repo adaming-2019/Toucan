@@ -44,7 +44,9 @@ public class DossierServiceImpl implements IDossierService {
 	}
 
 	@Override
-	public void deleteDossier(int id) {
+	public boolean deleteDossier(int id) {
+		dossierDao.delete(id);
+		return true;
 
 	}
 
