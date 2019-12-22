@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Dossier;
@@ -11,6 +13,7 @@ import fr.adaming.entities.Voyage;
 import fr.adaming.entities.Voyageur;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.IDossierService;
+import fr.adaming.service.IVoyageService;
 
 @Controller
 public class CompteClientControleur {
@@ -20,6 +23,8 @@ public class CompteClientControleur {
 	private IClientService clService;
 	@Autowired
 	private IDossierService dosService;
+	@Autowired
+	private IVoyageService voyService;
 
 	// setters pour l'injection de dépendance
 	public void setClService(IClientService clService) {
@@ -28,6 +33,10 @@ public class CompteClientControleur {
 	
 	public void setDosService(IDossierService dosService) {
 		this.dosService = dosService;
+	}
+	
+	public void setVoyService(IVoyageService voyService) {
+		this.voyService = voyService;
 	}
 	
 	// méthodes métier
@@ -40,22 +49,23 @@ public class CompteClientControleur {
 	}
 	
 	// ***Fonctionnalité choisir nombre de places
+	@RequestMapping(value="/choixNbPlaces", method=RequestMethod.GET)
 	public String afficheChoixNbPlaces(Model model) {
 		Voyage voyage = new Voyage();
-		voyage.setId(3);
+		voyService.addVoyage(voyage);
 		
 		Client client = new Client();
-		client.setId(5);
+		clService.addClient(client);
 		
 		Dossier dossier = new Dossier();
 		dossier.setEtat("en attente");
 		dossier.setClient(client);
 		dossier.setVoyage(voyage);
 		
-		Dossier verif = dosService.addDossier(dossier);
+		Dossier dossierAdd = dosService.addDossier(dossier);
 		
-		if (verif.getId()!=0) {
-			model.addAttribute("dossier", dossier);
+		if (dossierAdd.getId()!=0) {
+			model.addAttribute("dossier", dossierAdd);
 			
 			return "choixNbPlacesCl";
 			

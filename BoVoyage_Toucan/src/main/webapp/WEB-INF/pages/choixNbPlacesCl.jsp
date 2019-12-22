@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<form:form method="POST" action="" modelAttribute="dossier">
+	<form:form method="POST" action="#" modelAttribute="dossier">
 		Choix du nombre de places : <form:input path="nbPlaces"/>
 		<input type="submit" value="Valider"/>
 	</form:form>
