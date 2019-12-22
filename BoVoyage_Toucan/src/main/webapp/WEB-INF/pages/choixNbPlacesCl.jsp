@@ -11,8 +11,11 @@
 </head>
 <body>
 
-	<form:form method="POST" action="#" modelAttribute="dossier">
+	<h2 style="color: slateBlue; text-align: center">Combien de places souhaitez-vous réserver ?</h2>
+
+	<form:form method="POST" action="saisieVoyageur" modelAttribute="dossier">
 		Choix du nombre de places : <form:input path="nbPlaces"/>
+		<br/>
 		<input type="submit" value="Valider"/>
 	</form:form>
 

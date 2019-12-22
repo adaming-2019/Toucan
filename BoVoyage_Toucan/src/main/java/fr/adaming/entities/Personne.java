@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @MappedSuperclass
 public abstract class Personne implements Serializable {
@@ -20,6 +22,8 @@ public abstract class Personne implements Serializable {
 	protected String civilite;
 	protected String nom;
 	protected String prenom;
+	
+	@Temporal(TemporalType.DATE) // cette annotation permet à l'ORM de convertir une date java.util en date java.sql
 	protected Date dn;
 	protected String adresse;
 	protected String telephone;

@@ -1,21 +1,32 @@
 package fr.adaming.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fr.adaming.entities.Assurance;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Dossier;
 import fr.adaming.entities.Voyage;
 import fr.adaming.entities.Voyageur;
+import fr.adaming.service.IAssuranceService;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.IDossierService;
 import fr.adaming.service.IVoyageService;
 
 @Controller
+@RequestMapping("/public")
 public class CompteClientControleur {
 	
 	// transformation de l'association uml en java
@@ -25,6 +36,8 @@ public class CompteClientControleur {
 	private IDossierService dosService;
 	@Autowired
 	private IVoyageService voyService;
+	@Autowired
+	private IAssuranceService assuService;
 
 	// setters pour l'injection de dépendance
 	public void setClService(IClientService clService) {
@@ -39,8 +52,30 @@ public class CompteClientControleur {
 		this.voyService = voyService;
 	}
 	
-	// méthodes métier
+	public void setAssuService(IAssuranceService assuService) {
+		this.assuService = assuService;
+	}
 	
+	// méthode appelée pour convertir les valeurs des params de la requête en objets
+	// java, entre autres la date
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		// l'objet WebDataBinder sert à faire le lien entre les params de la requête et
+		// les objets java
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+		df.setLenient(false);
+
+		// la méthode registerCustomEditor() sert à configurer la conversion du param
+		// reçu au type de l'attribut
+
+		// l'objet CustomDateEditor sert à lier la date reçue comme param de la requête
+		// à l'attribut de l'objet etudiant
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
+	}
+	
+	// méthodes métier
+
 	// affichage de la page login
 	public String afficheLoginCl(Model model) {
 		model.addAttribute("client", new Client());
@@ -57,31 +92,67 @@ public class CompteClientControleur {
 		Client client = new Client();
 		clService.addClient(client);
 		
+		// création d'un nouveau dossier
 		Dossier dossier = new Dossier();
+		
+		// attribution du statut "en attente" au dossier
 		dossier.setEtat("en attente");
+		
+		// attribution d'un client et d'un voyage au dossier
 		dossier.setClient(client);
 		dossier.setVoyage(voyage);
 		
-		Dossier dossierAdd = dosService.addDossier(dossier);
+		// passage du dossier comme attribut du modèle MVC
+		model.addAttribute("dossier", dossier);
 		
-		if (dossierAdd.getId()!=0) {
-			model.addAttribute("dossier", dossierAdd);
-			
-			return "choixNbPlacesCl";
-			
-		} else {
-			return "loginCl";
-		}
+		return "choixNbPlacesCl";
 		
 	}
 	
+	//*** Fonctionnalité saisir voyageur
+	@RequestMapping(value="/saisieVoyageur", method=RequestMethod.POST)
+	public String submitChoixNbPlaces(Model model, @ModelAttribute("dossier") Dossier dossier) {
+		
+		// passage du dossier comme attribut du modèle MVC
+		model.addAttribute("dossier", dossier);
+		
+		// ajout d'un nouveau voyageur comme attribut du modèle mvc
+		model.addAttribute("voyageur", new Voyageur());
+		
+		// définition du numéro du voyageur à saisir, pour l'instant il s'agit du premier
+		int noVoyageur=1;
+		model.addAttribute("noVoyageur", noVoyageur);
+		
+		return "saisieVoyageurCl";
+		
+	}
 	
-//	public String submitChoixNbPlaces(Model model, @ModelAttribute("dossier") Dossier dossier) {
-//		
-//		Dossier dossierOut = dosService.updateDossier(dossier);
-//		
-//		model.addAttribute("dossier", dossierOut);
-//		
-//	}
+	@RequestMapping(value="/submitSaisieVoyageur", method=RequestMethod.POST)
+	public String submitSaisieVoyageur(Model model, @ModelAttribute("dossier") Dossier dossier, @ModelAttribute("voyageur") Voyageur voyageur, @ModelAttribute("noVoyageur") int noVoyageur) {
+		// ajout du voyageur saisi à la liste des voyageurs associés au dossier
+		dossier.getVoyageurs().add(voyageur);
+		
+		// passage du dossier comme attribut du modèle MVC
+		model.addAttribute("dossier", dossier);
+		
+		if(dossier.getVoyageurs().size()<dossier.getNbPlaces()) {
+			// ajout d'un nouveau voyageur comme attribut du modèle mvc
+			model.addAttribute("voyageur", new Voyageur());
+			
+			// incrémentation du numéro du voyageur à saisir
+			noVoyageur++;
+			model.addAttribute("noVoyageur", noVoyageur);
+			
+			return "saisieVoyageurCl";
+			
+		} else {
+			// récupérer la liste des assurances et l'associer au modèle MVC
+			List<Assurance> assurances = assuService.getAllAssurances();
+			model.addAttribute("assurances", assurances);
+			
+			return "choixAssurance";
+		}
+		
+	}
 
 }
