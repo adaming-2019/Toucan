@@ -15,6 +15,7 @@
 
 	<form:form method="POST" action="saisieVoyageur" modelAttribute="dossier">
 		Choix du nombre de places : <form:input path="nbPlaces"/>
+		<form:input type="hidden"  path="etat" value="${dossier.etat}"/>
 		<br/>
 		<input type="submit" value="Valider"/>
 	</form:form>

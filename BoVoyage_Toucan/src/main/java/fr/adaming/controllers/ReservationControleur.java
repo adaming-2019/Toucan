@@ -2,18 +2,25 @@ package fr.adaming.controllers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.adaming.entities.Assurance;
 import fr.adaming.entities.Client;
@@ -58,13 +65,12 @@ public class ReservationControleur {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		System.out.println("Je suis dans la méthode initBinder");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		df.setLenient(false);
 		
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
-		System.out.println("Je sors de la méthode submitSaisieVoyageur");
+	
 	}
 	
 	// méthodes métier
@@ -95,6 +101,7 @@ public class ReservationControleur {
 		dossier.setClient(client);
 		dossier.setVoyage(voyage);
 		
+		dossier.setVoyageurs(new ArrayList<Voyageur>());
 		// passage du dossier comme attribut du modèle MVC
 		model.addAttribute("dossier", dossier);
 		
@@ -104,35 +111,39 @@ public class ReservationControleur {
 	
 	//*** Fonctionnalité saisir voyageur
 	@RequestMapping(value="/saisieVoyageur", method=RequestMethod.POST)
-	public String submitChoixNbPlaces(Model model, @ModelAttribute("dossier") Dossier dossier) {
-		System.out.println("Je suis dans la méthode submitChoixNbPlaces");
+	public String submitChoixNbPlaces(HttpServletRequest req,ModelMap model, @ModelAttribute("dossier") Dossier dossier) {
 		// passage du dossier comme attribut du modèle MVC
-		model.addAttribute("dossier", dossier);
+		System.out.println(dossier+"\n");
+		
+		dossier.setVoyageurs(new ArrayList<Voyageur>());
+		HttpSession maSession=req.getSession();
+		
+		maSession.setAttribute("dossier", dossier);
 		
 		// ajout d'un nouveau voyageur comme attribut du modèle mvc
 		model.addAttribute("voyageur", new Voyageur());
-		System.out.println("J'ai ajouté le voyageur au modèle mvc");
 		
 		// définition du numéro du voyageur à saisir, pour l'instant il s'agit du premier
 		int noVoyageur=1;
 		model.addAttribute("noVoyageur", noVoyageur);
-		
-		System.out.println("J'ai ajouté le noVoyageur au modèle mvc");
 		
 		return "saisieVoyageurCl";
 		
 	}
 	
 	@RequestMapping(value="/submitSaisieVoyageur", method=RequestMethod.POST)
-	public String submitSaisieVoyageur(Model model, @ModelAttribute("dossier") Dossier dossier, @ModelAttribute("voyageur") Voyageur voyageur, @ModelAttribute("noVoyageur") int noVoyageur) {
+	public String submitSaisieVoyageur(HttpServletRequest req,ModelMap model, @ModelAttribute("voyageur") Voyageur voyageur, @RequestParam("noVoyageur") int noVoyageur) {
 		// ajout du voyageur saisi à la liste des voyageurs associés au dossier
-		System.out.println("Je suis dans la méthode submitSaisieVoyageur");
+HttpSession maSession=req.getSession();
+		
+		
+		
+		Dossier dossier=(Dossier) maSession.getAttribute("dossier");
 		dossier.getVoyageurs().add(voyageur);
-		System.out.println("J'ai ajouté le voyageur au dossier");
 		
 		// passage du dossier comme attribut du modèle MVC
-		model.addAttribute("dossier", dossier);
-		
+		maSession.setAttribute("dossier", dossier);
+		System.out.println("\n ---------- soumettre voyageur");
 		if(dossier.getVoyageurs().size()<dossier.getNbPlaces()) {
 			// ajout d'un nouveau voyageur comme attribut du modèle mvc
 			model.addAttribute("voyageur", new Voyageur());

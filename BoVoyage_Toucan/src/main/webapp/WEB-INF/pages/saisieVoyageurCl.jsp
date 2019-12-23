@@ -14,6 +14,7 @@
 	<h2 style="color: slateBlue; text-align: center">Veuillez saisir les informations du voyegeur numéro ${noVoyageur}</h2>
 	
 	<form:form action="submitSaisieVoyageur" method="POST" modelAttribute="voyageur">
+	<input type="hidden" name="noVoyageur" value="${noVoyageur}"/>
 		Civilité : <form:input path="civilite"/>
 		<br/>
 		Nom : <form:input path="nom"/>
