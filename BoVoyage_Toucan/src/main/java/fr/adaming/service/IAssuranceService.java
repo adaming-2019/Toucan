@@ -16,5 +16,7 @@ public interface IAssuranceService {
 	public Assurance update(Assurance assuranceIn);
 
 	public boolean deleteAssurance(int id);
+	
+	public Assurance getAssuranceByType(String type);
 
 }

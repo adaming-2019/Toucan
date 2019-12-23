@@ -3,6 +3,8 @@
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +15,10 @@
 
 	<h2 style="color: slateBlue; text-align: center">Souhaitez-vous sélectionner des assurances pour votre voyage ?</h2>
 	
-	<form method="GET" action="#">
-		<c:forEach var="a" items="assurances">
-			<input type="checkbox" name="${a.type}" value="yes"/>${a.type} (montant=${a.montant}) EUR
-			<br/>
-		</c:forEach>
-		<input type="button" value="Continuer"/>
-	</form>
+	<form:form method="POST" action="submitChoixAssurance" modelAttribute="selection">
+		<form:checkboxes items="${types}" path="choix"/>
+		<input type="submit" value="Continuer"/>
+	</form:form>
 
 </body>
 </html>

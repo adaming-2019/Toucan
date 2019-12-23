@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.adaming.entities.Assurance;
+import fr.adaming.entities.ChoixAssurance;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Dossier;
 import fr.adaming.entities.Voyage;
@@ -126,7 +126,7 @@ public class ReservationControleur {
 
 		// définition du numéro du voyageur à saisir, pour l'instant il s'agit du
 		// premier
-		int noVoyageur = 1;
+		int noVoyageur = dossier.getVoyageurs().size() + 1;
 		model.addAttribute("noVoyageur", noVoyageur);
 
 		return "saisieVoyageurCl";
@@ -135,7 +135,7 @@ public class ReservationControleur {
 
 	@RequestMapping(value = "/submitSaisieVoyageur", method = RequestMethod.POST)
 	public String submitSaisieVoyageur(HttpServletRequest req, ModelMap model,
-			@ModelAttribute("voyageur") Voyageur voyageur, @RequestParam("noVoyageur") int noVoyageur) {
+			@ModelAttribute("voyageur") Voyageur voyageur) {
 		// ajout du voyageur saisi à la liste des voyageurs associés au dossier
 		HttpSession maSession = req.getSession();
 
@@ -150,19 +150,63 @@ public class ReservationControleur {
 			model.addAttribute("voyageur", new Voyageur());
 
 			// incrémentation du numéro du voyageur à saisir
-			noVoyageur++;
+			int noVoyageur = dossier.getVoyageurs().size() + 1;
 			model.addAttribute("noVoyageur", noVoyageur);
 
 			return "saisieVoyageurCl";
 
 		} else {
-			// récupérer la liste des assurances et l'associer au modèle MVC
+			// récupérer la liste des assurances
 			List<Assurance> assurances = assuService.getAllAssurances();
-			model.addAttribute("assurances", assurances);
+			
+			// extraire la liste des types d'assurances et les stocker dans un String[]
+			String[] liste = new String[assurances.size()];
+			
+			for (int i=0; i<assurances.size(); i++) {
+				liste[i] = assurances.get(i).getType();
+			}
+			// ajout de ce String[] au modèle MVC
+			model.addAttribute("types", liste);
+			
+//			// ajout d'un List<String> vide au modèle MVC, pour stocker les assurances sélectionnées par le client
+//			List<String> choix = new ArrayList<String>();
+//			model.addAttribute("choix", choix);
+			
+			// instanciation d'un objet de type ChoixAssurance
+			ChoixAssurance selection = new ChoixAssurance();
+			selection.setChoix(new ArrayList<String>());
+			
+			// ajout de selection au modele mvc
+			model.addAttribute("selection", selection);
 
 			return "choixAssurance";
 		}
 
+	}
+	
+	@RequestMapping(value="/submitChoixAssurance", method=RequestMethod.POST)
+	public String submitChoixAssurance(HttpServletRequest req, Model model, @ModelAttribute(value="selection") ChoixAssurance selection) {
+		// récupérer le dossier stocké dans la session
+		HttpSession maSession = req.getSession();
+
+		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
+		
+		System.out.println(selection);
+		
+		dossier.setAssurances(new ArrayList<Assurance>());
+		
+		for (String elem : selection.getChoix()) {
+			if (elem!=null) {
+				// récupérer l'assurance dans la bd
+				Assurance assuranceOut = assuService.getAssuranceByType(elem);
+				System.out.println(assuranceOut);
+				// ajout de cette assut=rance à la liste des assurances du dossier
+				dossier.getAssurances().add(assuranceOut);
+			}
+		}
+		
+		return "recapitulatifCl";
+		
 	}
 
 }

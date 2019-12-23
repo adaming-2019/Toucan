@@ -51,6 +51,12 @@ public class AssuranceServiceImpl implements IAssuranceService{
 		return true;
 		
 	}
+
+	@Override
+	public Assurance getAssuranceByType(String type) {
+		// appel de la méthode service
+		return assuranceDao.getAssuranceByType(type);
+	}
 	
 	
 	

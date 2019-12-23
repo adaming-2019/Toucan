@@ -11,7 +11,7 @@ public abstract class GenericDaoImpl<T> implements IGenericDao<T> {
 	protected Class<T> clazz;
 
 	@Autowired
-	private SessionFactory sf;
+	protected SessionFactory sf;
 
 	public Class<T> getClazz() {
 		return clazz;
