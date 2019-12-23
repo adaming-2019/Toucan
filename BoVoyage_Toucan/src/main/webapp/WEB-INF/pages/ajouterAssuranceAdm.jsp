@@ -11,12 +11,14 @@
 <title>ajouter assurance adm</title>
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/BoVoyageStyle.css" />
 </head>
 <body>
 	<!--  inclure le header -->
-<%@include file="../templates/header.html"%>
-	<h1 style="color: red; text-align: center">Formulaire d'ajout</h1>
-
+	<%@include file="/templates/header.html"%>
+	<h1 id="titre">Formulaire d'ajout</h1>
+	<br />
+	<%@include file="/templates/menuAdm.html"%>
 	<form:form class="form-horizontal" method="POST"
 		action="submitAddAssurance" modelAttribute="asAdd">
 		<div class="form-group">
@@ -32,10 +34,11 @@
 				<form:input path="type" type="text" class="form-control" id="idType"
 					placeholder="Type" />
 			</div>
+			<div class="col-sm-3">
+				<input class="btn btn-success" type="submit" value="Ajouter" />
+			</div>
 		</div>
-		<div class="control-label col-sm-1">
-			<input class="btn btn-success" type="submit" value="Ajouter" />
-		</div>
+
 	</form:form>
 </body>
 </html>

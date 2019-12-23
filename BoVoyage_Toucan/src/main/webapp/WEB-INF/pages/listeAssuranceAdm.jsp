@@ -10,35 +10,38 @@
 <title>Liste Assurance</title>
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/BoVoyageStyle.css" />
 </head>
 <body>
 	<!--  inclure le header -->
-	<%@include file="../templates/header.html"%>
-	<h1 style="color: red; text-align: center">Listes des assurances
-		disponibles</h1>
-	<table class="table table-bordered">
-		<tr>
-			<th>ID</th>
-			<th>Montant</th>
-			<th>Type</th>
-			<th>Fonctionnalités</th>
-		</tr>
-
-		<c:forEach var="as" items="${assurances}">
+	<%@include file="/templates/header.html"%>
+	<h1 id="titre">Listes des agences des assurances disponibles</h1>
+	<br />
+	<%@include file="/templates/menuAdm.html"%>
+	<div style="text-align: center" class="control-label col-sm-7">
+		<table class="table table-bordered">
 			<tr>
-				<th>${as.id}</th>
-				<th>${as.montant}</th>
-				<th>${as.type}</th>
-				<td><a href="<c:url value='/admin/afficherAddAssurance'/>">Ajouter</a><a
-					href="<c:url value='/admin/afficherUpdateAssurance?pId=${as.id}'/>">Modifier</a>
-					<a
-					href="<c:url value='/admin/submitDeleteAssurance?pId=${as.id}'/>">Supprimer</a>
-				</td>
+				<th>ID</th>
+				<th>Montant</th>
+				<th>Type</th>
+				<th>Fonctionnalités</th>
 			</tr>
 
+			<c:forEach var="as" items="${assurances}">
+				<tr>
+					<th>${as.id}</th>
+					<th>${as.montant}</th>
+					<th>${as.type}</th>
+					<td><a href="<c:url value='/admin/afficherAddAssurance'/>">Ajouter</a><a
+						href="<c:url value='/admin/afficherUpdateAssurance?pId=${as.id}'/>">Modifier</a>
+						<a
+						href="<c:url value='/admin/submitDeleteAssurance?pId=${as.id}'/>">Supprimer</a>
+					</td>
+				</tr>
 
-		</c:forEach>
-	</table>
 
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

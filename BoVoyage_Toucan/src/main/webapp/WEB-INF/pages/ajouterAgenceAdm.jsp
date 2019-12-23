@@ -11,11 +11,14 @@
 <title>ajouter agence adm</title>
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/BoVoyageStyle.css" />
 </head>
 <body>
-
-	<h1 style="color: red; text-align: center">Formulaire d'ajout</h1>
-
+	<!--  inclure le header -->
+	<%@include file="/templates/header.html"%>
+	<h1 id="titre">Formulaire d'ajout</h1>
+	<br />
+	<%@include file="/templates/menuAdm.html"%>
 	<form:form class="form-horizontal" method="POST"
 		action="submitAddAgence" modelAttribute="agAdd">
 		<div class="form-group">
@@ -24,10 +27,11 @@
 				<form:input path="nom" type="text" class="form-control" id="idNom"
 					placeholder="Nom" />
 			</div>
+			<div class="col-sm-3">
+				<input class="btn btn-success" type="submit" value="Ajouter" />
+			</div>
 		</div>
-		<div class="control-label col-sm-1">
-			<input class="btn btn-success" type="submit" value="Ajouter" />
-		</div>
+
 	</form:form>
 </body>
 </html>

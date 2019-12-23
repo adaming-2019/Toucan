@@ -11,12 +11,14 @@
 <title>modifer agence adm</title>
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/BoVoyageStyle.css" />
 </head>
 <body>
 	<!--  inclure le header -->
-	<%@include file="../templates/header.html"%>
-	<h1 style="color: red; text-align: center">Formulaire de
-		modification</h1>
+	<%@include file="/templates/header.html"%>
+	<h1 id="titre">Formulaire de modification</h1>
+	<br />
+	<%@include file="/templates/menuAdm.html"%>
 
 	<form:form class="form-horizontal" method="POST"
 		action="submitUpdateAgence" modelAttribute="agUpdate">
@@ -26,10 +28,11 @@
 				<form:input path="nom" type="text" class="form-control" id="idNom"
 					placeholder="Nom" />
 			</div>
+			<div class="col-sm-3">
+				<input class="btn btn-primary" type="submit" value="Modifier" />
+			</div>
 		</div>
-		<div class="control-label col-sm-1">
-			<input class="btn btn-primary" type="submit" value="Modifier" />
-		</div>
+
 	</form:form>
 </body>
 </html>
