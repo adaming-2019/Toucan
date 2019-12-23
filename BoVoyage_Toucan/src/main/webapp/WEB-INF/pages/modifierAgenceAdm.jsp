@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
 </head>
 <body>
+	<!--  inclure le header -->
+	<%@include file="../templates/header.html"%>
 	<h1 style="color: red; text-align: center">Formulaire de
 		modification</h1>
 

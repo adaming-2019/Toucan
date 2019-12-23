@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
 </head>
 <body>
+	<!--  inclure le header -->
+	<%@include file="../templates/header.html"%>
 	<h1 style="color: red; text-align: center">Listes des assurances
 		disponibles</h1>
 	<table class="table table-bordered">

@@ -10,29 +10,35 @@
 <title>Liste Agences</title>
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/BoVoyageStyle.css" />
 </head>
 <body>
-	<h1 style="color: red; text-align: center">Listes des agences de
-		voyages</h1>
-	<table class="table table-bordered">
-		<tr>
-			<th>ID</th>
-			<th>Nom</th>
-			<th>Fonctionnalités</th>
-		</tr>
-
-		<c:forEach var="a" items="${agences}">
+	<!--  inclure le header -->
+	<%@include file="/templates/header.html"%>
+	<h1 id="titre">Listes des agences de voyages</h1>
+	<br />
+	<%@include file="/templates/menuAdm.html"%>
+	<div style="text-align: center" class="control-label col-sm-7">
+		<table class="table table-bordered">
 			<tr>
-				<th>${a.id}</th>
-				<th>${a.nom}</th>
-				<td><a href="<c:url value='/admin/afficherAddAgence'/>">Ajouter</a><a
-					href="<c:url value='/admin/afficherUpdateAgence?pId=${a.id}'/>">Modifier</a>
-					<a href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
-				</td>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Fonctionnalités</th>
 			</tr>
 
+			<c:forEach var="a" items="${agences}">
+				<tr>
+					<th>${a.id}</th>
+					<th>${a.nom}</th>
+					<td><a href="<c:url value='/admin/afficherAddAgence'/>">Ajouter</a><a
+						href="<c:url value='/admin/afficherUpdateAgence?pId=${a.id}'/>">Modifier</a>
+						<a href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
+					</td>
+				</tr>
 
-		</c:forEach>
-	</table>
+
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>
