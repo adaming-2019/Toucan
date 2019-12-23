@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,9 +24,16 @@ public class Client extends Personne {
 	@Column(name="mdp_cl")
 	private String mdp;
 	
+	@Column(name="active_cl")
+	private boolean active;
+	
 	// transformation de l'association UML en Java
 	@OneToMany(mappedBy="client")
 	private List<Dossier> dossiers;
+	
+	@ManyToOne
+	@JoinColumn(name="ro_id", referencedColumnName="id_ro")
+	private Role role;
 
 	// Declaration des constucteurs
 	public Client() {
@@ -37,6 +46,7 @@ public class Client extends Personne {
 		this.cb = cb;
 		this.login = login;
 		this.mdp = mdp;
+		this.active = true;
 	}
 
 	public Client(int id, String civilite, String nom, String prenom, Date dn, String adresse, String telephone,
@@ -45,6 +55,7 @@ public class Client extends Personne {
 		this.cb = cb;
 		this.login = login;
 		this.mdp = mdp;
+		this.active = true;
 	}
 
 	// Declaration des getters et setters
@@ -80,11 +91,21 @@ public class Client extends Personne {
 		this.dossiers = dossiers;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
-		return "Client [cb=" + cb + ", login=" + login + ", mdp=" + mdp + ", id=" + id + ", civilite=" + civilite
-				+ ", nom=" + nom + ", prenom=" + prenom + ", dn=" + dn + ", adresse=" + adresse + ", telephone="
-				+ telephone + ", nationalite=" + nationalite + "]";
+		return "Client [cb=" + cb + ", login=" + login + ", mdp=" + mdp + ", active=" + active + ", dossiers="
+				+ dossiers + ", id=" + id + ", civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ", dn="
+				+ dn + ", adresse=" + adresse + ", telephone=" + telephone + ", nationalite=" + nationalite + "]";
 	}
+	
+	
 
 }
