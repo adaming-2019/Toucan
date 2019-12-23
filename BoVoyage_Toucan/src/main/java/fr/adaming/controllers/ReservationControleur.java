@@ -56,22 +56,15 @@ public class ReservationControleur {
 		this.assuService = assuService;
 	}
 	
-	// méthode appelée pour convertir les valeurs des params de la requête en objets
-	// java, entre autres la date
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		// l'objet WebDataBinder sert à faire le lien entre les params de la requête et
-		// les objets java
+		System.out.println("Je suis dans la méthode initBinder");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-
+		
 		df.setLenient(false);
-
-		// la méthode registerCustomEditor() sert à configurer la conversion du param
-		// reçu au type de l'attribut
-
-		// l'objet CustomDateEditor sert à lier la date reçue comme param de la requête
-		// à l'attribut de l'objet etudiant
+		
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
+		System.out.println("Je sors de la méthode submitSaisieVoyageur");
 	}
 	
 	// méthodes métier
@@ -112,16 +105,19 @@ public class ReservationControleur {
 	//*** Fonctionnalité saisir voyageur
 	@RequestMapping(value="/saisieVoyageur", method=RequestMethod.POST)
 	public String submitChoixNbPlaces(Model model, @ModelAttribute("dossier") Dossier dossier) {
-		
+		System.out.println("Je suis dans la méthode submitChoixNbPlaces");
 		// passage du dossier comme attribut du modèle MVC
 		model.addAttribute("dossier", dossier);
 		
 		// ajout d'un nouveau voyageur comme attribut du modèle mvc
 		model.addAttribute("voyageur", new Voyageur());
+		System.out.println("J'ai ajouté le voyageur au modèle mvc");
 		
 		// définition du numéro du voyageur à saisir, pour l'instant il s'agit du premier
 		int noVoyageur=1;
 		model.addAttribute("noVoyageur", noVoyageur);
+		
+		System.out.println("J'ai ajouté le noVoyageur au modèle mvc");
 		
 		return "saisieVoyageurCl";
 		
@@ -130,7 +126,9 @@ public class ReservationControleur {
 	@RequestMapping(value="/submitSaisieVoyageur", method=RequestMethod.POST)
 	public String submitSaisieVoyageur(Model model, @ModelAttribute("dossier") Dossier dossier, @ModelAttribute("voyageur") Voyageur voyageur, @ModelAttribute("noVoyageur") int noVoyageur) {
 		// ajout du voyageur saisi à la liste des voyageurs associés au dossier
+		System.out.println("Je suis dans la méthode submitSaisieVoyageur");
 		dossier.getVoyageurs().add(voyageur);
+		System.out.println("J'ai ajouté le voyageur au dossier");
 		
 		// passage du dossier comme attribut du modèle MVC
 		model.addAttribute("dossier", dossier);
