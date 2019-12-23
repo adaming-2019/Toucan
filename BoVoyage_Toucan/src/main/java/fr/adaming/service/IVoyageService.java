@@ -17,6 +17,5 @@ public interface IVoyageService {
 	
 	public boolean updateVoyage(Voyage eIn);
 	
-	public Voyage getVoyageByDestination (Destination destinationIn);
 	
 }

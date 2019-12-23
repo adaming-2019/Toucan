@@ -5,6 +5,5 @@ import fr.adaming.entities.Voyage;
 
 public interface IVoyageDao extends IGenericDao<Voyage> {
 	
-	public Voyage getVoyageByDestination (Destination destinationIn);
 
 }
