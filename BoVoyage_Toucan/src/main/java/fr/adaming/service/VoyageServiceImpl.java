@@ -81,11 +81,4 @@ public class VoyageServiceImpl implements IVoyageService{
 		return false;
 	}
 
-
-	@Override
-	public Voyage getVoyageByDestination(Destination destinationIn) {
-		// appal de la méthode
-		return voyageDao.getVoyageByDestination(destinationIn);
-	}
-
 }

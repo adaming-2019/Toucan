@@ -21,20 +21,15 @@
 	<h1 style="color: red; text-align: center;">Continents</h1>
 
 	<form:form action="">
-		<form:input path="destination.continent">
-			<select>
-				<c:forEach var="cont" items="${listeCont}">
-					<option>${cont}</option>
-
-
-				</c:forEach>
-
-
-			</select>
-		</form:input>
+		<input path="destination.continent">
+		<select class="form-control">
+			<c:forEach var="cont" items="${listeCont}">
+				<option>${cont}</option>
+			</c:forEach>
+		</select>
+		<input>
+		<button type="submit" class="btn btn-default" value="Rechercher">Recherche</button>
 	</form:form>
-
-
 
 
 
