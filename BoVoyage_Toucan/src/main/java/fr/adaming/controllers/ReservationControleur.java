@@ -27,7 +27,7 @@ import fr.adaming.service.IVoyageService;
 
 @Controller
 @RequestMapping("/public")
-public class CompteClientControleur {
+public class ReservationControleur {
 	
 	// transformation de l'association uml en java
 	@Autowired
