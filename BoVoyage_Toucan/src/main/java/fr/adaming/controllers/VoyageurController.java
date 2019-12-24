@@ -45,7 +45,7 @@ public class VoyageurController {
 	}
 
 	// développement des méthodes.
-	//afficher la liste des voyageurs 
+	// afficher la liste des voyageurs
 	@RequestMapping(value = "/listeVoyageurs", method = RequestMethod.GET)
 	public ModelAndView afficheListeVoyageurs() {
 		// récupérer la liste des voyageurs
@@ -53,21 +53,22 @@ public class VoyageurController {
 		return new ModelAndView("listeVoyageursAdm", "voyageurs", listeVoyageur);
 	}
 
-	//formulaire de suppression d'un voyageur.
-	@RequestMapping(value="/deleteVoyageur", method=RequestMethod.GET)
+	// formulaire de suppression d'un voyageur.
+	@RequestMapping(value = "/deleteVoyageur", method = RequestMethod.GET)
 	public String supprimerVoyageur() {
 		return "supprimerVoyageurAdm";
 	}
+
 	@RequestMapping(value = "/submitVoyageur", method = RequestMethod.GET)
 	public String afficherVoyageur(RedirectAttributes rda, @RequestParam("pId") int idIn) {
-		
-		Voyageur vIn=new Voyageur();
+
+		Voyageur vIn = new Voyageur();
 		vIn.setId(idIn);
-		
-		boolean verif=vrService.deleteVoyageur(vIn);
-		if(verif) {
+
+		boolean verif = vrService.deleteVoyageur(vIn);
+		if (verif) {
 			return "redirect:listeVoyageurs";
-		}else{
+		} else {
 			// l'objet RedirectAttributes sert à transporter les attributs du
 			// modele mvc lors de la redirection
 			rda.addFlashAttribute("msg", "Le voyageur n'existe pas");
@@ -75,6 +76,27 @@ public class VoyageurController {
 		}
 
 	}
-	
-	
+
+	// formulaire de modification d'un voyageur
+	@RequestMapping(value = "/modifVoyageur", method = RequestMethod.GET)
+	public String modifierVoyageur() {
+		return "modifierVoyageurAdm";
+	}
+
+	@RequestMapping(value = "/updateVoyageur", method = RequestMethod.GET)
+	public String updateVoyageur(RedirectAttributes rda, @RequestParam("pId") int idIn) {
+
+		Voyageur vIn = new Voyageur();
+		vIn.setId(idIn);
+
+		boolean verif = vrService.updateVoyageur(vIn);
+		if (verif) {
+			return "redirect:listeVoyageurs";
+		} else {
+			// l'objet RedirectAttributes sert à transporter les attributs du
+			// modele mvc lors de la redirection
+			rda.addFlashAttribute("msg", "Le voyageur à modifier n'existe pas");
+			return "redirect:updateVoyageur";
+		}
+	}
 }

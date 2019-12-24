@@ -43,13 +43,13 @@
 				<td>${v.prenom}</td>
 				<td>${v.numSiege}</td>
 				<td>${v.dossier}</td>
-				<td><fmt:formatDate value="${v.dn}" pattern="dd/MM/yyyy" /></td>
+				<td><fmt:formatDate value="${v.dn}" pattern="dd/MM/yyyy"/></td>
 				<td>${v.adresse}</td>
 				<td>${v.telephone}</td>
 				<td>${v.nationalite}</td>
 				<!-- pour accèder directement au dossier voyageur-->
 				<td><a href="<c:url value='  '/>"><b>Accès dossier</b></a> |
-				<a href="<c:url value='  '/>"><b>Modifier</b></a> |
+				<a href="<c:url value='/admin/updateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a> |
 				<a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a>
 			</tr>
 		</c:forEach>
