@@ -3,6 +3,7 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Dossier implements Serializable {
 	@ManyToMany(mappedBy="dossiers")
 	private List<Assurance> assurances;
 	
-	@OneToMany(mappedBy="dossier")
+	@OneToMany(mappedBy="dossier", cascade=CascadeType.PERSIST)
 	private List<Voyageur> voyageurs;
 	
 	@ManyToOne

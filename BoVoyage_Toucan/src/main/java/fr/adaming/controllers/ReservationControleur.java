@@ -159,6 +159,9 @@ public class ReservationControleur {
 			// récupérer la liste des assurances
 			List<Assurance> assurances = assuService.getAllAssurances();
 			
+			// ajout au modele mvc
+			model.addAttribute("assurances", assurances);
+			
 			// extraire la liste des types d'assurances et les stocker dans un String[]
 			String[] liste = new String[assurances.size()];
 			
@@ -168,18 +171,14 @@ public class ReservationControleur {
 			// ajout de ce String[] au modèle MVC
 			model.addAttribute("types", liste);
 			
-//			// ajout d'un List<String> vide au modèle MVC, pour stocker les assurances sélectionnées par le client
-//			List<String> choix = new ArrayList<String>();
-//			model.addAttribute("choix", choix);
-			
-			// instanciation d'un objet de type ChoixAssurance
+			// instanciation d'un objet de type ChoixAssurance, pour stocker les assurances sélectionnées par le client
 			ChoixAssurance selection = new ChoixAssurance();
 			selection.setChoix(new ArrayList<String>());
 			
 			// ajout de selection au modele mvc
 			model.addAttribute("selection", selection);
 
-			return "choixAssurance";
+			return "choixAssuranceCl";
 		}
 
 	}
@@ -195,17 +194,45 @@ public class ReservationControleur {
 		
 		dossier.setAssurances(new ArrayList<Assurance>());
 		
+		// prix à régler par le client sans les assurances
+		double prix = dossier.getVoyage().getPrixBoVoyage();
+		
 		for (String elem : selection.getChoix()) {
 			if (elem!=null) {
 				// récupérer l'assurance dans la bd
 				Assurance assuranceOut = assuService.getAssuranceByType(elem);
 				System.out.println(assuranceOut);
-				// ajout de cette assut=rance à la liste des assurances du dossier
+				// ajout de cette assurance à la liste des assurances du dossier
 				dossier.getAssurances().add(assuranceOut);
+				
+				// maj du prix total à régler par le client
+				prix+=assuranceOut.getMontant();
 			}
 		}
 		
+		model.addAttribute("dossier", dossier);
+		model.addAttribute("total", prix);
+		
 		return "recapitulatifCl";
+		
+	}
+	
+	@RequestMapping(value="/validerReservation", method=RequestMethod.GET)
+	public String validerReservation(HttpServletRequest req, Model model) {
+		// récupérer le dossier stocké dans la session
+		HttpSession maSession = req.getSession();
+
+		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
+		
+		// ajout du dossier à la bd
+		Dossier ajout = dosService.addDossier(dossier);
+		// les voyageurs seront automatiquement ajoutés à la bd
+		
+		if (ajout.getId()!=0) {
+			return "menuCl";
+		} else {
+			return "recapitulatifCl";
+		}
 		
 	}
 
