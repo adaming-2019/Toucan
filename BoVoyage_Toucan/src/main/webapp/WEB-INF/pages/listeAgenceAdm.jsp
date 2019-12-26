@@ -15,7 +15,7 @@
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	<h1 id="titre">Listes des agences de voyages</h1>
+	<h1 id="titre">Liste des agences de voyages</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
 	<div style="text-align: center" class="control-label col-sm-7">
