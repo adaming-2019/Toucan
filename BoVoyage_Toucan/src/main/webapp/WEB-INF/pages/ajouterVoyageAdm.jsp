@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ajouter assurance adm</title>
+<title>ajouter voyage adm</title>
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
 <link rel="stylesheet" href="../assets/css/BoVoyageStyle.css" />
