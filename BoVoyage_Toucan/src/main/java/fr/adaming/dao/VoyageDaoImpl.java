@@ -11,5 +11,7 @@ public class VoyageDaoImpl extends GenericDaoImpl<Voyage> implements IVoyageDao 
 	public VoyageDaoImpl() {
 		clazz = Voyage.class;
 	}
+	
+	
 
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IVoyageDao;
-import fr.adaming.entities.Destination;
 import fr.adaming.entities.Voyage;
 
 @Service
@@ -21,7 +20,6 @@ public class VoyageServiceImpl implements IVoyageService{
 	public void setVoyageDao(IVoyageDao voyageDao) {
 		this.voyageDao = voyageDao;
 	}
-	
 		
 	@Override
 	public List<Voyage> getAllVoyages() {
@@ -30,55 +28,29 @@ public class VoyageServiceImpl implements IVoyageService{
 	}
 
 	@Override
-	public Voyage getVoyageById(Voyage vIn) {
+	public Voyage getVoyageById(int id) {
 		// appel de la méthode dao
-		return voyageDao.getById(vIn.getId());
+		return voyageDao.getById(id);
 	}
 
 	@Override
-	public Voyage addVoyage(Voyage vIn) {
+	public Voyage addVoyage(Voyage voyageIn) {
 		//appel de la méthode Dao
-		return voyageDao.add(vIn);
+		return voyageDao.add(voyageIn);
+	}
+	
+	@Override
+	public Voyage updateVoyage(Voyage voyageIn) {
+		//appel de la methode Dao
+		return voyageDao.update(voyageIn);
 	}
 
 	@Override
-	public boolean deleteVoyage(Voyage vIn) {
-		voyageDao.delete(vIn.getId());
-		
-		/**
-		if (vOut!=null){
-			//appel de la methode Dao pour supprimer le voyage
-			voyageDao.delete(id);
-			return true; 
-		}
-		return false;
-		**/
+	public boolean deleteVoyage(int id) {
+		voyageDao.delete(id);
 		return true;
 	}
 
-	@Override
-	public boolean updateVoyage(Voyage vIn) {
-		// recuperer le voyage
-		Voyage vOut = voyageDao.getById(vIn.getId());
-		
-		if (vOut!=null){
-			
-			// modifier l'objet récupéré avec les nouvelles valeurs en java
-			vOut.setDateDebut(vIn.getDateDebut());
-			vOut.setDateRetour(vIn.getDateRetour());
-			vOut.setNombrePlace(vIn.getNombrePlace());
-			
-			vOut.setPrixAgence(vIn.getPrixAgence());
-			vOut.setPrixBoVoyage(vIn.getPrixBoVoyage());
-			
-			vOut.setStatut(vIn.getStatut());
-			vOut.setPhotos(vIn.getPhotos());
 
-			//appel de la methode Dao pour supprimer le voyage
-			voyageDao.update(vOut);
-			return true; 
-		}
-		return false;
-	}
 
 }

@@ -7,15 +7,18 @@ import fr.adaming.entities.Voyage;
 
 public interface IVoyageService {
 
+	// les méthodes pour voyage
 	public List<Voyage> getAllVoyages();
 	
-	public Voyage getVoyageById(Voyage eIn);
+	public Voyage getVoyageById(int id);
 	
-	public Voyage addVoyage(Voyage eIn);
+	public Voyage addVoyage(Voyage voyageIn);
 	
-	public boolean deleteVoyage(Voyage eIn);
+	public Voyage updateVoyage(Voyage voyageIn);
 	
-	public boolean updateVoyage(Voyage eIn);
+	public boolean deleteVoyage(int id);
+	
+	
 	
 	
 }
