@@ -4,7 +4,7 @@ body {
 }
 
 .hero-image {
-	background-image: url("../images/plage.jpg");
+	background-image: url("../images/plages.png");
 	background-color: #cccccc;
 	height: 500px;
 	background-position: center;
@@ -20,6 +20,7 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: white;
+	text-align: center;
 }
 
 .container {
