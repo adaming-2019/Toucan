@@ -33,7 +33,7 @@
 					<th>${as.montant}</th>
 					<th>${as.type}</th>
 					<td><a href="<c:url value='/admin/afficherAddAssurance'/>">Ajouter</a><a
-						href="<c:url value='/admin/afficherUpdateAssurance?pId=${as.id}'/>">Modifier</a>
+						href="<c:url value='/admin/linkUpdateAssurance?pId=${as.id}'/>">Modifier</a>
 						<a
 						href="<c:url value='/admin/submitDeleteAssurance?pId=${as.id}'/>">Supprimer</a>
 					</td>

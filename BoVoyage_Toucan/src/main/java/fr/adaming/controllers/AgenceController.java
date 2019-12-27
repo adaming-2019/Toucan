@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.adaming.entities.Agence;
+import fr.adaming.entities.Voyage;
 import fr.adaming.service.IAgenceService;
 
 @Controller
@@ -66,16 +68,24 @@ public class AgenceController {
 	public String soumettreModifier(Model model, @ModelAttribute("agUpdate") Agence aIn) {
 		// Appel de la méthode service
 		Agence eOut = agenceService.update(aIn);
-		if (eOut.getId() != 0) {
-			List<Agence> listeAgences = agenceService.getAllAgence();
-
-			// Mettre à jour la liste
-			model.addAttribute("Agences", listeAgences);
+		if (eOut != null) {
 
 			return "redirect:listeAgence";
 		} else {
 			return "redirect:afficherUpdateAgence";
 		}
+	}
+
+	// Lien pour modif
+	@RequestMapping(value = "/admin/linkUpdateAgence", method = RequestMethod.GET)
+	public String getModifLien(Model modele, @RequestParam("pId") int idIn) {
+
+		Agence aOut = agenceService.getById(idIn);
+
+		modele.addAttribute("agUpdate", aOut);
+
+		return "modifierAgenceAdm";
+
 	}
 
 	@RequestMapping(value = "/admin/submitDeleteAgence", method = RequestMethod.POST)
