@@ -33,7 +33,7 @@ import fr.adaming.service.IDossierService;
 import fr.adaming.service.IVoyageService;
 
 @Controller
-@RequestMapping("/public")
+@RequestMapping("/client")
 public class ReservationControleur {
 
 	// transformation de l'association uml en java
@@ -85,8 +85,7 @@ public class ReservationControleur {
 	// ***Fonctionnalité choisir nombre de places
 	@RequestMapping(value = "/choixNbPlaces", method = RequestMethod.GET)
 	public String afficheChoixNbPlaces(Model model) {
-		Voyage voyage = new Voyage();
-		voyService.addVoyage(voyage);
+		Voyage voyage = voyService.getVoyageById(44);
 
 		Client client = new Client();
 		clService.addClient(client);
@@ -102,8 +101,8 @@ public class ReservationControleur {
 		dossier.setVoyage(voyage);
 
 		dossier.setVoyageurs(new ArrayList<Voyageur>());
-		// passage du dossier comme attribut du modèle MVC
-		model.addAttribute("dossier", dossier);
+		
+		
 
 		return "choixNbPlacesCl";
 
@@ -227,6 +226,9 @@ public class ReservationControleur {
 		// ajout du dossier à la bd
 		Dossier ajout = dosService.addDossier(dossier);
 		// les voyageurs seront automatiquement ajoutés à la bd
+		
+		// supprimer le dossier de la session
+		maSession.removeAttribute("dossier");
 		
 		if (ajout.getId()!=0) {
 			return "menuCl";

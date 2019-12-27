@@ -11,7 +11,7 @@
 <meta charset="ISO-8859-1">
 <title>Sélection des assurances</title>
 
-<!-- Lier lb bootstrap à ma page -->
+<!-- Lier la librairie bootstrap à ma page -->
 <link rel="stylesheet"
 	href="<c:url value='/assets/css/bootstrap.css' />" />
 <link rel="stylesheet"
