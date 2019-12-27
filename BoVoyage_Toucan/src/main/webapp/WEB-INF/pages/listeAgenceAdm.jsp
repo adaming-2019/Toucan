@@ -30,9 +30,9 @@
 				<tr>
 					<th>${a.id}</th>
 					<th>${a.nom}</th>
-					<td><a href="<c:url value='/admin/afficherAddAgence'/>">Ajouter</a><a
-						href="<c:url value='/admin/linkUpdateAgence?pId=${a.id}'/>">Modifier</a>
-						<a href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
+					<td><a href="<c:url value='/admin/afficherAddAgence'/>">Ajouter</a>
+						| <a href="<c:url value='/admin/linkUpdateAgence?pId=${a.id}'/>">Modifier</a>
+						| <a href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
 					</td>
 				</tr>
 

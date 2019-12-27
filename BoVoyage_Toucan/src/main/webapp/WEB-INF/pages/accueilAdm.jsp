@@ -22,7 +22,7 @@
 		<p>Vous pouvez gérez les voyages, les clients et leurs dossiers à
 			tout moment via le menu
 		<p>
-			<img src="<c:url value='/asset/images/gestion.jpg'/>" class="image">
+			<img src="<c:url value='../asset/images/gestion.jpg'/>" class="image">
 	</div>
 </body>
 </html>

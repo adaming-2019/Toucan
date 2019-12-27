@@ -100,7 +100,7 @@ public class AssuranceController {
 		return "modifierAssuranceAdm";
 	}
 
-	@RequestMapping(value = "/admin/submitDeleteAssurance", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/submitDeleteAssurance", method = RequestMethod.GET)
 	public String soumettreSupprimer(Model model, @ModelAttribute("asDelete") Assurance aIn) {
 		// Appel de la méthode service
 		boolean eOut = AssuranceService.deleteAssurance(aIn.getId());
