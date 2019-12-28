@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Lob;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -67,6 +69,7 @@ public class ContinentPaysControleur {
 
 		return "choixContinentCl";
 	}
+
 
 	@RequestMapping(value = "/afficheListeVoyage", method = RequestMethod.GET)
 	public ModelAndView afficherVoyage() {
