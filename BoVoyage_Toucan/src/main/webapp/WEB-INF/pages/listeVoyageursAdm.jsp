@@ -50,7 +50,7 @@
 				<!-- pour accèder directement au dossier voyageur-->
 				<td><a href="<c:url value='  '/>"><b>Accès dossier</b></a> |
 				<a href="<c:url value='/admin/updateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a> |
-				<a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a>
+				<a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a></td>
 			</tr>
 		</c:forEach>
 	</table>
