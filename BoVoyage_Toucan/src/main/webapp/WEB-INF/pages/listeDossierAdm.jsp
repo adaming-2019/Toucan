@@ -18,27 +18,28 @@
 
 <body>
 
-	<h1>Liste des dossiers clients</h1>
-
+	<h1 style="color: red; text-align: center;">Liste des dossiers clients</h1>
 	<table class="table table-bordered">
 	<tr>
-		<tr>Etat</tr>
-		<tr>Nombre de places</tr>
-		<tr>Nom Client</tr>
-		<tr>Prénom Client</tr>
-		<tr>Voyage</tr>
-		<tr>Assurance</tr>
+		<th>Id</th>
+		<th>Voyage</th>
+		<th>Etat</th>
+		<th>Nombre de places</th>
+		<th>Nom Client</th>
+		<th>Prénom Client</th>
+		<th>Assurance</th>
 	</tr>
 <c:forEach var="d" items="${dossiers}">
 			<tr>
+				<td>${d.id}</td>
+				<td>${d.voyage}</td>
 				<td>${d.etat}</td>
 				<td>${d.nbPlaces}</td>
 				<td>${d.nom}</td>
 				<td>${d.prenom}</td>
-				<td>${d.voyage}</td>
 				<td>${v.assurances}</td>
 				
-				<td><a href="<c:url value='/admin   =${d.id}'/>"><b>Modifier</b></a>
+				<td><a href="<c:url value='/admin/   =${d.id}'/>"><b>Modifier</b></a> |
 				<!-- supprimer directement le dossier via la page de la liste -->
 				<a href="<c:url value='/admin   =${d.id}'/>"><b>Supprimer</b></a></td>
 			</tr>

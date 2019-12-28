@@ -15,7 +15,7 @@
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	<h1 id="titre">Listes des agences de voyages</h1>
+	<h1 id="titre">Liste des agences de voyages</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
 	<div style="text-align: center" class="control-label col-sm-7">
@@ -30,9 +30,9 @@
 				<tr>
 					<th>${a.id}</th>
 					<th>${a.nom}</th>
-					<td><a href="<c:url value='/admin/afficherAddAgence'/>">Ajouter</a><a
-						href="<c:url value='/admin/afficherUpdateAgence?pId=${a.id}'/>">Modifier</a>
-						<a href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
+					<td><a href="<c:url value='/admin/afficherAddAgence'/>">Ajouter</a>
+						| <a href="<c:url value='/admin/linkUpdateAgence?pId=${a.id}'/>">Modifier</a>
+						| <a href="<c:url value='/admin/submitDeleteAgence?pId=${a.id}'/>">Supprimer</a>
 					</td>
 				</tr>
 

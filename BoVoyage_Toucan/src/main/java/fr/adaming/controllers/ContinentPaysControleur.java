@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.adaming.entities.Agence;
 import fr.adaming.entities.Continent;
 import fr.adaming.entities.Destination;
 import fr.adaming.entities.Voyage;
@@ -25,27 +24,26 @@ import fr.adaming.service.IDestinationService;
 import fr.adaming.service.IVoyageService;
 
 @Controller
-@RequestMapping("/client")
+@RequestMapping("/public")
 public class ContinentPaysControleur {
 
 	// Transformation de l'association UML en JAVA
 	@Autowired
 	private IVoyageService voyageService;
 
+	@Autowired
+	private IDestinationService destinationService;
+
+	// setters pour l'injection de dépendance
 	public void setVoyageService(IVoyageService voyageService) {
 		this.voyageService = voyageService;
 	}
-
-	// Transformation de l'association UML en JAVA
-	@Autowired
-	private IDestinationService destinationService;
 
 	public void setDestinationService(IDestinationService destinationService) {
 		this.destinationService = destinationService;
 	}
 
-	// la méthode appelée pour convertir les valeurs des params de la requete en
-	// objets java, (ex: date)
+	// convertir les valeurs des params de la requete en objets java, (ex: date)
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 
@@ -58,6 +56,8 @@ public class ContinentPaysControleur {
 
 	}
 
+	// ============================= méthodes métier =============================
+	
 	@RequestMapping(value = "/afficheContinent", method = RequestMethod.GET)
 	public String afficherContinent(Model modele) {
 		List<Continent> listeContinents = new ArrayList<Continent>(Arrays.asList(Continent.values()));
@@ -68,18 +68,16 @@ public class ContinentPaysControleur {
 		return "choixContinentCl";
 	}
 
-	@RequestMapping(value = "/afficheVoyage", method = RequestMethod.GET)
-	public ModelAndView afficherVoyage(Continent continentIn) {
+
+	@RequestMapping(value = "/afficheListeVoyage", method = RequestMethod.GET)
+	public ModelAndView afficherVoyage() {
 
 		// appel de la méthode service
-		 List<Destination> listedestinatons = (List<Destination>)
-		 destinationService.getDestinationByContinent(continentIn);
+		List<Voyage> listeVoyages = voyageService.getAllVoyages();
+		
+		
 
-		// recup de la liste des agence du formateur
-		List<Voyage> listeVoyage = voyageService.getAllVoyages();
-
-
-		return new ModelAndView("listeVoyageCl", "voyages", listeVoyage);
+		return new ModelAndView("listeVoyageCl", "voyages", listeVoyages);
 	}
 
 }

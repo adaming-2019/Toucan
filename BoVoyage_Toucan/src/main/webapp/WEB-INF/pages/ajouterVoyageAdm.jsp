@@ -6,12 +6,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
-
-
 <head>
 <meta charset="ISO-8859-1">
-<title>Page de suppression</title>
-
+<title>ajouter voyage adm</title>
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
 <link rel="stylesheet" href="../assets/css/BoVoyageStyle.css" />
@@ -19,20 +16,25 @@
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	<h1 id="titre">Formulaire de suppression</h1>
+	<h1 id="titre">Formulaire d'ajout</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
+	<form:form class="form-horizontal" method="POST"
+		action="submitAddVoyage" modelAttribute="voyageAdd">
 
-	<h1 style="color: red; text-align: center;">Formulaire de
-		suppression</h1>
-
-	<form method="get" action="deleteVoyageur">
-		Id : <input type="number" name="pId" /> <br /> <br /> <input
-			class="btn btn-danger" type="submit" value="supprimer">
-	</form>
-
-	<h1 style="color: red; text-align: center;">${msg}</h1>
-
-
+		Date Debut : <form:input type="date" path="dateDebut" />
+		<br/>
+		Date Retour : <form:input type="date" path="dateRetour" />
+		<br/>
+		NombrePlace : <form:input path="nombrePlace" />
+		<br/>
+		PrixAgence : <form:input path="prixAgence" />
+		<br/>
+		PrixBoVoyage : <form:input path="prixBoVoyage" />
+		<br/>
+		Statut : <form:input path="statut" />
+		<br/>	
+		<input type="submit" value="Ajouter" />
+	</form:form>
 </body>
 </html>

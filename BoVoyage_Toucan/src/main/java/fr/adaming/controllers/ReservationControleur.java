@@ -33,7 +33,7 @@ import fr.adaming.service.IDossierService;
 import fr.adaming.service.IVoyageService;
 
 @Controller
-@RequestMapping("/public")
+@RequestMapping("/client")
 public class ReservationControleur {
 
 	// transformation de l'association uml en java
@@ -85,25 +85,14 @@ public class ReservationControleur {
 	// ***Fonctionnalité choisir nombre de places
 	@RequestMapping(value = "/choixNbPlaces", method = RequestMethod.GET)
 	public String afficheChoixNbPlaces(Model model) {
-		Voyage voyage = new Voyage();
-		voyService.addVoyage(voyage);
-
-		Client client = new Client();
-		clService.addClient(client);
+		
 
 		// création d'un nouveau dossier
 		Dossier dossier = new Dossier();
 
-		// attribution du statut "en attente" au dossier
-		dossier.setEtat("en attente");
-
-		// attribution d'un client et d'un voyage au dossier
-		dossier.setClient(client);
-		dossier.setVoyage(voyage);
-
-		dossier.setVoyageurs(new ArrayList<Voyageur>());
-		// passage du dossier comme attribut du modèle MVC
+		// passage du dossier créé en paramètre de la requête
 		model.addAttribute("dossier", dossier);
+		
 
 		return "choixNbPlacesCl";
 
@@ -113,10 +102,24 @@ public class ReservationControleur {
 	@RequestMapping(value = "/saisieVoyageur", method = RequestMethod.POST)
 	public String submitChoixNbPlaces(HttpServletRequest req, ModelMap model,
 			@ModelAttribute("dossier") Dossier dossier) {
-		// passage du dossier comme attribut du modèle MVC
-		System.out.println(dossier + "\n");
-
+		
+		// associer le voyage au dossier
+		Voyage voyage = voyService.getVoyageById(44);
+		dossier.setVoyage(voyage);
+		
+		// associer le client au dossier
+		Client client = new Client();
+		clService.addClient(client);
+		
+		dossier.setClient(client);
+		
+		// définir l'état du dossier
+		dossier.setEtat("en attente");
+		
+		// instanciation de la liste de voyageurs associée au dossier
 		dossier.setVoyageurs(new ArrayList<Voyageur>());
+		
+		// ajout du dossier dans la session
 		HttpSession maSession = req.getSession();
 
 		maSession.setAttribute("dossier", dossier);
@@ -136,10 +139,12 @@ public class ReservationControleur {
 	@RequestMapping(value = "/submitSaisieVoyageur", method = RequestMethod.POST)
 	public String submitSaisieVoyageur(HttpServletRequest req, ModelMap model,
 			@ModelAttribute("voyageur") Voyageur voyageur) {
+		
 		// ajout du voyageur saisi à la liste des voyageurs associés au dossier
 		HttpSession maSession = req.getSession();
 
 		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
+		System.out.println("taille de dossier.getVoyageurs() : "+dossier.getVoyageurs().size());
 		dossier.getVoyageurs().add(voyageur);
 
 		// passage du dossier comme attribut du modèle MVC
@@ -159,6 +164,9 @@ public class ReservationControleur {
 			// récupérer la liste des assurances
 			List<Assurance> assurances = assuService.getAllAssurances();
 			
+			// ajout au modele mvc
+			model.addAttribute("assurances", assurances);
+			
 			// extraire la liste des types d'assurances et les stocker dans un String[]
 			String[] liste = new String[assurances.size()];
 			
@@ -168,18 +176,14 @@ public class ReservationControleur {
 			// ajout de ce String[] au modèle MVC
 			model.addAttribute("types", liste);
 			
-//			// ajout d'un List<String> vide au modèle MVC, pour stocker les assurances sélectionnées par le client
-//			List<String> choix = new ArrayList<String>();
-//			model.addAttribute("choix", choix);
-			
-			// instanciation d'un objet de type ChoixAssurance
+			// instanciation d'un objet de type ChoixAssurance, pour stocker les assurances sélectionnées par le client
 			ChoixAssurance selection = new ChoixAssurance();
 			selection.setChoix(new ArrayList<String>());
 			
 			// ajout de selection au modele mvc
 			model.addAttribute("selection", selection);
 
-			return "choixAssurance";
+			return "choixAssuranceCl";
 		}
 
 	}
@@ -195,17 +199,50 @@ public class ReservationControleur {
 		
 		dossier.setAssurances(new ArrayList<Assurance>());
 		
+		System.out.println("voyage associé au dossier :"+dossier.getVoyage().getPrixBoVoyage());
+		
+		// prix à régler par le client sans les assurances
+		double prix = dossier.getVoyage().getPrixBoVoyage();
+		
 		for (String elem : selection.getChoix()) {
 			if (elem!=null) {
 				// récupérer l'assurance dans la bd
 				Assurance assuranceOut = assuService.getAssuranceByType(elem);
 				System.out.println(assuranceOut);
-				// ajout de cette assut=rance à la liste des assurances du dossier
+				// ajout de cette assurance à la liste des assurances du dossier
 				dossier.getAssurances().add(assuranceOut);
+				
+				// maj du prix total à régler par le client
+				prix+=assuranceOut.getMontant();
 			}
 		}
 		
+		model.addAttribute("dossier", dossier);
+		model.addAttribute("total", prix);
+		
 		return "recapitulatifCl";
+		
+	}
+	
+	@RequestMapping(value="/validerReservation", method=RequestMethod.GET)
+	public String validerReservation(HttpServletRequest req, Model model) {
+		// récupérer le dossier stocké dans la session
+		HttpSession maSession = req.getSession();
+
+		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
+		
+		// ajout du dossier à la bd
+		Dossier ajout = dosService.addDossier(dossier);
+		// les voyageurs seront automatiquement ajoutés à la bd
+		
+		// supprimer le dossier de la session
+		maSession.removeAttribute("dossier");
+		
+		if (ajout.getId()!=0) {
+			return "menuCl";
+		} else {
+			return "recapitulatifCl";
+		}
 		
 	}
 

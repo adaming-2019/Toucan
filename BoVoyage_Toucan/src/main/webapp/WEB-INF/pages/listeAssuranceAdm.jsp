@@ -15,7 +15,7 @@
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	<h1 id="titre">Listes des agences des assurances disponibles</h1>
+	<h1 id="titre">Liste des agences des assurances disponibles</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
 	<div style="text-align: center" class="control-label col-sm-7">
@@ -32,9 +32,10 @@
 					<th>${as.id}</th>
 					<th>${as.montant}</th>
 					<th>${as.type}</th>
-					<td><a href="<c:url value='/admin/afficherAddAssurance'/>">Ajouter</a><a
-						href="<c:url value='/admin/afficherUpdateAssurance?pId=${as.id}'/>">Modifier</a>
-						<a
+					<td><a href="<c:url value='/admin/afficherAddAssurance'/>">Ajouter</a>
+						| <a
+						href="<c:url value='/admin/linkUpdateAssurance?pId=${as.id}'/>">Modifier</a>
+						| <a
 						href="<c:url value='/admin/submitDeleteAssurance?pId=${as.id}'/>">Supprimer</a>
 					</td>
 				</tr>

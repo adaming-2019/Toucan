@@ -8,9 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.entities.Agence;
+import fr.adaming.entities.Voyage;
 import fr.adaming.service.IAgenceService;
 
 @Controller
@@ -66,11 +69,7 @@ public class AgenceController {
 	public String soumettreModifier(Model model, @ModelAttribute("agUpdate") Agence aIn) {
 		// Appel de la méthode service
 		Agence eOut = agenceService.update(aIn);
-		if (eOut.getId() != 0) {
-			List<Agence> listeAgences = agenceService.getAllAgence();
-
-			// Mettre à jour la liste
-			model.addAttribute("Agences", listeAgences);
+		if (eOut != null) {
 
 			return "redirect:listeAgence";
 		} else {
@@ -78,19 +77,43 @@ public class AgenceController {
 		}
 	}
 
-	@RequestMapping(value = "/admin/submitDeleteAgence", method = RequestMethod.POST)
-	public String soumettreSupprimer(Model model, @ModelAttribute("agDelete") Agence aIn) {
+	// Lien pour modif
+	@RequestMapping(value = "/admin/linkUpdateAgence", method = RequestMethod.GET)
+	public String getModifLien(Model modele, @RequestParam("pId") int idIn) {
+
+		Agence aOut = agenceService.getById(idIn);
+
+		modele.addAttribute("agUpdate", aOut);
+
+		return "modifierAgenceAdm";
+
+	}
+
+//	@RequestMapping(value = "/admin/submitDeleteAgence", method = RequestMethod.GET)
+//	public String soumettreSupprimer(Model model, @ModelAttribute("agDelete") Agence aIn) {
+//		// Appel de la méthode service
+//		boolean eOut = agenceService.deleteAgence(aIn.getId());
+//		if (eOut != false) {
+//			List<Agence> listeAgences = agenceService.getAllAgence();
+//
+//			// Mettre à jour la liste
+//			model.addAttribute("Agences", listeAgences);
+//
+//			return "redirect:listeAgence";
+//		} else {
+//			return "redirect:afficherDeleteAgence";
+//		}
+//	}
+
+	@RequestMapping(value = "/admin/submitDeleteAgence", method = RequestMethod.GET)
+	public String Supprimer(RedirectAttributes rda, @RequestParam("pId") int idIn) {
+
 		// Appel de la méthode service
-		boolean eOut = agenceService.deleteAgence(aIn.getId());
+		boolean eOut = agenceService.deleteAgence(idIn);
 		if (eOut != false) {
-			List<Agence> listeAgences = agenceService.getAllAgence();
-
-			// Mettre à jour la liste
-			model.addAttribute("Agences", listeAgences);
-
 			return "redirect:listeAgence";
 		} else {
-			return "redirect:afficherDeleteAgence";
+			return "redirect:listeAgence";
 		}
 	}
 

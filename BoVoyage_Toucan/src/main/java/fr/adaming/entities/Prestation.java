@@ -17,14 +17,14 @@ import javax.persistence.Table;
 public class Prestation implements Serializable{
 	
 	//declaration des attributs
-	Prestations prestation;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_p")
 	private int id;
 	
 	@Column(name="intitule_p")
-	private String intitule;
+	Prestations prestation;
 	
 	// transformation de l'association UML en Java
 	@OneToMany(mappedBy="prestation")
@@ -35,15 +35,15 @@ public class Prestation implements Serializable{
 		super();
 	}
 
-	public Prestation(String intitule) {
+	public Prestation(Prestations prestation) {
 		super();
-		this.intitule = intitule;
+		this.prestation = prestation;
 	}
 
-	public Prestation(int id, String intitule) {
+	public Prestation(int id, Prestations prestation) {
 		super();
 		this.id = id;
-		this.intitule = intitule;
+		this.prestation = prestation;
 	}
 
 
@@ -56,12 +56,12 @@ public class Prestation implements Serializable{
 		this.id = id;
 	}
 
-	public String getIntitule() {
-		return intitule;
+	public Prestations getPrestation() {
+		return prestation;
 	}
 
-	public void setIntitule(String intitule) {
-		this.intitule = intitule;
+	public void setPrestation(Prestations prestation) {
+		this.prestation = prestation;
 	}
 
 	public List<Voyage> getVoyages() {
@@ -74,7 +74,7 @@ public class Prestation implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Prestation [id=" + id + ", intitule=" + intitule + "]";
+		return "Prestation [id=" + id + ", prestation=" + prestation + "]";
 	}
 	
 	

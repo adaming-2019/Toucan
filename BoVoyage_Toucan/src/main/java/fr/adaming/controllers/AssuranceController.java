@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.adaming.entities.Agence;
 import fr.adaming.entities.Assurance;
 import fr.adaming.entities.Assurance;
 import fr.adaming.entities.Assurance;
@@ -80,13 +82,25 @@ public class AssuranceController {
 		}
 	}
 
+	// Lien pour modif
+	@RequestMapping(value = "/admin/linkUpdateAssurance", method = RequestMethod.GET)
+	public String getModifLien(Model modele, @RequestParam("pId") int idIn) {
+
+		Assurance aOut = AssuranceService.getById(idIn);
+
+		modele.addAttribute("asUpdate", aOut);
+
+		return "modifierAssuranceAdm";
+
+	}
+
 	@RequestMapping(value = "/admin/afficherDeleteAssurance", method = RequestMethod.GET)
 	public String afficheSuppprimer(Model model) {
 		model.addAttribute("asDelete", new Assurance());
 		return "modifierAssuranceAdm";
 	}
 
-	@RequestMapping(value = "/admin/submitDeleteAssurance", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/submitDeleteAssurance", method = RequestMethod.GET)
 	public String soumettreSupprimer(Model model, @ModelAttribute("asDelete") Assurance aIn) {
 		// Appel de la méthode service
 		boolean eOut = AssuranceService.deleteAssurance(aIn.getId());

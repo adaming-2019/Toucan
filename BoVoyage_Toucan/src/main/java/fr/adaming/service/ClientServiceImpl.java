@@ -28,9 +28,9 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public Client getClientById(Client clIn) {
+	public Client getClientById(int id) {
 		// appel de la méthode dao
-		return clientDao.getById(clIn.getId());
+		return clientDao.getById(id);
 	}
 
 	@Override
@@ -40,28 +40,15 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public boolean deleteClient(Client clIn) {
-		clientDao.delete(clIn.getId());
-		return true;
+	public Client updateClient(Client clIn) {
+		//appel de la methode Dao
+		return clientDao.update(clIn);
 	}
-
+	
 	@Override
-	public boolean updateClient(Client clIn) {
-		// recuperer le voyage
-		Client clOut = clientDao.getById(clIn.getId());
-
-		if (clOut != null) {
-
-			// modifier l'objet récupéré avec les nouvelles valeurs en java
-			clOut.setCb(clIn.getCb());
-			clOut.setLogin(clIn.getLogin());
-			clOut.setMdp(clIn.getMdp());
-
-			// appel de la methode Dao pour supprimer le client
-			clientDao.update(clOut);
-			return true;
-		}
-		return false;
+	public boolean deleteClient(int id) {
+		clientDao.delete(id);
+		return true;
 	}
 
 }
