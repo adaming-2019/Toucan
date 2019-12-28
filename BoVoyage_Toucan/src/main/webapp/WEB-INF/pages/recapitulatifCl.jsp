@@ -29,9 +29,7 @@
 		<br />
 		<p>Formule : ${dossier.formule.formule}</p>
 		<br />
-		<c:if test="${not null dossier.prestation}">
-			<p>Prestation d'hébérgement : ${dossier.prestation.prestation}</p>
-		</c:if>
+		<p>Prestation d'hébérgement : ${dossier.prestation.prestation}</p>
 		<br />
 		<p>Prix agence : ${dossier.prixAgence} EUR</p>
 		<br />

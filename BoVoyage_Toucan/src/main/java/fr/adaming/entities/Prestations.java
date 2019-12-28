@@ -6,4 +6,5 @@ public enum Prestations {
 	Petit_déjeuner,
 	Demi_pension,
 	Pension_complète,
+	Non_concerné,
 }

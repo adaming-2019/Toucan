@@ -85,23 +85,13 @@ public class ReservationControleur {
 	// ***Fonctionnalité choisir nombre de places
 	@RequestMapping(value = "/choixNbPlaces", method = RequestMethod.GET)
 	public String afficheChoixNbPlaces(Model model) {
-		Voyage voyage = voyService.getVoyageById(44);
-
-		Client client = new Client();
-		clService.addClient(client);
+		
 
 		// création d'un nouveau dossier
 		Dossier dossier = new Dossier();
 
-		// attribution du statut "en attente" au dossier
-		dossier.setEtat("en attente");
-
-		// attribution d'un client et d'un voyage au dossier
-		dossier.setClient(client);
-		dossier.setVoyage(voyage);
-
-		dossier.setVoyageurs(new ArrayList<Voyageur>());
-		
+		// passage du dossier créé en paramètre de la requête
+		model.addAttribute("dossier", dossier);
 		
 
 		return "choixNbPlacesCl";
@@ -112,10 +102,24 @@ public class ReservationControleur {
 	@RequestMapping(value = "/saisieVoyageur", method = RequestMethod.POST)
 	public String submitChoixNbPlaces(HttpServletRequest req, ModelMap model,
 			@ModelAttribute("dossier") Dossier dossier) {
-		// passage du dossier comme attribut du modèle MVC
-		System.out.println(dossier + "\n");
-
+		
+		// associer le voyage au dossier
+		Voyage voyage = voyService.getVoyageById(44);
+		dossier.setVoyage(voyage);
+		
+		// associer le client au dossier
+		Client client = new Client();
+		clService.addClient(client);
+		
+		dossier.setClient(client);
+		
+		// définir l'état du dossier
+		dossier.setEtat("en attente");
+		
+		// instanciation de la liste de voyageurs associée au dossier
 		dossier.setVoyageurs(new ArrayList<Voyageur>());
+		
+		// ajout du dossier dans la session
 		HttpSession maSession = req.getSession();
 
 		maSession.setAttribute("dossier", dossier);
@@ -135,10 +139,12 @@ public class ReservationControleur {
 	@RequestMapping(value = "/submitSaisieVoyageur", method = RequestMethod.POST)
 	public String submitSaisieVoyageur(HttpServletRequest req, ModelMap model,
 			@ModelAttribute("voyageur") Voyageur voyageur) {
+		
 		// ajout du voyageur saisi à la liste des voyageurs associés au dossier
 		HttpSession maSession = req.getSession();
 
 		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
+		System.out.println("taille de dossier.getVoyageurs() : "+dossier.getVoyageurs().size());
 		dossier.getVoyageurs().add(voyageur);
 
 		// passage du dossier comme attribut du modèle MVC
@@ -192,6 +198,8 @@ public class ReservationControleur {
 		System.out.println(selection);
 		
 		dossier.setAssurances(new ArrayList<Assurance>());
+		
+		System.out.println("voyage associé au dossier :"+dossier.getVoyage().getPrixBoVoyage());
 		
 		// prix à régler par le client sans les assurances
 		double prix = dossier.getVoyage().getPrixBoVoyage();
