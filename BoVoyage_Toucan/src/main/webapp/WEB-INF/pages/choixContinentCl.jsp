@@ -30,7 +30,7 @@
 
 		</select> <br /> <br /> <br />
 
-		<button type="submit" class="btn btn-default" value="Rechercher">Recherche</button>
+		<button type="submit" class="btn btn-info" value="Rechercher">Recherche</button>
 		<br /> <br /> <br />
 
 	</div>

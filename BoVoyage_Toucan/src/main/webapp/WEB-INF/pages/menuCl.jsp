@@ -27,13 +27,13 @@
 				type="number" class="form-control" id="idDossier"
 				placeholder="N° de dossier" name="pIdDossier">
 		</div>
-		<button type="button" class="btn btn-default">Rechercher</button>
+		<button type="button" class="btn btn-info">Rechercher</button>
 	</form>
 
 	<br />
-	<h2>Liste de vos dossiers</h2>
+	<h2 id="titre">Liste de vos dossiers</h2>
 
-	<table class="table">
+	<table class="table table-bordered">
 		<tr>
 			<th>N° de dossier</th>
 			<th>Etat</th>
@@ -43,7 +43,8 @@
 			<tr>
 				<td>${d.id}</td>
 				<td>${d.etat}</td>
-				<td><a href="<c:url value='/client/detailsDossier?pIdDossier=${d.id}'/>">Consulter</a></td>
+				<td><a
+					href="<c:url value='/client/detailsDossier?pIdDossier=${d.id}'/>">Consulter</a></td>
 			</tr>
 		</c:forEach>
 

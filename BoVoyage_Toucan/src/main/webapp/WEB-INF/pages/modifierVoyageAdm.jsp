@@ -40,6 +40,7 @@
 			</div>
 		</div>
 		<br />
+		<br />
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idDretour">Date de
 				retour</label>
@@ -48,6 +49,7 @@
 					id="idDretour" placeholder="Date de retour" />
 			</div>
 		</div>
+		<br />
 		<br />
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idNbr">Nombre de
@@ -58,7 +60,7 @@
 			</div>
 		</div>
 		<br />
-		<br/>
+		<br />
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idPrixA">Prix
 				Agence</label>
@@ -68,13 +70,16 @@
 			</div>
 		</div>
 		<br />
+		<br />
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="idPrixBV">ID</label>
+			<label class="control-label col-sm-1" for="idPrixBV">Prix
+				BoVoyage</label>
 			<div class="col-sm-2">
 				<form:input path="prixBoVoyage" type="text" class="form-control"
 					id="idPrixBV" placeholder="Prix BoVoyage" />
 			</div>
 		</div>
+		<br />
 		<br />
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idStatut">Statut</label>
@@ -83,7 +88,7 @@
 					id="idStatut" placeholder="Statut" />
 			</div>
 			<div class="col-sm-3">
-				<input class="btn btn-primary" type="submit" value="Modifier" />
+				<input class="btn btn-warning" type="submit" value="Modifier" />
 			</div>
 		</div>
 

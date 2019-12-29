@@ -23,12 +23,29 @@
 	<h2 style="color: slateBlue; text-align: center">Combien de places
 		souhaitez-vous réserver ?</h2>
 
-	<form:form method="POST" action="saisieVoyageur"
-		modelAttribute="dossier">
-		Choix du nombre de places : <form:input path="nbPlaces" />
+	<form:form class="form-horizontal" method="POST"
+		action="saisieVoyageur" modelAttribute="dossier">
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idChx">Choix du
+				nombre de places</label>
+			<div class="col-sm-2">
+				<form:input path="nbPlaces" type="text" class="form-control"
+					id="idChx" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idEtat">Etat du
+				dossier</label>
+			<div class="col-sm-2">
+				<form:input path="etat" type="hidden" class="form-control"
+					id="idEtat" value="${dossier.etat}" />
+			</div>
+		</div>
+		<%-- Choix du nombre de places : 
+		<form:input path="nbPlaces" />
 		<form:input type="hidden" path="etat" value="${dossier.etat}" />
-		<br />
-		<input type="submit" value="Continuer" />
+		<br /> --%>
+		<input class="btn btn-primary" type="submit" value="Continuer" />
 	</form:form>
 
 </body>

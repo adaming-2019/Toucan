@@ -25,7 +25,7 @@
 		sélectionner des assurances pour votre voyage ?</h2>
 
 	<h3>Liste des assurances disponibles</h3>
-	<table class="table">
+	<table class="table table-bordered">
 		<tr>
 			<th>Libellé</th>
 			<th>Montant (EUR)</th>
@@ -46,10 +46,12 @@
 	<p>Je souhaite souscrire les assurances suivantes pour ma
 		réservation :</p>
 	<br />
-	<form:form method="POST" action="submitChoixAssurance"
-		modelAttribute="selection">
-		<form:checkboxes items="${types}" path="choix" />
-		<input type="submit" value="Continuer" />
+	<form:form class="form-horizontal" method="POST"
+		action="submitChoixAssurance" modelAttribute="selection">
+		<div class="form-group">
+			<form:checkboxes items="${types}" path="choix" />
+		</div>
+		<input class="btn btn-primary" type="submit" value="Continuer" />
 	</form:form>
 
 </body>

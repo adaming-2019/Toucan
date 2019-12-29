@@ -22,56 +22,86 @@
 	<h2 id="titre">Récapitulatif de votre commande</h2>
 	<div>
 		<h3>Voyage</h3>
-		<p>Destination : ${dossier.voyage.destination.pays}</p>
+		<p>
+			<b><span>Destination :</span></b> ${dossier.voyage.destination.pays}
+		</p>
 		<br />
 		<p>du ${dossier.voyage.dateDebut} au ${dossier.voyage.dateRetour}</p>
 		<br />
-		<p>Formule : ${dossier.voyage.formule.formule}</p>
+		<p>
+			<b><span>Formule : ${dossier.voyage.formule.formule}
+		</p>
 		<br />
 		<c:if test="${not empty dossier.voyage.prestation}">
-		<p>Prestation d'hébérgement : ${dossier.voyage.prestation.prestation}</p>
-		<br />
+			<p>
+				<b><span>Prestation d'hébérgement :</span></b>
+				${dossier.voyage.prestation.prestation}
+			</p>
+			<br />
 		</c:if>
-		<p>Prix agence : ${dossier.voyage.prixAgence} EUR</p>
+		<p>
+			<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR
+		</p>
 		<br />
-		<p>Prix BoVoyage : ${dossier.voyage.prixBoVoyage} EUR</p>
+		<p>
+			<b><span>Prix BoVoyage :</span></b> ${dossier.voyage.prixBoVoyage}
+			EUR
+		</p>
 		<br /> <br />
 
 		<h3>Votre réservation</h3>
-		<p>Nombre de places : ${dossier.nbPlaces}</p>
+		<p>
+			<b><span>Nombre de places :</span></b> ${dossier.nbPlaces}
+		</p>
 		<br />
-		<p>Informations sur les passagers :</p>
+		<p>
+			<b><span>Informations sur les passagers :
+		</p>
 		<c:forEach var="passager" items="${dossier.voyageurs}">
-			<p>${passager.civilite}. ${passager.nom} ${passager.prenom}</p>
+			<p>${passager.civilite}.${passager.nom} ${passager.prenom}</p>
 			<br />
-			<p>Date de naissance : ${passager.dn}</p>
+			<p>
+				<b><span>Date de naissance :</span></b> ${passager.dn}
+			</p>
 			<br />
-			<p>Adresse : ${passager.adresse}</p>
+			<p>
+				<b><span>Adresse :</span></b> ${passager.adresse}
+			</p>
 			<br />
-			<p>Téléphone : ${passager.telephone}</p>
+			<p>
+				<b><span>Téléphone :</span></b> ${passager.telephone}
+			</p>
 			<br />
-			<p>Nationalité : ${passager.nationalite}</p>
+			<p>
+				<b><span>Nationalité :</span></b> ${passager.nationalite}
+			</p>
 			<br />
 			<br />
 		</c:forEach>
 
-		<p>Vous avez séléctionné les assurances suivantes :</p>
+		<p>
+			<b><span>Vous avez séléctionné les assurances suivantes :
+		</p>
 		<c:forEach var="assurance" items="${dossier.assurances}">
 			${assurance.type} (montant : ${assurance.montant} EUR)
 			<br />
 		</c:forEach>
 
 		<br />
-		<p>Prix total : ${total} EUR</p>
+		<p>
+			<b><span>Prix total :</span></b> ${total} EUR
+		</p>
 
 		<br />
-		<p>Note : votre compte bancaire ne sera débité qu'après
-			vérification par BoVoyage de la validité de votre numéro de carte de
-			crédit.</p>
+		<p>
+			<b><span>Note :</span></b> votre compte bancaire ne sera débité
+			qu'après vérification par BoVoyage de la validité de votre numéro de
+			carte de crédit.
+		</p>
 		<br />
 
 		<form action="validerReservation" method="get">
-			<input type="button" value="Valider ma réservation" />
+			<input class="btn btn-success" type="button" value="Valider ma réservation" />
 		</form>
 
 	</div>

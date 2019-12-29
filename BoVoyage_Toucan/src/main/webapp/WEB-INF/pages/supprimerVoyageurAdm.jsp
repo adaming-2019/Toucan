@@ -26,10 +26,12 @@
 	<h1 style="color: red; text-align: center;">Formulaire de
 		suppression</h1>
 
-	<form method="get" action="deleteVoyageur">
-		Id : <input type="number" name="pId" /> <br /> <br /> <input
-			class="btn btn-danger" type="submit" value="supprimer">
-	</form>
+	<form:form method="get" action="deleteVoyageur">
+		Id : <input type="number" name="pId" />
+		<br />
+		<br />
+		<input class="btn btn-danger" type="submit" value="supprimer">
+	</form:form>
 
 	<h1 style="color: red; text-align: center;">${msg}</h1>
 

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,50 +20,76 @@
 
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	
+
 	<h2 id="titre">Détails du dossier</h2>
-		<h3>Voyage</h3>
-		<p>Destination : ${dossier.voyage.destination.pays}</p>
+	<h3 style="color: darkblue">Voyage</h3>
+	<p>
+		<b><span> Destination :</span></b> ${dossier.voyage.destination.pays}
+	</p>
+	<br />
+	<p>du ${dossier.voyage.dateDebut} au ${dossier.voyage.dateRetour}</p>
+	<br />
+	<p>
+		<b><span>Formule :</span></b> ${dossier.voyage.formule.formule}
+	</p>
+	<br />
+	<c:if test="${not empty dossier.voyage.prestation}">
+		<p>
+			<b><span>Prestation d'hébérgement :</span></b>
+			${dossier.voyage.prestation.prestation}
+		</p>
 		<br />
-		<p>du ${dossier.voyage.dateDebut} au ${dossier.voyage.dateRetour}</p>
-		<br />
-		<p>Formule : ${dossier.voyage.formule.formule}</p>
-		<br />
-		<c:if test="${not empty dossier.voyage.prestation}">
-		<p>Prestation d'hébérgement : ${dossier.voyage.prestation.prestation}</p>
-		<br />
-		</c:if>
-		<p>Prix agence : ${dossier.voyage.prixAgence} EUR</p>
-		<br />
-		<p>Prix BoVoyage : ${dossier.voyage.prixBoVoyage} EUR</p>
-		<br /> <br />
+	</c:if>
+	<p>
+		<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR
+	</p>
+	<br />
+	<p>
+		<b><span>Prix BoVoyage :</span></b> ${dossier.voyage.prixBoVoyage} EUR
+	</p>
+	<br />
+	<br />
 
-		<h3>Votre réservation</h3>
-		<p>Nombre de places : ${dossier.nbPlaces}</p>
+	<h3 style="color: darkblue">Votre réservation</h3>
+	<p>
+		<b><span>Nombre de places :</span></b> ${dossier.nbPlaces}
+	</p>
+	<br />
+	<p>
+		<b><span>Informations sur les passagers :</span></b>
+	</p>
+	<c:forEach var="passager" items="${voyageurs}">
+		<p>${passager.civilite}.${passager.nom}${passager.prenom}</p>
 		<br />
-		<p>Informations sur les passagers :</p>
-		<c:forEach var="passager" items="${voyageurs}">
-			<p>${passager.civilite}. ${passager.nom} ${passager.prenom}</p>
-			<br />
-			<p>Date de naissance : ${passager.dn}</p>
-			<br />
-			<p>Adresse : ${passager.adresse}</p>
-			<br />
-			<p>Téléphone : ${passager.telephone}</p>
-			<br />
-			<p>Nationalité : ${passager.nationalite}</p>
-			<br />
-			<br />
-		</c:forEach>
+		<p>
+			<b><span>Date de naissance :</span></b> ${passager.dn}
+		</p>
+		<br />
+		<p>
+			<b><span>Adresse :</span></b> ${passager.adresse}
+		</p>
+		<br />
+		<p>
+			<b><span>Téléphone :</span></b> ${passager.telephone}
+		</p>
+		<br />
+		<p>
+			<b><span>Nationalité :</span></b> ${passager.nationalite}
+		</p>
+		<br />
+		<br />
+	</c:forEach>
 
-		<p>Vous avez séléctionné les assurances suivantes :</p>
-		<c:forEach var="assurance" items="${dossier.assurances}">
+	<p>
+		<b><span>Vous avez séléctionné les assurances suivantes :</span></b>
+	</p>
+	<c:forEach var="assurance" items="${dossier.assurances}">
 			${assurance.type} (montant : ${assurance.montant} EUR)
 			<br />
-		</c:forEach>
+	</c:forEach>
 
-		<br />
-		<p>Prix total : ${total} EUR</p>
+	<br />
+	<p><b><span>Prix total :</span></b> ${total} EUR</p>
 
 </body>
 </html>

@@ -36,7 +36,7 @@
 					placeholder="Type" />
 			</div>
 			<div class="col-sm-3">
-				<input class="btn btn-primary" type="submit" value="Modifier" />
+				<input class="btn btn-warning" type="submit" value="Modifier" />
 			</div>
 		</div>
 	</form:form>
