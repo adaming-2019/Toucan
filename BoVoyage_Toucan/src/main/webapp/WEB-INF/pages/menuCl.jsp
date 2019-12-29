@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Menu client</title>
+<title>Mon espace client</title>
 
 <!-- Lier la librairie bootstrap à ma page -->
 <link rel="stylesheet"
@@ -14,6 +17,37 @@
 
 </head>
 <body>
+
+	<!--  inclure le header -->
+	<%@include file="/templates/header.html"%>
+
+	<form class="form-inline" action="detailsDossier" method="get">
+		<div class="form-group">
+			<label for="idDossier">Consulter un dossier : </label> <input
+				type="number" class="form-control" id="idDossier"
+				placeholder="N° de dossier" name="pIdDossier">
+		</div>
+		<button type="button" class="btn btn-default">Rechercher</button>
+	</form>
+
+	<br />
+	<h2>Liste de vos dossiers</h2>
+
+	<table class="table">
+		<tr>
+			<th>N° de dossier</th>
+			<th>Etat</th>
+			<th>Opérations</th>
+		</tr>
+		<c:forEach var="d" items="${dossiers}">
+			<tr>
+				<td>${d.id}</td>
+				<td>${d.etat}</td>
+				<td><a href="<c:url value='/client/detailsDossier?pIdDossier=${d.id}'/>">Consulter</a></td>
+			</tr>
+		</c:forEach>
+
+	</table>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,10 +33,10 @@ public class Dossier implements Serializable {
 	private int nbPlaces;
 	
 	// transformation de l'association UML en Java
-	@ManyToMany(mappedBy="dossiers")
+	@ManyToMany(mappedBy="dossiers", fetch=FetchType.EAGER)
 	private List<Assurance> assurances;
 	
-	@OneToMany(mappedBy="dossier", cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy="dossier")
 	private List<Voyageur> voyageurs;
 	
 	@ManyToOne

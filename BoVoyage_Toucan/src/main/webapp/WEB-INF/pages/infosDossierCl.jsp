@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Récapitulatif de votre dossier</title>
-<!-- Lier lb bootstrap à ma page -->
+<title>Détails du dossier</title>
+
+<!-- Lier la librairie bootstrap à ma page -->
 <link rel="stylesheet"
 	href="<c:url value='/assets/css/bootstrap.css' />" />
 <link rel="stylesheet"
@@ -16,11 +17,11 @@
 
 </head>
 <body>
+
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-
-	<h2 id="titre">Récapitulatif de votre commande</h2>
-	<div>
+	
+	<h2 id="titre">Détails du dossier</h2>
 		<h3>Voyage</h3>
 		<p>Destination : ${dossier.voyage.destination.pays}</p>
 		<br />
@@ -41,7 +42,7 @@
 		<p>Nombre de places : ${dossier.nbPlaces}</p>
 		<br />
 		<p>Informations sur les passagers :</p>
-		<c:forEach var="passager" items="${dossier.voyageurs}">
+		<c:forEach var="passager" items="${voyageurs}">
 			<p>${passager.civilite}. ${passager.nom} ${passager.prenom}</p>
 			<br />
 			<p>Date de naissance : ${passager.dn}</p>
@@ -63,19 +64,6 @@
 
 		<br />
 		<p>Prix total : ${total} EUR</p>
-
-		<br />
-		<p>Note : votre compte bancaire ne sera débité qu'après
-			vérification par BoVoyage de la validité de votre numéro de carte de
-			crédit.</p>
-		<br />
-
-		<form action="validerReservation" method="get">
-			<input type="button" value="Valider ma réservation" />
-		</form>
-
-	</div>
-
 
 </body>
 </html>

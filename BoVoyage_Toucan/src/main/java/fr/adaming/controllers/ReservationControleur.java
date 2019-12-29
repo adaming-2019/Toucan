@@ -66,6 +66,10 @@ public class ReservationControleur {
 		this.assuService = assuService;
 	}
 
+	public void setVgService(IVoyageurService vgService) {
+		this.vgService = vgService;
+	}
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -77,13 +81,6 @@ public class ReservationControleur {
 	}
 
 	// méthodes métier
-
-	// affichage de la page login
-	public String afficheLoginCl(Model model) {
-		model.addAttribute("client", new Client());
-
-		return "loginCl";
-	}
 
 	// ***Fonctionnalité choisir nombre de places
 	@RequestMapping(value = "/choixNbPlaces", method = RequestMethod.GET)
@@ -230,7 +227,7 @@ public class ReservationControleur {
 		
 	}
 	
-	@RequestMapping(value="/validerReservation", method=RequestMethod.POST)
+	@RequestMapping(value="/validerReservation", method=RequestMethod.GET)
 	public String validerReservation(HttpServletRequest req, Model model) {
 		// récupérer le dossier stocké dans la session
 		HttpSession maSession = req.getSession();
@@ -256,7 +253,8 @@ public class ReservationControleur {
 		maSession.removeAttribute("dossier");
 		
 		if (ajout.getId()!=0 && verif==true) {
-			return "menuCl";
+			// appel de la méthode permettant d'afficher la liste des dossiers du client connecté
+			return "listeDossiers";
 		} else {
 			return "recapitulatifCl";
 		}

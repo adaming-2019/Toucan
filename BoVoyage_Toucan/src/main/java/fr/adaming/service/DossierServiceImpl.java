@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IDossierDao;
+import fr.adaming.entities.Client;
 import fr.adaming.entities.Dossier;
 
 @Service
@@ -50,6 +51,12 @@ public class DossierServiceImpl implements IDossierService {
 		dossierDao.delete(id);
 		return true;
 
+	}
+
+	@Override
+	public List<Dossier> getAllByClient(Client clIn) {
+		// appel de la méthode dao
+		return dossierDao.getAllByClient(clIn);
 	}
 
 }
