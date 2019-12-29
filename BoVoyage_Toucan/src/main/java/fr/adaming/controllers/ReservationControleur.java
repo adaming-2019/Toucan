@@ -31,6 +31,7 @@ import fr.adaming.service.IAssuranceService;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.IDossierService;
 import fr.adaming.service.IVoyageService;
+import fr.adaming.service.IVoyageurService;
 
 @Controller
 @RequestMapping("/client")
@@ -45,6 +46,8 @@ public class ReservationControleur {
 	private IVoyageService voyService;
 	@Autowired
 	private IAssuranceService assuService;
+	@Autowired
+	private IVoyageurService vgService;
 
 	// setters pour l'injection de dépendance
 	public void setClService(IClientService clService) {
@@ -140,11 +143,14 @@ public class ReservationControleur {
 	public String submitSaisieVoyageur(HttpServletRequest req, ModelMap model,
 			@ModelAttribute("voyageur") Voyageur voyageur) {
 		
-		// ajout du voyageur saisi à la liste des voyageurs associés au dossier
+		// récupérer le dossier
 		HttpSession maSession = req.getSession();
 
 		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
 		System.out.println("taille de dossier.getVoyageurs() : "+dossier.getVoyageurs().size());
+		
+		// lier le voyageur au dossier
+		voyageur.setDossier(dossier);
 		dossier.getVoyageurs().add(voyageur);
 
 		// passage du dossier comme attribut du modèle MVC
@@ -224,7 +230,7 @@ public class ReservationControleur {
 		
 	}
 	
-	@RequestMapping(value="/validerReservation", method=RequestMethod.GET)
+	@RequestMapping(value="/validerReservation", method=RequestMethod.POST)
 	public String validerReservation(HttpServletRequest req, Model model) {
 		// récupérer le dossier stocké dans la session
 		HttpSession maSession = req.getSession();
@@ -233,12 +239,23 @@ public class ReservationControleur {
 		
 		// ajout du dossier à la bd
 		Dossier ajout = dosService.addDossier(dossier);
-		// les voyageurs seront automatiquement ajoutés à la bd
+
+		// ajout des voyageurs à la bd
+		boolean verif = true;
+		
+		for (Voyageur v : dossier.getVoyageurs()) {
+			Voyageur vgAdd = vgService.addVoyageur(v);
+			
+			if (vgAdd.getId()==0) {
+				verif = false;
+				break;
+			}
+		}
 		
 		// supprimer le dossier de la session
 		maSession.removeAttribute("dossier");
 		
-		if (ajout.getId()!=0) {
+		if (ajout.getId()!=0 && verif==true) {
 			return "menuCl";
 		} else {
 			return "recapitulatifCl";

@@ -23,25 +23,27 @@
 	<h2 id="titre">Récapitulatif de votre commande</h2>
 	<div>
 		<h3>Voyage</h3>
-		<p>Destination : ${dossier.destination.pays}</p>
+		<p>Destination : ${dossier.voyage.destination.pays}</p>
 		<br />
-		<p>du ${dossier.dateDebut} au ${dossier.dateRetour}</p>
+		<p>du ${dossier.voyage.dateDebut} au ${dossier.voyage.dateRetour}</p>
 		<br />
-		<p>Formule : ${dossier.formule.formule}</p>
+		<p>Formule : ${dossier.voyage.formule.formule}</p>
 		<br />
-		<p>Prestation d'hébérgement : ${dossier.prestation.prestation}</p>
+		<c:if test="${not empty dossier.voyage.prestation}">
+		<p>Prestation d'hébérgement : ${dossier.voyage.prestation.prestation}</p>
 		<br />
-		<p>Prix agence : ${dossier.prixAgence} EUR</p>
+		</c:if>
+		<p>Prix agence : ${dossier.voyage.prixAgence} EUR</p>
 		<br />
-		<p>Prix BoVoyage : ${dossier.prixBoVoyage} EUR</p>
+		<p>Prix BoVoyage : ${dossier.voyage.prixBoVoyage} EUR</p>
 		<br /> <br />
 
 		<h3>Votre réservation</h3>
-		<p>Nombre de places : ${dossier.dossier.nbPlaces}</p>
+		<p>Nombre de places : ${dossier.nbPlaces}</p>
 		<br />
 		<p>Informations sur les passagers :</p>
 		<c:forEach var="passager" items="${dossier.voyageurs}">
-			<p>${passager.civilite}${passager.nom}${passager.prenom}</p>
+			<p>${passager.civilite}. ${passager.nom} ${passager.prenom}</p>
 			<br />
 			<p>Date de naissance : ${passager.dn}</p>
 			<br />
@@ -61,7 +63,7 @@
 		</c:forEach>
 
 		<br />
-		<p>Prix total : ${total}</p>
+		<p>Prix total : ${total} EUR</p>
 
 		<br />
 		<p>Note : votre compte bancaire ne sera débité qu'après
@@ -69,8 +71,8 @@
 			crédit.</p>
 		<br />
 
-		<form action="validerReservation" method="get">
-			<input type="button" value="Valider ma réservation" />
+		<form action="validerReservation" method="post">
+			<input type="submit" value="Valider ma réservation" />
 		</form>
 
 	</div>
