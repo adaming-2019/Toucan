@@ -27,7 +27,7 @@
 	<div style="text-align: center" class="control-label col-sm-9">
 		<table class="table table-bordered">
 			<tr>
-<<<<<<< HEAD
+
 				<td>${v.nom}</td>
 				<td>${v.prenom}</td>
 				<td>${v.numSiege}</td>
@@ -40,7 +40,7 @@
 				<td><a href="<c:url value='  '/>"><b>Accès dossier</b></a> |
 				<a href="<c:url value='/admin/updateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a> |
 				<a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a></td>
-=======
+
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th>Numéro de siège</th>
@@ -50,7 +50,7 @@
 				<th>Téléphone</th>
 				<th>Nationalité</th>
 				<th>Opérations</th>
->>>>>>> branch 'master' of https://github.com/adaming-2019/Toucan.git
+
 			</tr>
 
 			<c:forEach var="v" items="${voyageurs}">
