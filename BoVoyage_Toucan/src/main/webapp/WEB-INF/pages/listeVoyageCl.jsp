@@ -24,10 +24,9 @@
 
 		<table class="table table-bordered">
 			<tr>
-				<th>Date Aller</th>
-				<th>Date retour</th>
+				<th>Depart</th>
+				<th>Return</th>
 				<th>Nombre de place</th>
-				<th>Photo</th>
 				<th>Prix Agence</th>
 				<th>Prix BoVoyage</th>
 			</tr>
@@ -39,7 +38,6 @@
 					<td><fmt:formatDate value="${v.dateRetour}"
 							pattern="dd/MM/yyyy" /></td>
 					<td>${v.nombrePlace}</td>
-					<td>${v.photo}</td>
 					<td>${v.prixAgence}</td>
 					<td>${v.prixBoVoyage}</td>
 				</tr>

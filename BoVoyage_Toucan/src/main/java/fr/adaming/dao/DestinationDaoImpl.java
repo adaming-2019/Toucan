@@ -9,13 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.entities.Continent;
 import fr.adaming.entities.Destination;
-import fr.adaming.entities.Voyage;
 
 @Repository
 public class DestinationDaoImpl extends GenericDaoImpl<Destination> implements IDestinationDao {
 
-	// injection de la session factory
-	private SessionFactory sf;
 
 	// specifier le vrai type de T (la vraie Entity à utiliser ) ici c'est
 	// Prestation
