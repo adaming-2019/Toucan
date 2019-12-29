@@ -19,10 +19,69 @@
 	<h1 id="titre">Formulaire d'ajout</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
-	<form:form class="form-horizontal" method="POST"
-		action="submitAddVoyage" modelAttribute="voyageAdd">
+	<form:form method="POST" action="submitAddVoyage"
+		modelAttribute="voyageAdd">
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idDdebut">Date de
+				debut</label>
+			<div class="col-sm-2">
+				<form:input path="dateDebut" type="date" class="form-control"
+					id="idDdebut" placeholder="Date de debut" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idDretour">Date de
+				retour</label>
+			<div class="col-sm-2">
+				<form:input path="dateRetour" type="date" class="form-control"
+					id="idDretour" placeholder="Date de retour" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idNbr">Nombre de
+				Place</label>
+			<div class="col-sm-2">
+				<form:input path="nombrePlace" type="text" class="form-control"
+					id="idNbr" placeholder="Nombre de place" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idPrixA">Prix
+				Agence</label>
+			<div class="col-sm-2">
+				<form:input path="prixAgence" type="text" class="form-control"
+					id="idPrixA" placeholder="Prix agence" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idPrixBV">ID</label>
+			<div class="col-sm-2">
+				<form:input path="prixBoVoyage" type="text" class="form-control"
+					id="idPrixBV" placeholder="Prix BoVoyage" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idStatut">Statut</label>
+			<div class="col-sm-2">
+				<form:input path="statut" type="text" class="form-control"
+					id="idStatut" placeholder="Statut" />
+			</div>
+			<div class="col-sm-3">
+				<input class="btn btn-success" type="submit" value="Ajouter" />
+			</div>
+		</div>
 
-		Date Debut : <form:input type="date" path="dateDebut" />
+		<%-- Date Debut : <form:input type="date" path="dateDebut" />
 		<br/>
 		Date Retour : <form:input type="date" path="dateRetour" />
 		<br/>
@@ -34,7 +93,7 @@
 		<br/>
 		Statut : <form:input path="statut" />
 		<br/>	
-		<input type="submit" value="Ajouter" />
+		<input type="submit" value="Ajouter" /> --%>
 	</form:form>
 </body>
 </html>

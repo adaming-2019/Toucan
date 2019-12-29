@@ -19,10 +19,9 @@
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
 	<div style="text-align: center" class="control-label col-sm-9">
-		<p>Vous pouvez gérez les voyages, les clients et leurs dossiers à
-			tout moment via le menu
-		<p>
-			<img src="<c:url value='../asset/images/gestion.jpg'/>" class="image">
+		<h3 style="color: darkblue">Vous pouvez gérez les voyages, les
+			clients et leurs dossiers à tout moment via le menu</h3>
+		<img src="<c:url value='../asset/images/gestion.jpg'/>" class="image">
 	</div>
 </body>
 </html>

@@ -19,10 +19,108 @@
 	<h1 id="titre">Formulaire d'ajout</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
-	<form:form class="form-horizontal" method="POST"
-		action="submitAddClient" modelAttribute="clientAdd">
+	<form:form method="POST" action="submitAddClient"
+		modelAttribute="clientAdd">
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idAdresse">Adresse</label>
+			<div class="col-sm-2">
+				<form:input path="adresse" type="text" class="form-control"
+					id="idAdresse" placeholder="Adresse" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idCivilite">Civilite</label>
+			<div class="col-sm-2">
+				<form:input path="civilite" type="text" class="form-control"
+					id="idCivilite" placeholder="Civilite" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idDn">Date de
+				naissance</label>
+			<div class="col-sm-2">
+				<form:input path="dn" type="date" class="form-control" id="idDn"
+					placeholder="Date de naissance" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idNationalite">Nationalite</label>
+			<div class="col-sm-2">
+				<form:input path="nationalite" type="text" class="form-control"
+					id="idNationalite" placeholder="Nationalite" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idNom">Nom</label>
+			<div class="col-sm-2">
+				<form:input path="nom" type="text" class="form-control" id="idNom"
+					placeholder="Nom" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idPrenom">Prenom</label>
+			<div class="col-sm-2">
+				<form:input path="prenom" type="text" class="form-control"
+					id="idPrenom" placeholder="Prenom" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idTelephone">Telephone</label>
+			<div class="col-sm-2">
+				<form:input path="telephone" type="text" class="form-control"
+					id="idTelephone" placeholder="Telephone" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idCB">CB</label>
+			<div class="col-sm-2">
+				<form:input path="cb" type="text" class="form-control" id="idCB"
+					placeholder="CB" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idLogin">Login</label>
+			<div class="col-sm-2">
+				<form:input path="login" type="text" class="form-control"
+					id="idLogin" placeholder="Login" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idMdp">Mot de
+				passe</label>
+			<div class="col-sm-2">
+				<form:input path="mdp" type="text" class="form-control" id="idMdp"
+					placeholder="Mot de passe" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idStatut">Statut</label>
+			<div class="col-sm-2">
+				<form:input path="active" type="text" class="form-control"
+					id="idStatut" placeholder="Statut" />
+			</div>
+			<div class="col-sm-3">
+				<input class="btn btn-success" type="submit" value="Ajouter" />
+			</div>
+		</div>
 
-		Adresse : <form:input path="adresse" />
+		<%-- Adresse : <form:input path="adresse" />
 		<br/>
 		Civilite : <form:input path="civilite" />
 		<br/>
@@ -36,8 +134,6 @@
 		<br/>
 		Telephone : <form:input path="telephone" />
 		<br/>
-
-
 		CB : <form:input path="cb" />
 		<br/>
 		Login : <form:input path="login" />
@@ -45,8 +141,7 @@
 		Mdp : <form:input path="mdp" />
 		<br/>
 		Statut : <form:input path="active" />
-		<br/>	
-		<input type="submit" value="Ajouter" />
+		<br/>	 --%>
 	</form:form>
 </body>
 </html>
