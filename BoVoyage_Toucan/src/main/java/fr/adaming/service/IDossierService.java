@@ -14,7 +14,7 @@ public interface IDossierService {
 
 	public Dossier addDossier(Dossier dossierIn);
 
-	public Dossier updateDossier(Dossier dossierIn);
+	public boolean updateDossier(Dossier dossierIn);
 
 	public boolean deleteDossier(int id);
 	

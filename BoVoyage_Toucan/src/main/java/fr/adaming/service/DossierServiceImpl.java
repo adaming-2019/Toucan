@@ -41,9 +41,9 @@ public class DossierServiceImpl implements IDossierService {
 	}
 
 	@Override
-	public Dossier updateDossier(Dossier dossierIn) {
-		// appel de la méthode
-		return dossierDao.update(dossierIn);
+	public boolean updateDossier(Dossier dossierIn) {
+		dossierDao.update(dossierIn);
+		return true;
 	}
 
 	@Override

@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.entities.Dossier;
 import fr.adaming.service.IDossierService;
@@ -31,8 +34,26 @@ public class DossierController {
 	public ModelAndView afficherDossiers() {
 		//récupérer liste dossiers 
 		List<Dossier> listeDossiers=dservices.getAllDossier();
-		return new ModelAndView("listeDossierAdm", "dossiers", listeDossiers);
-				
+		return new ModelAndView("listeDossierAdm", "dossiers", listeDossiers);	
 	}
 	
+	//méthode modifier un dossier 
+	@RequestMapping(value="/modifDossier", method=RequestMethod.GET)
+	public String modifierDossier() {
+		return "modifierDossierAdm";	
+	}
+	@RequestMapping(value="/updateDossier", method=RequestMethod.POST)
+	public String updateDossier(RedirectAttributes rda, Model modele,@RequestParam("pId") Dossier dossierIn) {
+		
+		Dossier dIn=new Dossier();
+		dIn.setId(dossierIn);
+		
+		boolean verif=dservices.updateDossier(dossierIn);
+		if(verif){
+			return "redirect:listeDossiers";
+		}else {
+			rda.addFlashAttribute("msg", "le dossier a modifier n'existe pas");
+			return "redirect:modifDossier";
+		}
+	}
 }

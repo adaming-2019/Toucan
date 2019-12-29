@@ -16,13 +16,16 @@
 
 <!--  lier le fichier css à ma page car boostrap ne se trouve pas dans le même fichier que ma page -->
 <link rel="stylesheet" href="<c:url value="/assets/css/bootstrap.css"/>" />
+<link rel="stylesheet" href="<c:url value='/assets/css/BoVoyageStyle.css'/>"/>
 </head>
 
 
 <body>
-
-<h1>Modification des dossiers clients</h1>
-
+<!--  inclure le header -->
+	<%@include file="/templates/header.html"%>
+<h1 id="titre">Modification des dossiers clients</h1>
+<br />
+	<%@include file="/templates/menuAdm.html"%>
 
 
 

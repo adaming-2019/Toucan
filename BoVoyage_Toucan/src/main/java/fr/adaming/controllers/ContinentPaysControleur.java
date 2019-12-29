@@ -57,7 +57,7 @@ public class ContinentPaysControleur {
 	}
 
 	// ============================= méthodes métier =============================
-	
+
 	@RequestMapping(value = "/afficheContinent", method = RequestMethod.GET)
 	public String afficherContinent(Model modele) {
 		List<Continent> listeContinents = new ArrayList<Continent>(Arrays.asList(Continent.values()));
@@ -68,14 +68,12 @@ public class ContinentPaysControleur {
 		return "choixContinentCl";
 	}
 
-
 	@RequestMapping(value = "/afficheListeVoyage", method = RequestMethod.GET)
 	public ModelAndView afficherVoyage() {
 
+		Destination destinationIn;
 		// appel de la méthode service
 		List<Voyage> listeVoyages = voyageService.getAllVoyages();
-		
-		
 
 		return new ModelAndView("listeVoyageCl", "voyages", listeVoyages);
 	}

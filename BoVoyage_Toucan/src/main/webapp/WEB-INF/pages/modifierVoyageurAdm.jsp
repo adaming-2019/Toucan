@@ -14,8 +14,7 @@
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet"
 	href="<c:url value='/assets/css/bootstrap.css' />" />
-<link rel="stylesheet"
-	href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
+ 
 
 </head>
 <body>
@@ -26,13 +25,15 @@
 	<%@include file="/templates/menuAdm.html"%>
 	<form method="get" action="modifVoyageur">
 
-		Id : <input type="number" name="pId" /> <br /> Nom :
-		<form:input type="text" path="nom" />
-		<br /> Prénom:
-		<form:input type="text" path="prenom" />
-		<br /> Date:
-		<form:input type="date" path="dn" />
-		<br /> Numéro de siège:
+		Id : <input type="number" name="pId" /> 
+		<br /> 
+		Nom :<form:input type="text" path="nom" />
+		<br /> 
+		Prénom:<form:input type="text" path="prenom" />
+		<br /> 
+		Date: <form:input type="date" path="dn" />
+		<br /> 
+		Numéro de siège:
 		<form:input type="number" path="numSiege" />
 		<br /> Numéro de dossier :
 		<form:input type="number" path="dossier" />

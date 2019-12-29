@@ -18,6 +18,8 @@ public interface IVoyageService {
 	
 	public boolean deleteVoyage(int id);
 	
+	public List<Voyage> getVoyageByDestination (Destination destinationIn);
+	
 	
 	
 	

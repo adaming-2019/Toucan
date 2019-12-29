@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IVoyageDao;
+import fr.adaming.entities.Destination;
 import fr.adaming.entities.Voyage;
 
 @Service
@@ -49,6 +50,12 @@ public class VoyageServiceImpl implements IVoyageService{
 	public boolean deleteVoyage(int id) {
 		voyageDao.delete(id);
 		return true;
+	}
+
+	@Override
+	public List<Voyage> getVoyageByDestination(Destination destinationIn) {
+		
+		return voyageDao.getVoyageByDestination(destinationIn);
 	}
 
 

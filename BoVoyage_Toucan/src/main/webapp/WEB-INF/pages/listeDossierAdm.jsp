@@ -39,7 +39,7 @@
 				<td>${d.prenom}</td>
 				<td>${v.assurances}</td>
 				
-				<td><a href="<c:url value='/admin/   =${d.id}'/>"><b>Modifier</b></a> |
+				<td><a href="<c:url value='/admin/updateDossier=${d.id}'/>"><b>Modifier</b></a> |
 				<!-- supprimer directement le dossier via la page de la liste -->
 				<a href="<c:url value='/admin   =${d.id}'/>"><b>Supprimer</b></a></td>
 			</tr>
