@@ -129,32 +129,9 @@
 			</div>
 		</div>		
 		
-		
-		
 		<br />
 		<br />
-		<div class="form-group">
-			<label class="control-label col-sm-1" for="idStatut">Statut</label>
-			<div class="col-sm-2">
-				<form:input path="statut" type="text" class="form-control"
-					id="idStatut" placeholder="Statut" />
-			</div>
-			<div class="col-sm-3">
-				<input class="btn btn-success" type="submit" value="Ajouter" />
-			</div>
-		</div>		
-		<br />
-		<br />
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idStatut">Statut</label>
 			<div class="col-sm-2">
