@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.entities.Dossier;
+import fr.adaming.entities.Voyageur;
 import fr.adaming.service.IDossierService;
 
 @Controller
@@ -55,5 +56,29 @@ public class DossierController {
 			rda.addFlashAttribute("msg", "le dossier a modifier n'existe pas");
 			return "redirect:modifDossier";
 		}
+	}
+	
+	//Méthode supprimer un dossier 
+	@RequestMapping(value="/suppDossier", method=RequestMethod.GET)
+	public String supprimerDossier () {
+		return "supprimerDossierAdm";
+	}
+	
+	@RequestMapping(value="/deleteDossier", method=RequestMethod.POST)
+	public String deleteDossier(RedirectAttributes rda, @RequestParam("pId") int idIn) {
+
+		Dossier dossierIn = new Dossier();
+		dossierIn.setId(idIn);
+
+		boolean verif = dservices.deleteDossier(idIn);
+		if (verif) {
+			return "redirect:listeDossiers";
+		} else {
+			// l'objet RedirectAttributes sert à transporter les attributs du
+			// modele mvc lors de la redirection
+			rda.addFlashAttribute("msg", "Le dossier a supprimer n'existe pas");
+			return "redirect:deleteDossier";
+		}
+
 	}
 }
