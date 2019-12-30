@@ -21,18 +21,17 @@
 	<br />
 
 	<div style="text-align: center" class="control-label col-sm-4">
+		<form method="get" action="submitChoixContinent">
+			<select name="pContinent" class="form-control">
+				<c:forEach var="cont" items="${listeCont}">
+					<option>${cont}</option>
+				</c:forEach>
 
+			</select> <br /> <br /> <br />
 
-		<select name="pContinent" class="form-control">
-			<c:forEach var="cont" items="${listeCont}">
-				<option>${cont}</option>
-			</c:forEach>
-
-		</select> <br /> <br /> <br />
-
-		<button type="submit" class="btn btn-info" value="Rechercher">Recherche</button>
-		<br /> <br /> <br />
-
+			<button type="submit" class="btn btn-info" value="Rechercher">Recherche</button>
+			<br /> <br /> <br />
+		</form>
 	</div>
 
 </body>

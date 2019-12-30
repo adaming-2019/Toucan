@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import fr.adaming.entities.Continent;
 import fr.adaming.entities.Destination;
@@ -66,26 +65,18 @@ public class ContinentVoyageControleur {
 		modele.addAttribute("listeCont", listeContinents);
 		modele.addAttribute("destination", new Destination());
 
-		return "choixContinentCl";
+		return "accueilCl";
 	}
 
 	@RequestMapping(value = "/submitChoixContinent", method = RequestMethod.GET)
-	public String soumettreChoixContinent(@RequestParam("pContinent") Destination destinationIn) {
+	public String soumettreChoixContinent(Model modele, @RequestParam("pContinent") Continent continentIn) {
 
 		// appel de la méthode service
-		Voyage vOut = (Voyage) voyageService.getVoyageByDestination(destinationIn);
+		List<Voyage> listeVoyage= voyageService.getVoyageByDestination(continentIn);
+		
+		modele.addAttribute("voyages", listeVoyage);
 
 		return "listeVoyageCl";
 	}
-
-//	@RequestMapping(value = "/afficheListeVoyage", method = RequestMethod.GET)
-//	public ModelAndView afficherVoyage(Destination destinationIn) {
-//		
-//
-//		// appel de la méthode service
-//		List<Voyage> listeVoyages = voyageService.getAllVoyages();
-//
-//		return new ModelAndView("listeVoyageCl", "voyages", listeVoyages);
-//	}
 
 }

@@ -2,7 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
-import fr.adaming.entities.Destination;
+import fr.adaming.entities.Continent;
 import fr.adaming.entities.Voyage;
 
 public interface IVoyageService {
@@ -18,7 +18,7 @@ public interface IVoyageService {
 	
 	public boolean deleteVoyage(int id);
 	
-	public List<Voyage> getVoyageByDestination (Destination destinationIn);
+	public List<Voyage> getVoyageByDestination (Continent continentIn);
 	
 	
 	
