@@ -15,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.adaming.entities.Continent;
@@ -25,7 +26,7 @@ import fr.adaming.service.IVoyageService;
 
 @Controller
 @RequestMapping("/public")
-public class ContinentPaysControleur {
+public class ContinentVoyageControleur {
 
 	// Transformation de l'association UML en JAVA
 	@Autowired
@@ -58,7 +59,7 @@ public class ContinentPaysControleur {
 
 	// ============================= méthodes métier =============================
 
-	@RequestMapping(value = "/afficheContinent", method = RequestMethod.GET)
+	@RequestMapping(value = "/afficheListeContinent", method = RequestMethod.GET)
 	public String afficherContinent(Model modele) {
 		List<Continent> listeContinents = new ArrayList<Continent>(Arrays.asList(Continent.values()));
 
@@ -68,14 +69,23 @@ public class ContinentPaysControleur {
 		return "choixContinentCl";
 	}
 
-	@RequestMapping(value = "/afficheListeVoyage", method = RequestMethod.GET)
-	public ModelAndView afficherVoyage() {
+	@RequestMapping(value = "/submitChoixContinent", method = RequestMethod.GET)
+	public String soumettreChoixContinent(@RequestParam("pContinent") Destination destinationIn) {
 
-		Destination destinationIn;
 		// appel de la méthode service
-		List<Voyage> listeVoyages = voyageService.getAllVoyages();
+		Voyage vOut = (Voyage) voyageService.getVoyageByDestination(destinationIn);
 
-		return new ModelAndView("listeVoyageCl", "voyages", listeVoyages);
+		return "listeVoyageCl";
 	}
+
+//	@RequestMapping(value = "/afficheListeVoyage", method = RequestMethod.GET)
+//	public ModelAndView afficherVoyage(Destination destinationIn) {
+//		
+//
+//		// appel de la méthode service
+//		List<Voyage> listeVoyages = voyageService.getAllVoyages();
+//
+//		return new ModelAndView("listeVoyageCl", "voyages", listeVoyages);
+//	}
 
 }

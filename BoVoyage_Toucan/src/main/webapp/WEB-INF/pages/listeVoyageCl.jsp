@@ -20,19 +20,21 @@
 	<h1 id="titre">Listes des voyages disponibles</h1>
 	<br />
 
-	<div style="text-align: center" class="control-label col-sm-4">
+	<div style="text-align: center" class="control-label col-sm-7">
 
 		<table class="table table-bordered">
 			<tr>
+				<th>Destination</th>
 				<th>Depart</th>
 				<th>Return</th>
-				<th>Nombre de place</th>
-				<th>Prix Agence</th>
-				<th>Prix BoVoyage</th>
+				<th>Places disponibles</th>
+				<th>Prix agence</th>
+				<th>Prix réduit BoVoyage</th>
 			</tr>
 
 			<c:forEach var="v" items="${voyages}">
 				<tr>
+					<td>${v.destination.pays}</td>
 					<td><fmt:formatDate value="${v.dateDebut}"
 							pattern="dd/MM/yyyy" /></td>
 					<td><fmt:formatDate value="${v.dateRetour}"

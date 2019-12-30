@@ -18,6 +18,4 @@ public interface IDestinationService {
 
 	public boolean delete(int id);
 
-	public Destination getDestinationByContinent(Continent continentIn);
-
 }

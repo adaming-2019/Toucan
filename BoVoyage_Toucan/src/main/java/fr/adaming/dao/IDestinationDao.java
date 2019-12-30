@@ -5,6 +5,4 @@ import fr.adaming.entities.Destination;
 
 public interface IDestinationDao extends IGenericDao<Destination> {
 
-	public Destination getDestinationByContinent (Continent continentIn);
-	
 }

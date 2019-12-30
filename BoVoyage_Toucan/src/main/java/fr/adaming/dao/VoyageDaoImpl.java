@@ -23,10 +23,15 @@ public class VoyageDaoImpl extends GenericDaoImpl<Voyage> implements IVoyageDao 
 		Session s = sf.getCurrentSession();
 
 		// création de la requete HQL
-		String req = "FROM Voyage v INNER JOIN Destination d ON v.id_de=d.id_de";
+	//	String req = "FROM Voyage v INNER JOIN Destination d ON v.de_id=d.id_de";
+		
+		String req = "FROM Voyage v, Destination d WHERE v.de_id=d.id_de AND d.continent=pContinent";
 
 		// création du query de hb
 		Query query = s.createQuery(req);
+		
+		// passage de params
+		query.setParameter("pContinent", destinationIn.getContinent());
 
 		// envoie de la requete et récupérer le résultat
 		List<Voyage> listeVoyages = query.list();

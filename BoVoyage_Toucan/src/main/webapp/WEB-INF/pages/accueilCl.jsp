@@ -35,12 +35,5 @@
 
 	</div>
 
-	<form action="http://localhost:8000" method="post"
-		enctype="multipart/form-data">
-
-
-
-	</form>
-
 </body>
 </html>

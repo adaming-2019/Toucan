@@ -55,10 +55,4 @@ public class DestinationServiceImpl implements IDestinationService {
 
 	}
 
-	@Override
-	public Destination getDestinationByContinent(Continent continentIn) {
-		// appel de la méthode
-		return destinationDao.getDestinationByContinent(continentIn);
-	}
-
 }
