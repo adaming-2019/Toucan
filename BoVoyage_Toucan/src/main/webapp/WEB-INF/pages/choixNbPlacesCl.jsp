@@ -33,7 +33,8 @@
 					id="idChx" />
 			</div>
 		</div>
-		
+		<input type="hidden" value="${pId}" />
+
 		<%-- Choix du nombre de places : 
 		<form:input path="nbPlaces" />
 		<form:input type="hidden" path="etat" value="${dossier.etat}" />

@@ -20,7 +20,8 @@
 	<h1 id="titre">Listes des voyages disponibles</h1>
 	<br />
 
-	<div id="login" style="text-align: center" class="control-label col-sm-7">
+	<div id="login" style="text-align: center"
+		class="control-label col-sm-7">
 		<table class="table table-bordered">
 			<tr>
 				<th>Destination</th>
@@ -29,6 +30,7 @@
 				<th>Places disponibles</th>
 				<th>Prix agence</th>
 				<th>Prix réduit BoVoyage</th>
+				<th>Opération</th>
 			</tr>
 			<c:forEach var="v" items="${voyages}">
 				<tr>
@@ -40,10 +42,12 @@
 					<td>${v.nombrePlace}</td>
 					<td>${v.prixAgence}</td>
 					<td>${v.prixBoVoyage}</td>
+					<td><a
+						href="<c:url value='/client/choixNbPlaces?pId=${v.id}' />">Réserver</a>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-	
+
 </body>
 </html>
