@@ -20,8 +20,7 @@
 	<h1 id="titre">Listes des voyages disponibles</h1>
 	<br />
 
-	<div style="text-align: center" class="control-label col-sm-7">
-
+	<div id="login" style="text-align: center" class="control-label col-sm-7">
 		<table class="table table-bordered">
 			<tr>
 				<th>Destination</th>
@@ -31,7 +30,6 @@
 				<th>Prix agence</th>
 				<th>Prix réduit BoVoyage</th>
 			</tr>
-
 			<c:forEach var="v" items="${voyages}">
 				<tr>
 					<td>${v.destination.pays}</td>
@@ -46,5 +44,6 @@
 			</c:forEach>
 		</table>
 	</div>
+	
 </body>
 </html>
