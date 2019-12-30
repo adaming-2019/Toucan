@@ -85,7 +85,7 @@ public class ReservationControleur {
 
 	// ***Fonctionnalité choisir nombre de places
 	@RequestMapping(value = "/choixNbPlaces", method = RequestMethod.GET)
-	public String afficheChoixNbPlaces(Model model, @RequestParam("pId") int idIn) {
+	public String afficheChoixNbPlaces(Model model, @RequestParam(value="pId", required=true) int idIn) {
 
 		// création d'un nouveau dossier
 		Dossier dossier = new Dossier();

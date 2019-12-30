@@ -29,7 +29,7 @@
 		<p>du ${dossier.voyage.dateDebut} au ${dossier.voyage.dateRetour}</p>
 		<br />
 		<p>
-			<b><span>Formule : ${dossier.voyage.formule.formule}
+			<b><span>Formule :</span></b> ${dossier.voyage.formule.formule}
 		</p>
 		<br />
 		<c:if test="${not empty dossier.voyage.prestation}">
@@ -55,7 +55,7 @@
 		</p>
 		<br />
 		<p>
-			<b><span>Informations sur les passagers :
+			<b><span>Informations sur les passagers :</span></b>
 		</p>
 		<c:forEach var="passager" items="${dossier.voyageurs}">
 			<p>${passager.civilite}.${passager.nom} ${passager.prenom}</p>
@@ -80,7 +80,7 @@
 		</c:forEach>
 
 		<p>
-			<b><span>Vous avez séléctionné les assurances suivantes :
+			<b><span>Vous avez séléctionné les assurances suivantes :</span></b>
 		</p>
 		<c:forEach var="assurance" items="${dossier.assurances}">
 			${assurance.type} (montant : ${assurance.montant} EUR)
