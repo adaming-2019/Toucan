@@ -103,8 +103,15 @@ public class ReservationControleur {
 	public String submitChoixNbPlaces(HttpServletRequest req, ModelMap model,
 			@ModelAttribute("dossier") Dossier dossier) {
 		
-		// associer le voyage au dossier
+		// on vérifie que le nombre de places souhaité est supérieur au nombre de places disponible
 		Voyage voyage = voyService.getVoyageById(44);
+		
+		if (voyage.getNombrePlace() < dossier.getNbPlaces()) {
+			return "redirect:choixNbPlaces";
+		}
+		
+		// associer le voyage au dossier
+		
 		dossier.setVoyage(voyage);
 		
 		// associer le client au dossier
@@ -249,12 +256,19 @@ public class ReservationControleur {
 			}
 		}
 		
+		// mettre à jour le nombre de places disponibles pour le voyage
+		Voyage voyage = voyService.getVoyageById(dossier.getVoyage().getId());
+		
+		voyage.setNombrePlace(voyage.getNombrePlace()-dossier.getNbPlaces());
+		
+		voyService.updateVoyage(voyage);
+		
 		// supprimer le dossier de la session
 		maSession.removeAttribute("dossier");
 		
 		if (ajout.getId()!=0 && verif==true) {
 			// appel de la méthode permettant d'afficher la liste des dossiers du client connecté
-			return "listeDossiers";
+			return "redirect:listeDossiers";
 		} else {
 			return "recapitulatifCl";
 		}
