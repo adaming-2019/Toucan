@@ -2,6 +2,8 @@ package fr.adaming.entities;
 
 public enum Formules {
 
+	ERROR,
+	Aucune,
 	Avion,
 	Hotel,
 	Avion_Hotel,
