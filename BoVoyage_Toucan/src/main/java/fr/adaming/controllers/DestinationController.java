@@ -1,5 +1,7 @@
 package fr.adaming.controllers;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+
 import fr.adaming.entities.Destination;
+import fr.adaming.entities.Image;
 import fr.adaming.service.IDestinationService;
 
 @Controller
@@ -24,24 +30,15 @@ public class DestinationController {
 	@Autowired
 	private IDestinationService destiService;
 
-	public void setDestiService(IDestinationService destiService) {
-		this.destiService = destiService;
-	}
-
 	// développement des méthodes
 	// afficher la liste des dossiers
 	@RequestMapping(value = "/listeDestinations", method = RequestMethod.GET)
 	public ModelAndView afficherDestinations() {
 		// récupérer liste dossiers
 		List<Destination> listeDestinations = destiService.getAll();
-		return new ModelAndView("listeDestinationsAdm", "destinations", listeDestinations);
+		return new ModelAndView("listeDestinationsAdm", "destination", listeDestinations);
 	}
 
-	// supprimer une destination
-	@RequestMapping(value = "/deleteDestination", method = RequestMethod.GET)
-	public String supprimerDestination() {
-		return "supprimerDestiantionAdm";
-	}
 
 	@RequestMapping(value = "/suppDestination", method = RequestMethod.GET)
 	public String deleteDestination(RedirectAttributes rda, @RequestParam("pId") int idIn) {
@@ -68,21 +65,41 @@ public class DestinationController {
 		return "ajouterDestinationAdm";
 	}
 
-@RequestMapping(value="/addDestination", method=RequestMethod.POST)
-	public String addDestination (ModelMap modele, @ModelAttribute("destiAdd") Destination dIn) {
+	@RequestMapping(value = "/addDestination", method = RequestMethod.POST)
+	public String addDestination(@ModelAttribute("destiAdd") Destination dIn,
+			@RequestParam("files") MultipartFile[] files, ModelMap modele) {
 		// appel de la méthode service
-		Destination dOut=destiService.add(dIn);
-		
-		if(dOut.getId()!=0) {
-			// récupérer la liste des destinations
-			List<Destination> listeDestinations=destiService.getAll();
+
+		System.out.println("=======================  " + files.length);
+		System.out.println("=======================  " + dIn);
+		if (files.length != 0) {
 			
+			List<Image> listeImages=new ArrayList<Image>();
+			for (MultipartFile file : files) {
+				Image image = new Image();
+				try {
+					image.setPhoto(file.getBytes());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				image.setDestination(dIn);
+				listeImages.add(image);
+			}
+			dIn.setImages(listeImages);
+		}
+		Destination dOut = destiService.add(dIn);
+
+		if (dOut.getId() != 0) {
+			// récupérer la liste des destinations
+			List<Destination> listeDestinations = destiService.getAll();
+
 			modele.addAttribute("destinations", listeDestinations);
 			return "listeDestinationsAdm";
-		}else {
-			
-		}return "redirect:ajoutDestination";
-		
-		
+		} else {
+			return "redirect:ajoutDestination";
+		}
+
 	}
 }

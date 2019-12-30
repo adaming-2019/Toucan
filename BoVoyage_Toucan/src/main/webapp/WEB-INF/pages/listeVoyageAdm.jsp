@@ -52,9 +52,6 @@
 					<td><fmt:formatDate value="${v.dateRetour}"
 							pattern="dd/MM/yyyy" /></td>
 					<td>${v.nombrePlace}</td>
-					<!--
-					<td><img src="${pageContext.request.contextPath}/assets/photos/${v.photos}"/></td>
-					-->
 					<td>${v.photos}</td>
 					<td>${v.prixAgence}</td>
 					<td>${v.prixBoVoyage}</td>

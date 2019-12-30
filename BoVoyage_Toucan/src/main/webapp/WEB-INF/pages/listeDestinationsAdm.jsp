@@ -15,34 +15,33 @@
 
 <!--  lier le fichier css à ma page car boostrap ne se trouve pas dans le même fichier que ma page -->
 <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.css'/>" />
-<link rel="stylesheet" href="<c:url value='/assets/css/BoVoyageStyle.css'/>"/>
+<link rel="stylesheet"
+	href="<c:url value='/assets/css/BoVoyageStyle.css'/>" />
 </head>
 
 <body>
-	<!--  inclure le header -->
-	<%@include file="/templates/header.html"%>
-	<h1 id="titre">Liste des destinations proposées</h1>
-	<br />
-	<%@include file="/templates/menuAdm.html"%>
-
-	<div style="text-align: center" class="control-label col-sm-9">
-		<table class="table table-bordered">
+	<h1 style="color: red; text-align: center;">Liste des destinations
+		proposées</h1>
+	<table class="table table-bordered">
+		<tr>
+			<th>Contient</th>
+			<th>Pays</th>
+			<th>Photos</th>
+		</tr>
+		<c:forEach var="d" items="${destinations}">
 			<tr>
-				<th>Contient</th>
-				<th>Pays</th>
-				<th>Opérations</th>
+				<td>${d.continent}</td>
+				<td>${d.pays}</td>
+				<td><c:forEach var="ph" items="${d.images}">
+						<img src="${ph.photoString}" style="width: 90px; height: 90px" />
+					</c:forEach></td>
+				<td><a href="<c:url value='/admin/updateDestination?pId=${d.id}'/>"><b>Modifier</b></a>
+					| <!-- supprimer directement la destination via la page de la liste -->
+					<a href="<c:url value='/admin/suppDestination?pId=${d.id}'/>"><b>Supprimer</b></a></td>
 			</tr>
-			<c:forEach var="d" items="${destinations}">
-				<tr>
-					<td>${d.continent}</td>
-					<td>${d.pays}</td>
-					<td><a href="<c:url value='/admin/ajoutDestination'/>"><b>Ajouter</b></a>
-						| <!-- supprimer directement la destination via la page de la liste -->
-						<a href="<c:url value='/admin/suppDestination?pId=${d.id}'/>"><b>Supprimer</b></a></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
+		</c:forEach>
+	</table>
+
 
 
 </body>

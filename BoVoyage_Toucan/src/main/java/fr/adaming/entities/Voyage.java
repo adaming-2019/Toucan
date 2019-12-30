@@ -87,7 +87,9 @@ public class Voyage implements Serializable {
 	}
 
 	// constructeur complet sans id
-	public Voyage(Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage, boolean statut, byte[] photos) {
+	public Voyage(Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage,
+			boolean statut, byte[] photos, Agence agence, LoueurVehicule loueurVehicule,
+			CategorieVehicule categorieVehicule, Formule formule, Destination destination, Prestation prestation) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateRetour = dateRetour;
@@ -96,10 +98,18 @@ public class Voyage implements Serializable {
 		this.prixBoVoyage = prixBoVoyage;
 		this.statut = statut;
 		this.photos = photos;
+		this.agence = agence;
+		this.loueurVehicule = loueurVehicule;
+		this.categorieVehicule = categorieVehicule;
+		this.formule = formule;
+		this.destination = destination;
+		this.prestation = prestation;
 	}
 	
-	// constructeur complet sans id
-	public Voyage(int id, Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage, boolean statut, byte[] photos) {
+	// constructeur complet avec id
+	public Voyage(int id, Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage,
+			boolean statut, byte[] photos, Agence agence, LoueurVehicule loueurVehicule,
+			CategorieVehicule categorieVehicule, Formule formule, Destination destination, Prestation prestation) {
 		super();
 		this.id = id;
 		this.dateDebut = dateDebut;
@@ -109,6 +119,12 @@ public class Voyage implements Serializable {
 		this.prixBoVoyage = prixBoVoyage;
 		this.statut = statut;
 		this.photos = photos;
+		this.agence = agence;
+		this.loueurVehicule = loueurVehicule;
+		this.categorieVehicule = categorieVehicule;
+		this.formule = formule;
+		this.destination = destination;
+		this.prestation = prestation;
 	}
 
 	// Getters & Setters
@@ -234,21 +250,23 @@ public class Voyage implements Serializable {
 	}
 
 	// methodes metiers
-	
+	/**
 	@Override
 	public String toString() {
 		return "Voyage [id=" + id + ", dateDebut=" + dateDebut + ", dateRetour=" + dateRetour + ", nombrePlace="
 				+ nombrePlace + ", prixAgence=" + prixAgence + ", prixBoVoyage=" + prixBoVoyage + ", statut=" + statut
 				+ ", photos=" + Arrays.toString(photos) + "]";
 	}
-	/**
+	**/
 	@Override
 	public String toString() {
 		return "Voyage [id=" + id + ", dateDebut=" + dateDebut + ", dateRetour=" + dateRetour + ", nombrePlace="
 				+ nombrePlace + ", prixAgence=" + prixAgence + ", prixBoVoyage=" + prixBoVoyage + ", statut=" + statut
-				+ ", photos=" + photos + "]";
-	}	
-	**/
+				+ ", photos=" + Arrays.toString(photos) + ", agence=" + agence + ", loueurVehicule=" + loueurVehicule
+				+ ", categorieVehicule=" + categorieVehicule + ", formule=" + formule + ", destination=" + destination
+				+ ", prestation=" + prestation + "]";
+	}
+	
 	
 	
 	

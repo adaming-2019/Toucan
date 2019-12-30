@@ -3,6 +3,7 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,26 +15,30 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="destinations")
+@Table(name = "destinations")
 
-public class Destination implements Serializable{
+public class Destination implements Serializable {
 
 	// declaration des attributs
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_de")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_de")
 	private int id;
-	
-	@Column(name="continent_de")
+
+	@Column(name = "continent_de")
 	@Enumerated(EnumType.STRING)
 	Continent continent;
-	
-	@Column(name="pays_de")
+
+	@Column(name = "pays_de")
 	private String pays;
-	
+
 	// transformation de l'association UML en Java
-	@OneToMany(mappedBy="destination")
+	@OneToMany(mappedBy = "destination")
 	private List<Voyage> voyages;
+
+	
+	@OneToMany(mappedBy="destination",cascade=CascadeType.ALL)
+	private List<Image> images;
 
 	// declaration des constructeurs
 	public Destination() {
@@ -86,12 +91,17 @@ public class Destination implements Serializable{
 		this.voyages = voyages;
 	}
 
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
 	@Override
 	public String toString() {
 		return "Destination [id=" + id + ", continent=" + continent + ", pays=" + pays + "]";
 	}
 
-	
-	
-	
 }

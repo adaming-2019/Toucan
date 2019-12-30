@@ -85,7 +85,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idAgence">Agence</label>
 			<div class="col-sm-2">
-				  <form:select path="agence.id" >
+				  <form:select path="agence.id" id="idAgence" >
 					<c:forEach var="agences" items="${listeAgences}" varStatus="loop">
 							<!--
 							<option value="${agences.id}" >${agences}</option>
@@ -124,7 +124,7 @@
 							<!--
 							<option value="${agences.id}" >${agences}</option>
 							-->
-							<option value="${loop.index+1}" >${dest.contient},${dest.pays}</option>
+							<option value="${loop.index+1}" >${dest}</option>
 					</c:forEach>	
 				  </form:select>
 			</div>
