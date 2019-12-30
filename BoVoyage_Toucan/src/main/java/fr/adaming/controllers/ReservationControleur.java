@@ -85,8 +85,11 @@ public class ReservationControleur {
 
 	// ***Fonctionnalité choisir nombre de places
 	@RequestMapping(value = "/choixNbPlaces", method = RequestMethod.GET)
-	public String afficheChoixNbPlaces(Model model, @RequestParam(value="pId", required=true) int idIn) {
-
+	public String afficheChoixNbPlaces(HttpServletRequest req, Model model, @RequestParam(value = "pId", required = false) Integer idIn) {
+		
+		System.out.println("id choixNbPlaces : "+idIn);
+		
+		
 		// création d'un nouveau dossier
 		Dossier dossier = new Dossier();
 
@@ -96,7 +99,12 @@ public class ReservationControleur {
 
 		// passage du dossier créé en paramètre de la requête
 		model.addAttribute("dossier", dossier);
-		model.addAttribute("voyage", voyage);
+		
+		// ajouter le voyage à la session
+		HttpSession maSession = req.getSession();
+		
+		maSession.setAttribute("voyage", voyage);
+		
 
 		return "choixNbPlacesCl";
 
@@ -105,13 +113,21 @@ public class ReservationControleur {
 	// *** Fonctionnalité saisir voyageur
 	@RequestMapping(value = "/saisieVoyageur", method = RequestMethod.POST)
 	public String submitChoixNbPlaces(HttpServletRequest req, ModelMap model,
-			@ModelAttribute("dossier") Dossier dossier, @ModelAttribute("voyage") Voyage voyage) {
-
+			@ModelAttribute("dossier") Dossier dossier) {
+		
+		// récupérer le voyage dans la session
+		HttpSession maSession = req.getSession();
+		
+		Voyage voyage = (Voyage) maSession.getAttribute("voyage");
+		
 		// on vérifie que le nombre de places souhaité est supérieur au nombre de places
 		// disponible
-
+		System.out.println("voy places : " + voyage.getNombrePlace());
+		System.out.println("doss places : " + dossier.getNbPlaces());
 		if (voyage.getNombrePlace() < dossier.getNbPlaces()) {
-			return "redirect:choixNbPlaces";
+			// supprimer le voyage de la session
+			maSession.removeAttribute("voyage");
+			return "redirect:choixNbPlaces?pId="+voyage.getId();
 		}
 
 		// associer le voyage au dossier
@@ -131,8 +147,6 @@ public class ReservationControleur {
 		dossier.setVoyageurs(new ArrayList<Voyageur>());
 
 		// ajout du dossier dans la session
-		HttpSession maSession = req.getSession();
-
 		maSession.setAttribute("dossier", dossier);
 
 		// ajout d'un nouveau voyageur comme attribut du modèle mvc
