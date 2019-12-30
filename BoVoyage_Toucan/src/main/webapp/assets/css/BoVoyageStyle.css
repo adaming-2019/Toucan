@@ -6,7 +6,7 @@ body {
 .hero-image {
 	background-image: url("../images/plage.jpg");
 	background-color: #cccccc;
-	height: 500px;
+	height: 400px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

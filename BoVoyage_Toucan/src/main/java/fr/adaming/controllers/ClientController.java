@@ -32,7 +32,7 @@ public class ClientController {
 	public void setClientService(IClientService clientService) {
 		this.clientService = clientService;
 	}
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 
@@ -44,37 +44,30 @@ public class ClientController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
 
 	}
-	
+
 	@RequestMapping(value = "/admin/listeClient", method = RequestMethod.GET)
 	public ModelAndView afficheListe() {
 		// recup de la liste des Clients
 		List<Client> listeClients = clientService.getAllClients();
-		
+
 		System.out.println(listeClients);
 
 		/**
-	    String example = "This is an example";
-	    byte[] bytes = example.getBytes();
+		 * String example = "This is an example"; byte[] bytes = example.getBytes();
+		 * 
+		 * System.out.println("Text : " + example); System.out.println("Text [Byte
+		 * Format] : " + bytes); System.out.println("Text [Byte Format] : " +
+		 * bytes.toString());
+		 * 
+		 * String s = new String(bytes); System.out.println("Text Decryted : " + s);
+		 * 
+		 * Iterator iterator = listeClients.iterator(); while(iterator.hasNext()) {
+		 * System.out.println(iterator.next()+"\n\n"); }
+		 **/
 
-	    System.out.println("Text : " + example);
-	    System.out.println("Text [Byte Format] : " + bytes);
-	    System.out.println("Text [Byte Format] : " + bytes.toString());
-
-	    String s = new String(bytes);
-	    System.out.println("Text Decryted : " + s);
-
-		Iterator iterator = listeClients.iterator();
-		while(iterator.hasNext()) {
-		    System.out.println(iterator.next()+"\n\n");
-		}
-		**/
-		
-		
-		
-		
 		return new ModelAndView("listeClientAdm", "clients", listeClients);
 	}
-	
+
 	@RequestMapping(value = "/admin/afficherAddClient", method = RequestMethod.GET)
 	public String afficheAjouter(Model model) {
 		model.addAttribute("clientAdd", new Client());
@@ -97,6 +90,28 @@ public class ClientController {
 		}
 	}
 
+	@RequestMapping(value = "/public/afficherCreateAccount", method = RequestMethod.GET)
+	public String showAjouterCompte(Model model) {
+		model.addAttribute("clientAdd", new Client());
+		return "creerCompte";
+	}
+
+	@RequestMapping(value = "/public/submitCreateAccount", method = RequestMethod.POST)
+	public String AjouterCompte(Model model, @ModelAttribute("clientAdd") Client ClientIn) {
+		// Appel de la méthode service
+		Client cOut = clientService.addClient(ClientIn);
+		if (cOut.getId() != 0) {
+			List<Client> listeClients = clientService.getAllClients();
+
+			// Mettre à jour la listes
+			model.addAttribute("clients", listeClients);
+
+			return "redirect:accueilCl";
+		} else {
+			return "redirect:creerCompte";
+		}
+	}
+
 	@RequestMapping(value = "/admin/afficherUpdateClient", method = RequestMethod.GET)
 	public ModelAndView afficheModifier() {
 		return new ModelAndView("modifierClientAdm", "cUpdate", new Client());
@@ -114,28 +129,27 @@ public class ClientController {
 	}
 
 	/**
-	@RequestMapping(value = "/admin/afficherDeleteClient", method = RequestMethod.GET)
-	public String afficheSupprimer(Model model) {
-		model.addAttribute("ClientDelete", new Client());
-		return "modifierClientAdm";
-	}
-
-	@RequestMapping(value = "/admin/submitDeleteClient", method = RequestMethod.POST)
-	public String soumettreSupprimer(Model model, @ModelAttribute("ClientDelete") Client ClientIn, @RequestParam("pId") int idIn) {
-		// Appel de la méthode service
-		boolean eOut = ClientService.deleteClient(idIn);
-		if (eOut != false) {
-			List<Client> listeClients = ClientService.getAllClients();
-
-			// Mettre à jour la liste
-			model.addAttribute("Clients", listeClients);
-
-			return "redirect:listeClient";
-		} else {
-			return "redirect:afficherDeleteClient";
-		}
-	}
-	**/
+	 * @RequestMapping(value = "/admin/afficherDeleteClient", method =
+	 *                       RequestMethod.GET) public String afficheSupprimer(Model
+	 *                       model) { model.addAttribute("ClientDelete", new
+	 *                       Client()); return "modifierClientAdm"; }
+	 * 
+	 * @RequestMapping(value = "/admin/submitDeleteClient", method =
+	 *                       RequestMethod.POST) public String
+	 *                       soumettreSupprimer(Model
+	 *                       model, @ModelAttribute("ClientDelete") Client
+	 *                       ClientIn, @RequestParam("pId") int idIn) { // Appel de
+	 *                       la méthode service boolean eOut =
+	 *                       ClientService.deleteClient(idIn); if (eOut != false) {
+	 *                       List<Client> listeClients =
+	 *                       ClientService.getAllClients();
+	 * 
+	 *                       // Mettre à jour la liste model.addAttribute("Clients",
+	 *                       listeClients);
+	 * 
+	 *                       return "redirect:listeClient"; } else { return
+	 *                       "redirect:afficherDeleteClient"; } }
+	 **/
 
 	@RequestMapping(value = "/admin/afficherDeleteClient", method = RequestMethod.GET)
 	public String afficheSupprimer() {
@@ -153,19 +167,17 @@ public class ClientController {
 			return "redirect:afficherDeleteClient";
 		}
 	}
-	
+
 	// Lien pour modif
-	@RequestMapping(value="/admin/linkUpdateClient", method=RequestMethod.GET)
+	@RequestMapping(value = "/admin/linkUpdateClient", method = RequestMethod.GET)
 	public String getModifLien(Model modele, @RequestParam("pId") int idIn) {
-		
+
 		Client cOut = clientService.getClientById(idIn);
-		
+
 		modele.addAttribute("cUpdate", cOut);
-		
+
 		return "modifierClientAdm";
-		
+
 	}
-	
-	
-	
+
 }
