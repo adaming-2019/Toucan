@@ -3,8 +3,8 @@ package fr.adaming.entities;
 public enum Continent {
 
 	Afrique,
-	Amérique,
+	Amerique,
 	Asie,
 	Europe,
-	Océanie,
+	Oceanie,
 }
