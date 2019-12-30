@@ -28,19 +28,6 @@
 		<table class="table table-bordered">
 			<tr>
 
-				<td>${v.nom}</td>
-				<td>${v.prenom}</td>
-				<td>${v.numSiege}</td>
-				<td>${v.dossier}</td>
-				<td><fmt:formatDate value="${v.dn}" pattern="dd/MM/yyyy"/></td>
-				<td>${v.adresse}</td>
-				<td>${v.telephone}</td>
-				<td>${v.nationalite}</td>
-				<!-- pour accèder directement au dossier voyageur-->
-				<td><a href="<c:url value='  '/>"><b>Accès dossier</b></a> |
-				<a href="<c:url value='/admin/updateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a> |
-				<a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a></td>
-
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th>Numéro de siège</th>
@@ -64,8 +51,8 @@
 					<td>${v.telephone}</td>
 					<td>${v.nationalite}</td>
 					<!-- pour accèder directement au dossier voyageur-->
-					<td><a href="<c:url value='  '/>"><b>Accès dossier</b></a> | <a
-						href="<c:url value='/admin/updateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a>
+					<td><a href="<c:url value='/admin/listeDossierAdm'/>"><b>Accès dossier</b></a> | <a
+						href="<c:url value='/admin//linkUpdateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a>
 						| <a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a>
 				</tr>
 			</c:forEach>

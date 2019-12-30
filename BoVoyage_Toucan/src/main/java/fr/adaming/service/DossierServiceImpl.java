@@ -50,7 +50,6 @@ public class DossierServiceImpl implements IDossierService {
 			// modifier l'objet récupéré avec les nouvelles valeurs en java
 			dOut.setEtat(dossierIn.getEtat());
 			dOut.setNbPlaces(dossierIn.getNbPlaces());
-			
 		}
 		return true;
 	}

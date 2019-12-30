@@ -8,7 +8,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,24 +81,33 @@ public class VoyageurController {
 
 	// formulaire de modification d'un voyageur
 	@RequestMapping(value = "/modifVoyageur", method = RequestMethod.GET)
-	public String modifierVoyageur() {
-		return "modifierVoyageurAdm";
+	public ModelAndView modifierVoyageur() {
+		return new ModelAndView("modifierVoyageurAdm", "vgrModif", new Voyageur());
 	}
 
 	@RequestMapping(value = "/updateVoyageur", method = RequestMethod.POST)
-	public String updateVoyageur(RedirectAttributes rda, @RequestParam("pId") int idIn) {
+	public String updateVoyageur(RedirectAttributes rda, Model modele, @ModelAttribute("vgrModif") Voyageur eIn) {
 
-		Voyageur vIn = new Voyageur();
-		vIn.setId(idIn);
-
-		boolean verif = vrService.updateVoyageur(vIn);
+		boolean verif = vrService.updateVoyageur(eIn);
 		if (verif) {
 			return "redirect:listeVoyageurs";
 		} else {
 			// l'objet RedirectAttributes sert à transporter les attributs du
 			// modele mvc lors de la redirection
 			rda.addFlashAttribute("msg", "Le voyageur à modifier n'existe pas");
-			return "redirect:updateVoyageur";
+			return "redirect:modifVoyageur";
 		}
+	}
+
+	// lien pour modifier un voyageur
+	@RequestMapping(value="/linkUpdateVoyageur", method=RequestMethod.GET)
+	public String getModifLien(Model modele, @RequestParam ("pId") Voyageur eIn) {
+	
+	Voyageur vOut=vrService.getVoyageurById(eIn) ;
+	
+	
+	modele.addAttribute("vgrModif", vOut);
+	
+	return "modifierVoyageurAdm";
 	}
 }
