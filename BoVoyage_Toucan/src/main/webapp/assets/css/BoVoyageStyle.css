@@ -20,7 +20,8 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: white;
-	text-align: center;}
+	text-align: center;
+}
 
 .container {
 	position: relative;
@@ -85,7 +86,7 @@ body {
 	border-top-right-radius: 25px;
 	border-top-left-radius: 25px;
 	text-align: center;
-	color: darkblue;
+	color: black;
 	padding: 10px;
 	text-align: center;
 }

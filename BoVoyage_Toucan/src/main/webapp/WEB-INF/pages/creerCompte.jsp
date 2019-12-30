@@ -17,13 +17,15 @@
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
 	<h1 id="titre">Créer votre compte client BoVoyage</h1>
+	<br />
+	<br />
 	<div id="login">
 		<form:form class="form-horizontal" method="POST"
 			action="submitCreateAccount" modelAttribute="compteAdd">
 
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idAdresse">Adresse</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idAdresse">Adresse</label>
+				<div class="col-sm-4">
 					<form:input path="adresse" type="text" class="form-control"
 						id="idAdresse" placeholder="Adresse" />
 				</div>
@@ -31,8 +33,8 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idCivilite">Civilite</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idCivilite">Civilite</label>
+				<div class="col-sm-4">
 					<form:input path="civilite" type="text" class="form-control"
 						id="idCivilite" placeholder="Civilite" />
 				</div>
@@ -40,9 +42,9 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idDn">Date de
+				<label class="control-label col-sm-2" for="idDn">Date de
 					naissance</label>
-				<div class="col-sm-2">
+				<div class="col-sm-4">
 					<form:input path="dn" type="date" class="form-control" id="idDn"
 						placeholder="Date de naissance" />
 				</div>
@@ -50,8 +52,8 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idNationalite">Nationalite</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idNationalite">Nationalite</label>
+				<div class="col-sm-4">
 					<form:input path="nationalite" type="text" class="form-control"
 						id="idNationalite" placeholder="Nationalite" />
 				</div>
@@ -59,8 +61,8 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idNom">Nom</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idNom">Nom</label>
+				<div class="col-sm-4">
 					<form:input path="nom" type="text" class="form-control" id="idNom"
 						placeholder="Nom" />
 				</div>
@@ -68,15 +70,15 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idPrenom">Prenom</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idPrenom">Prenom</label>
+				<div class="col-sm-4">
 					<form:input path="prenom" type="text" class="form-control"
 						id="idPrenom" placeholder="Prenom" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idTelephone">Telephone</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idTelephone">Telephone</label>
+				<div class="col-sm-4">
 					<form:input path="telephone" type="text" class="form-control"
 						id="idTelephone" placeholder="Telephone" />
 				</div>
@@ -84,16 +86,16 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idCB">CB</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idCB">CB</label>
+				<div class="col-sm-4">
 					<form:input path="cb" type="text" class="form-control" id="idCB"
 						placeholder="CB" />
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idLogin">Adresse
+				<label class="control-label col-sm-2" for="idLogin">Adresse
 					mail</label>
-				<div class="col-sm-2">
+				<div class="col-sm-4">
 					<form:input path="login" type="text" class="form-control"
 						id="idLogin" placeholder="Adresse mail" />
 				</div>
@@ -101,9 +103,9 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idMdp">Mot de
+				<label class="control-label col-sm-2" for="idMdp">Mot de
 					passe</label>
-				<div class="col-sm-2">
+				<div class="col-sm-4">
 					<form:input path="mdp" type="text" class="form-control" id="idMdp"
 						placeholder="Mot de passe" />
 				</div>
@@ -111,12 +113,12 @@
 			<br />
 			<br />
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idStatut">Statut</label>
-				<div class="col-sm-2">
+				<label class="control-label col-sm-2" for="idStatut">Statut</label>
+				<div class="col-sm-4">
 					<form:input path="active" type="text" class="form-control"
 						id="idStatut" placeholder="Statut" />
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-5">
 					<input class="btn btn-success" type="submit" value="Valider" />
 				</div>
 			</div>
