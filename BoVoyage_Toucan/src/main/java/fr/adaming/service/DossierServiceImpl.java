@@ -42,7 +42,16 @@ public class DossierServiceImpl implements IDossierService {
 
 	@Override
 	public boolean updateDossier(Dossier dossierIn) {
-		dossierDao.update(dossierIn);
+	
+		//récupérer le dossier 
+		Dossier dOut=dossierDao.getById(dossierIn.getId());
+		
+		if(dOut!=null) {
+			// modifier l'objet récupéré avec les nouvelles valeurs en java
+			dOut.setEtat(dossierIn.getEtat());
+			dOut.setNbPlaces(dossierIn.getNbPlaces());
+			
+		}
 		return true;
 	}
 

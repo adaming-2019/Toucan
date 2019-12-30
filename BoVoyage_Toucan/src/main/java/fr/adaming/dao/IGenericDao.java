@@ -11,7 +11,7 @@ public interface IGenericDao<T> {
 
 	public T add(T t);
 
-	public T update(T t);
+	public T update(T dossierIn);
 
 	public void delete(int id);
 

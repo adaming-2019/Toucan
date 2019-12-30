@@ -44,12 +44,12 @@ public class DossierController {
 		return "modifierDossierAdm";	
 	}
 	@RequestMapping(value="/updateDossier", method=RequestMethod.POST)
-	public String updateDossier(RedirectAttributes rda, Model modele,@RequestParam("pId") Dossier dossierIn) {
+	public String updateDossier(RedirectAttributes rda, Model modele,@RequestParam("pId") int dossierIn) {
 		
 		Dossier dIn=new Dossier();
 		dIn.setId(dossierIn);
 		
-		boolean verif=dservices.updateDossier(dossierIn);
+		boolean verif=dservices.updateDossier(dIn);
 		if(verif){
 			return "redirect:listeDossiers";
 		}else {
