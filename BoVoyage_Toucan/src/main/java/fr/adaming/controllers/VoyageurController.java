@@ -83,7 +83,7 @@ public class VoyageurController {
 		return "modifierVoyageurAdm";
 	}
 
-	@RequestMapping(value = "/updateVoyageur", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateVoyageur", method = RequestMethod.POST)
 	public String updateVoyageur(RedirectAttributes rda, @RequestParam("pId") int idIn) {
 
 		Voyageur vIn = new Voyageur();
