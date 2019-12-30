@@ -55,6 +55,7 @@ public class VoyageurController {
 		return new ModelAndView("listeVoyageursAdm", "voyageurs", listeVoyageur);
 	}
 
+	
 	// formulaire de suppression d'un voyageur.
 	@RequestMapping(value = "/deleteVoyageur", method = RequestMethod.GET)
 	public String supprimerVoyageur() {

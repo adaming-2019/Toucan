@@ -10,7 +10,7 @@
 
 <head>
 <meta charset="ISO-8859-1">
-<title>Page de suppression</title>
+<title>Suppression Voyageur</title>
 
 <!-- Lier lb bootstrap à ma page -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
@@ -28,7 +28,7 @@
 		Id : <input type="number" name="pId" />
 		<br />
 		<br />
-		<input class="btn btn-danger" type="submit" value="supprimer">
+		<input class="btn btn-danger" type="submit" value="supprimer le voyageur">
 	</form:form>
 
 	<h1 style="color: red; text-align: center;">${msg}</h1>

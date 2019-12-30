@@ -12,8 +12,8 @@
 <meta charset="ISO-8859-1">
 <title>Modification voyageur</title>
 <!-- Lier lb bootstrap à ma page -->
-<link rel="stylesheet"
-	href="<c:url value='/assets/css/bootstrap.css' />" />
+<link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.css' />" />
+<link rel="stylesheet" href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
 
 
 </head>
@@ -28,9 +28,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idSiege">Numero du siège</label>
 			<div class="col-sm-2">
-				<form:input path="numSiege" 
-				type="text" 
-				class="form-control" id="idSiege" />
+				<form:input path="numSiege"  type="text" class="form-control" id="idSiege" />
 			</div>
 		</div>
 		<br />
@@ -38,8 +36,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idDossier">Dossier</label>
 			<div class="col-sm-2">
-				<form:input path="dossier" type="text" class="form-control"
-					id="idDossier" placeholder="Dossier" />
+				<form:input path="dossier" type="text" class="form-control" id="idDossier" placeholder="Dossier" />
 			</div>
 	
 			<div class="col-sm-3">
