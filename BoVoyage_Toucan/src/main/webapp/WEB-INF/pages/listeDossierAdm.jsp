@@ -29,6 +29,7 @@
 		<th>Prénom Client</th>
 		<th>Voyageurs accompagnants</th>
 		<th>Assurance</th>
+		<th>Opérations</th>
 	</tr>
 <c:forEach var="d" items="${dossiers}">
 			<tr>

@@ -30,14 +30,15 @@
 			<tr>
 				<th>Contient</th>
 				<th>Pays</th>
+				<th>Opérations</th>
 			</tr>
 			<c:forEach var="d" items="${destinations}">
 				<tr>
 					<td>${d.continent}</td>
 					<td>${d.pays}</td>
-					<td><a href="<c:url value='/admin/addDestination=${d.id}'/>"><b>Ajouter</b></a>
+					<td><a href="<c:url value='/admin/ajoutDestination'/>"><b>Ajouter</b></a>
 						| <!-- supprimer directement la destination via la page de la liste -->
-						<a href="<c:url value='/admin/suppDestination=${d.id}'/>"><b>Supprimer</b></a></td>
+						<a href="<c:url value='/admin/suppDestination?pId=${d.id}'/>"><b>Supprimer</b></a></td>
 				</tr>
 			</c:forEach>
 		</table>

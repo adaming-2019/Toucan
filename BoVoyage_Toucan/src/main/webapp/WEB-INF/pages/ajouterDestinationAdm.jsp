@@ -24,17 +24,26 @@
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
 
-<form:form cssClass="form-horizontal" method="POST" action="addDestination" modelAttribute="destiAdd">
+<form:form cssClass="form-horizontal" method="post" action="addDestination" modelAttribute="destiAdd">
 <div class="form-group">
+
+<label class="control-label col-sm-1" for="idContinent">Continent</label>
+			<div class="col-sm-2">
+				<form:input path="continent" type="text" class="form-control" id="idContinent" placeholder="Continent" />
+			</div>
+			
 			<label class="control-label col-sm-1" for="idPays">Pays</label>
 			<div class="col-sm-2">
 				<form:input path="pays" type="text" class="form-control" id="idPays" placeholder="Pays" />
-			</div>
+			</div>	
 			<div class="col-sm-3">
 				<input class="btn btn-success" type="submit" value="Ajouter cette destination" />
 			</div>
+				
 		</div>
 
+			
+	
 </form:form>
 </body>
 </html>
