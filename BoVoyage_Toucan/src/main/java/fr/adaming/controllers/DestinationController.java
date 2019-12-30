@@ -34,7 +34,7 @@ public class DestinationController {
 	public ModelAndView afficherDestinations() {
 		// récupérer liste dossiers
 		List<Destination> listeDestinations = destiService.getAll();
-		return new ModelAndView("listeDestinationsAdm", "destination", listeDestinations);
+		return new ModelAndView("listeDestinationsAdm", "destinations", listeDestinations);
 	}
 
 	// supprimer une destination

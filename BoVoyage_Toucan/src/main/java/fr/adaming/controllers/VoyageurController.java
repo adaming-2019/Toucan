@@ -37,7 +37,7 @@ public class VoyageurController {
 	public void initBinder(WebDataBinder binder) {
 		// l'objet web databinder sert à faire le lien entre les params de la requete et
 		// les objets java.
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		df.setLenient(false);
 		// la méthode registerCustomEditor() :sert à configuer la conversion du
 		// paramètre reçu

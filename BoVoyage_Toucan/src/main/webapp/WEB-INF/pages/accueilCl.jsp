@@ -6,13 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Lier lb bootstrap à ma page -->
-<link rel="stylesheet"
-	href="<c:url value='/assets/css/bootstrap.css' />" />
-<link rel="stylesheet"
-	href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
 <meta charset="ISO-8859-1">
 <title>Liste Continents</title>
+<!-- Lier lb bootstrap à ma page -->
+<link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.css' />" />
+<link rel="stylesheet" href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
+
+
 </head>
 <body>
 	<!--  inclure le header -->
@@ -22,12 +22,14 @@
 	<div id="login">
 		<form:form class="form-horizontal" method="get"
 			action="submitChoixContinent">
-			<select name="pContinent" class="form-control">
-				<c:forEach var="cont" items="${listeCont}">
-					<option>${cont}</option>
-				</c:forEach>
+			<div class="col-sm-2">
+				<select name="pContinent" class="form-control">
+					<c:forEach var="cont" items="${listeCont}">
+						<option>${cont}</option>
+					</c:forEach>
 
-			</select>
+				</select>
+			</div>
 			<br />
 			<br />
 			<br />

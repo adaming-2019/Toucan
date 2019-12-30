@@ -27,6 +27,7 @@
 		<th>Nombre de places</th>
 		<th>Nom Client</th>
 		<th>Prénom Client</th>
+		<th>Voyageurs accompagnants</th>
 		<th>Assurance</th>
 	</tr>
 <c:forEach var="d" items="${dossiers}">
@@ -35,13 +36,14 @@
 				<td>${d.voyage}</td>
 				<td>${d.etat}</td>
 				<td>${d.nbPlaces}</td>
-				<td>${d.nom}</td>
-				<td>${d.prenom}</td>
-				<td>${v.assurances}</td>
+				<td>${d.client.nom}</td>
+				<td>${d.client.prenom}</td>
+				<td>${d. }</td>
+				<td>${d.assurances}</td>
 				
 				<td><a href="<c:url value='/admin/updateDossier=${d.id}'/>"><b>Modifier</b></a> |
 				<!-- supprimer directement le dossier via la page de la liste -->
-				<a href="<c:url value='/admin   =${d.id}'/>"><b>Supprimer</b></a></td>
+				<a href="<c:url value='/admin/deleteDossier =${d.id}'/>"><b>Supprimer</b></a></td>
 			</tr>
 			</c:forEach>
 	</table>

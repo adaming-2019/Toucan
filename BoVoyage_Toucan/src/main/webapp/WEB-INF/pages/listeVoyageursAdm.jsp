@@ -12,12 +12,11 @@
 <meta charset="ISO-8859-1">
 <title>Liste des voyageurs</title>
 <!-- Lier lb bootstrap à ma page -->
-<link rel="stylesheet"
-	href="<c:url value='/assets/css/bootstrap.css' />" />
-<link rel="stylesheet"
-	href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
-
+<link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.css' />" />
+<link rel="stylesheet" href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
 </head>
+
+
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
@@ -51,7 +50,7 @@
 					<td>${v.telephone}</td>
 					<td>${v.nationalite}</td>
 					<!-- pour accèder directement au dossier voyageur-->
-					<td><a href="<c:url value='/admin/listeDossierAdm'/>"><b>Accès dossier</b></a> | <a
+					<td><a href="<c:url value='/admin/listeDossiers'/>"><b>Accès dossier</b></a> | <a
 						href="<c:url value='/admin//linkUpdateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a>
 						| <a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a>
 				</tr>

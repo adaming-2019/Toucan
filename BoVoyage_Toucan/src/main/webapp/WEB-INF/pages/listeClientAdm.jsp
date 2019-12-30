@@ -49,8 +49,7 @@
 				<tr>
 					<td>${c.adresse}</td>
 					<td>${c.civilite}</td>
-					<td><fmt:formatDate value="${c.dn}"
-							pattern="dd-MM-yyyy" /></td>
+					<td><fmt:formatDate value="${c.dn}" pattern="dd-MM-yyyy" /></td>
 					<td>${c.nationalite}</td>
 					<td>${c.nom}</td>
 					<td>${c.prenom}</td>
