@@ -26,7 +26,7 @@
 			<tr>
 				<th>Destination</th>
 				<th>Depart</th>
-				<th>Return</th>
+				<th>Retour</th>
 				<th>Places disponibles</th>
 				<th>Prix agence</th>
 				<th>Prix réduit BoVoyage</th>
