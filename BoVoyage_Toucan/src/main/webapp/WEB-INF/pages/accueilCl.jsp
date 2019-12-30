@@ -19,20 +19,20 @@
 	<%@include file="/templates/header.html"%>
 	<h1 id="titre">Listes des continents disponibles</h1>
 	<br />
+	<div id="login">
+		<div class="control-label col-sm-4">
+			<form method="get" action="submitChoixContinent">
+				<select name="pContinent" class="form-control">
+					<c:forEach var="cont" items="${listeCont}">
+						<option>${cont}</option>
+					</c:forEach>
 
-	<div style="text-align: center" class="control-label col-sm-4">
-		<form method="get" action="submitChoixContinent">
-			<select name="pContinent" class="form-control">
-				<c:forEach var="cont" items="${listeCont}">
-					<option>${cont}</option>
-				</c:forEach>
+				</select> <br /> <br /> <br />
 
-			</select> <br /> <br /> <br />
-
-			<button type="submit" class="btn btn-info" value="Rechercher">Recherche</button>
-			<br /> <br /> <br />
-		</form>
+				<button type="submit" class="btn btn-info" value="Rechercher">Recherche</button>
+				<br /> <br /> <br />
+			</form>
+		</div>
 	</div>
-
 </body>
 </html>
