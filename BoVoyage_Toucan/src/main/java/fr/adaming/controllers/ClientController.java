@@ -92,12 +92,12 @@ public class ClientController {
 
 	@RequestMapping(value = "/public/afficherCreateAccount", method = RequestMethod.GET)
 	public String showAjouterCompte(Model model) {
-		model.addAttribute("clientAdd", new Client());
+		model.addAttribute("compteAdd", new Client());
 		return "creerCompte";
 	}
 
 	@RequestMapping(value = "/public/submitCreateAccount", method = RequestMethod.POST)
-	public String AjouterCompte(Model model, @ModelAttribute("clientAdd") Client ClientIn) {
+	public String AjouterCompte(Model model, @ModelAttribute("compteAdd") Client ClientIn) {
 		// Appel de la méthode service
 		Client cOut = clientService.addClient(ClientIn);
 		if (cOut.getId() != 0) {
