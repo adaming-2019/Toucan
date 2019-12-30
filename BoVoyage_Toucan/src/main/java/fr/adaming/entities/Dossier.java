@@ -33,7 +33,7 @@ public class Dossier implements Serializable {
 	private int nbPlaces;
 	
 	// transformation de l'association UML en Java
-	@ManyToMany(mappedBy="dossiers", fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="dossiers")
 	private List<Assurance> assurances;
 	
 	@OneToMany(mappedBy="dossier")
