@@ -17,8 +17,8 @@
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
 	<h1 id="titre">Créer votre compte client BoVoyage</h1>
-	<div>
-		<form:form class="form-horizontal" id="login" method="POST"
+	<div id="login">
+		<form:form class="form-horizontal" method="POST"
 			action="submitCreateAccount" modelAttribute="compteAdd">
 
 			<div class="form-group">
@@ -91,10 +91,11 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-1" for="idLogin">Login</label>
+				<label class="control-label col-sm-1" for="idLogin">Adresse
+					mail</label>
 				<div class="col-sm-2">
 					<form:input path="login" type="text" class="form-control"
-						id="idLogin" placeholder="Login" />
+						id="idLogin" placeholder="Adresse mail" />
 				</div>
 			</div>
 			<br />
@@ -116,8 +117,7 @@
 						id="idStatut" placeholder="Statut" />
 				</div>
 				<div class="col-sm-3">
-					<input class="btn btn-success" type="submit"
-						value="Créer son compte" />
+					<input class="btn btn-success" type="submit" value="Valider" />
 				</div>
 			</div>
 
