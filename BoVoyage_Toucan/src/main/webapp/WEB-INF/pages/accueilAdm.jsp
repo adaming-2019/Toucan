@@ -23,5 +23,7 @@
 			clients et leurs dossiers à tout moment via le menu</h3>
 		<img src="<c:url value='../asset/images/gestion.jpg'/>" class="image">
 	</div>
+	<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 </body>
 </html>

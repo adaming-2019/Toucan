@@ -70,5 +70,7 @@
 			</c:forEach>
 		</table>
 	</div>
+	<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 </body>
 </html>

@@ -32,5 +32,7 @@
 		</div>
 
 	</form:form>
+	<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 </body>
 </html>

@@ -33,6 +33,7 @@
 	<!--
 	<h1 style="color: red; text-align: center;">${msg}</h1>
 	-->
-
+<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 </body>
 </html>

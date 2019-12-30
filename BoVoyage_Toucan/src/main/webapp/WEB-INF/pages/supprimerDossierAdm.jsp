@@ -28,7 +28,9 @@
 	<%@include file="/templates/menuAdm.html"%>
 
 	Id : <input type="number" name="pId" /> 
-
+	
+<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 
 </body>
 </html>

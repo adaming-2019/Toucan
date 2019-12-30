@@ -19,7 +19,8 @@
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	<h1 id="titre" style="color: red; text-align: center;">Formulaire de suppression</h1>
+	<h1 id="titre" style="color: red; text-align: center;">Formulaire
+		de suppression</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
 
@@ -28,11 +29,13 @@
 		Id : <input type="number" name="pId" />
 		<br />
 		<br />
-		<input class="btn btn-danger" type="submit" value="supprimer le voyageur">
+		<input class="btn btn-danger" type="submit"
+			value="supprimer le voyageur">
 	</form:form>
 
 	<h1 style="color: red; text-align: center;">${msg}</h1>
 
-
+	<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 </body>
 </html>
