@@ -17,10 +17,10 @@
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
 	<h1 id="titre">Créer votre compte client BoVoyage</h1>
+	<div>
+		<form:form class="form-horizontal" id="login" method="POST"
+			action="submitCreateAccount" modelAttribute="compteAdd">
 
-	<form:form class="form-horizontal" method="POST"
-		action="submitCreateAccount" modelAttribute="compteAdd">
-		<div id="login">
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idAdresse">Adresse</label>
 				<div class="col-sm-2">
@@ -28,7 +28,8 @@
 						id="idAdresse" placeholder="Adresse" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idCivilite">Civilite</label>
 				<div class="col-sm-2">
@@ -36,7 +37,8 @@
 						id="idCivilite" placeholder="Civilite" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idDn">Date de
 					naissance</label>
@@ -45,7 +47,8 @@
 						placeholder="Date de naissance" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idNationalite">Nationalite</label>
 				<div class="col-sm-2">
@@ -53,7 +56,8 @@
 						id="idNationalite" placeholder="Nationalite" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idNom">Nom</label>
 				<div class="col-sm-2">
@@ -61,7 +65,8 @@
 						placeholder="Nom" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idPrenom">Prenom</label>
 				<div class="col-sm-2">
@@ -76,7 +81,8 @@
 						id="idTelephone" placeholder="Telephone" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idCB">CB</label>
 				<div class="col-sm-2">
@@ -91,7 +97,8 @@
 						id="idLogin" placeholder="Login" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idMdp">Mot de
 					passe</label>
@@ -100,7 +107,8 @@
 						placeholder="Mot de passe" />
 				</div>
 			</div>
-			<br /> <br />
+			<br />
+			<br />
 			<div class="form-group">
 				<label class="control-label col-sm-1" for="idStatut">Statut</label>
 				<div class="col-sm-2">
@@ -112,8 +120,8 @@
 						value="Créer son compte" />
 				</div>
 			</div>
-		</div>
-	</form:form>
 
+		</form:form>
+	</div>
 </body>
 </html>

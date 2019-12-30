@@ -106,7 +106,7 @@ public class ClientController {
 			// Mettre à jour la listes
 			model.addAttribute("clients", listeClients);
 
-			return "redirect:accueilCl";
+			return "redirect:afficheListeContinent";
 		} else {
 			return "redirect:creerCompte";
 		}
