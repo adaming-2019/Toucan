@@ -77,6 +77,9 @@
 			<b><span>Nationalité :</span></b> ${passager.nationalite}
 		</p>
 		<br />
+		<form action="#" method="post">
+			<button class="btn btn-info">Modifier</button>
+		</form>
 		<br />
 	</c:forEach>
 

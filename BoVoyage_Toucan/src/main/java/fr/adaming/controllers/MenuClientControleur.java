@@ -1,6 +1,5 @@
 package fr.adaming.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -56,6 +55,7 @@ public class MenuClientControleur {
 		return "menuCl";
 	}
 	
+	// affichage des détails du dossier
 	@RequestMapping(value="/detailsDossier", method=RequestMethod.GET)
 	public String afficheDetailsDossier(Model model, @RequestParam("pIdDossier") int idIn) {
 		
@@ -68,6 +68,13 @@ public class MenuClientControleur {
 		// récupération de la liste de assurances associée au dossier
 		Set<Assurance> assurances = dossier.getAssurances();
 		
+		// calcul du prix total payé par le client
+		double total = dossier.getVoyage().getPrixBoVoyage();
+		
+		for (Assurance assurance : assurances) {
+			total+=assurance.getMontant();
+		}
+		
 		// ajout du dossier récupéré au modele mvc
 		model.addAttribute("dossier", dossier);
 				
@@ -77,9 +84,13 @@ public class MenuClientControleur {
 		// ajout de la liste d'assurances au modele mvc
 		model.addAttribute("assurances", assurances);
 		
+		// ajout du prix total au modele mvc
+		model.addAttribute("total", total);
+		
 		
 		return "infosDossierCl";
 	}
 	
+	// modifier un voyageur
 
 }
