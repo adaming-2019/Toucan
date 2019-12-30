@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Informations voyageurs</title>
-<!-- Lier lb bootstrap à ma page -->
+<title>Modifier un voyageur</title>
+
+<!-- Lier la librairie bootstrap à ma page -->
 <link rel="stylesheet"
 	href="<c:url value='/assets/css/bootstrap.css' />" />
 <link rel="stylesheet"
@@ -18,19 +19,22 @@
 
 </head>
 <body>
+
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-
-	<h2 style="color: darkBlue; text-align: center">Veuillez saisir
-		les informations du voyageur numéro ${noVoyageur}</h2>
-
-	<form:form action="submitSaisieVoyageur" method="POST"
-		modelAttribute="voyageur">
+	
+	
+	<h2 id="titre">Modifier les informations du voyageur</h2>
+	
+	<form:form action="submitModifVoyageur" method="post" modelAttribute="voyageur">
+	
+		<form:input path="id" type="hidden"/>
+	
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idCivilite">Civilite</label>
 			<div class="col-sm-2">
 				<form:input path="civilite" type="text" class="form-control"
-					id="idCivilite" placeholder="Civilite" />
+					id="idCivilite"/>
 			</div>
 		</div>
 		<br />
@@ -38,8 +42,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idNom">Nom</label>
 			<div class="col-sm-2">
-				<form:input path="nom" type="text" class="form-control" id="idNom"
-					placeholder="Nom" />
+				<form:input path="nom" type="text" class="form-control" id="idNom"/>
 			</div>
 		</div>
 		<br />
@@ -48,7 +51,7 @@
 			<label class="control-label col-sm-1" for="idPrenom">Prenom</label>
 			<div class="col-sm-2">
 				<form:input path="prenom" type="text" class="form-control"
-					id="idPrenom" placeholder="Prenom" />
+					id="idPrenom"/>
 			</div>
 		</div>
 		<br />
@@ -66,7 +69,7 @@
 			<label class="control-label col-sm-1" for="idAdresse">Adresse</label>
 			<div class="col-sm-2">
 				<form:input path="adresse" type="text" class="form-control"
-					id="idAdresse" placeholder="Adresse" />
+					id="idAdresse"/>
 			</div>
 		</div>
 		<br />
@@ -75,7 +78,7 @@
 			<label class="control-label col-sm-1" for="idTel">Telephone</label>
 			<div class="col-sm-2">
 				<form:input path="telephone" type="text" class="form-control"
-					id="idTel" placeholder="Telephone" />
+					id="idTel"/>
 			</div>
 		</div>
 		<br />
@@ -84,15 +87,18 @@
 			<label class="control-label col-sm-1" for="idNationalite">Nationalite</label>
 			<div class="col-sm-2">
 				<form:input path="nationalite" type="text" class="form-control"
-					id="idNationalite" placeholder="Nationalite" />
+					id="idNationalite"/>
 			</div>
 			<div class="col-sm-3">
-				<input class="btn btn-primary" type="submit" value="Continuer" />
+				<input class="btn btn-primary" type="submit" value="Enregistrer" />
 			</div>
 		</div>
-		
+	
 	</form:form>
-<!--  inclure le footer -->
+	
+	
+	<!--  inclure le footer -->
 	<%@include file="/templates/footer.html"%>
+
 </body>
 </html>

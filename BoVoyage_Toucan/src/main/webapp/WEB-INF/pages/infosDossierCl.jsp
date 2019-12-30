@@ -21,6 +21,16 @@
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
 
+	<c:if test="${not empty msg}">
+	<div class="alert alert-warning alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>Erreur</strong> ${msg}
+	</div>
+	</c:if>
+
 	<h2 id="titre">Détails du dossier</h2>
 	<h3 style="color: darkblue">Voyage</h3>
 	<p>
@@ -77,9 +87,7 @@
 			<b><span>Nationalité :</span></b> ${passager.nationalite}
 		</p>
 		<br />
-		<form action="#" method="post">
-			<button class="btn btn-info">Modifier</button>
-		</form>
+			<a class="btn btn-info" href="<c:url value='/client/modifVoyageur?pId=${passager.id}'/>">Modifier</a>
 		<br />
 	</c:forEach>
 
