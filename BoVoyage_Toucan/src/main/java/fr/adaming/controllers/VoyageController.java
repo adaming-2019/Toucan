@@ -2,6 +2,8 @@ package fr.adaming.controllers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.adaming.entities.Agence;
+import fr.adaming.entities.CategorieVehicules;
+import fr.adaming.entities.Continent;
+import fr.adaming.entities.Destination;
+import fr.adaming.entities.Formules;
+import fr.adaming.entities.LoueurVehicules;
+import fr.adaming.entities.Prestations;
 import fr.adaming.entities.Voyage;
 import fr.adaming.service.IVoyageService;
 
@@ -77,6 +86,27 @@ public class VoyageController {
 	
 	@RequestMapping(value = "/admin/afficherAddVoyage", method = RequestMethod.GET)
 	public String afficheAjouter(Model model) {
+
+		// Listes des enum
+		/**
+		List<Agences> listeFormules = new ArrayList<Agences>(Arrays.asList(Agences.values()));
+		model.addAttribute("listeAgences", listeAgences);
+		**/
+		List<CategorieVehicules> listeCategorieVehicules = new ArrayList<CategorieVehicules>(Arrays.asList(CategorieVehicules.values()));
+		model.addAttribute("listeCategorieVehicules", listeCategorieVehicules);
+		/**
+		List<Destinations> listeDestination = new ArrayList<Destinations>(Arrays.asList(Destinations.values()));
+		model.addAttribute("listeDestinations", listeDestinations);
+		**/
+		List<Formules> listeFormules = new ArrayList<Formules>(Arrays.asList(Formules.values()));
+		model.addAttribute("listeFormules", listeFormules);
+		
+		List<LoueurVehicules> listeLoueurVehicules = new ArrayList<LoueurVehicules>(Arrays.asList(LoueurVehicules.values()));
+		model.addAttribute("listeLoueurVehicules", listeLoueurVehicules);
+		
+		List<Prestations> listePrestations = new ArrayList<Prestations>(Arrays.asList(Prestations.values()));
+		model.addAttribute("listePrestations", listePrestations);
+
 		model.addAttribute("voyageAdd", new Voyage());
 		return "ajouterVoyageAdm";
 	}
