@@ -47,7 +47,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idPrenom">Prenom</label>
 			<div class="col-sm-2">
-				<form:input path="prenom" type="date" class="form-control"
+				<form:input path="prenom" type="text" class="form-control"
 					id="idPrenom" placeholder="Prenom" />
 			</div>
 		</div>

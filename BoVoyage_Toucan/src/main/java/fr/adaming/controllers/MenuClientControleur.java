@@ -1,6 +1,8 @@
 package fr.adaming.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.adaming.entities.Assurance;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Dossier;
 import fr.adaming.entities.Voyageur;
@@ -59,18 +62,20 @@ public class MenuClientControleur {
 		// récupération des données du dossier dans la bd
 		Dossier dossier = dosService.getById(idIn);
 		
-		// ajout du dossier récupéré au modele mvc
-		model.addAttribute("dossier", dossier);
-		
 		// récupération de la liste de voyageurs associée au dossier
 		List<Voyageur> voyageurs = dossier.getVoyageurs();
 		
-		for (Voyageur v : voyageurs) {
-			System.out.println(v);
-		}
+		// récupération de la liste de assurances associée au dossier
+		Set<Assurance> assurances = dossier.getAssurances();
 		
+		// ajout du dossier récupéré au modele mvc
+		model.addAttribute("dossier", dossier);
+				
 		// ajout de la liste de voyageurs au modele mvc
 		model.addAttribute("voyageurs", voyageurs);
+		
+		// ajout de la liste d'assurances au modele mvc
+		model.addAttribute("assurances", assurances);
 		
 		
 		return "infosDossierCl";

@@ -27,7 +27,7 @@
 				type="number" class="form-control" id="idDossier"
 				placeholder="N° de dossier" name="pIdDossier">
 		</div>
-		<button type="button" class="btn btn-info">Rechercher</button>
+		<button class="btn btn-info">Rechercher</button>
 	</form>
 
 	<br />

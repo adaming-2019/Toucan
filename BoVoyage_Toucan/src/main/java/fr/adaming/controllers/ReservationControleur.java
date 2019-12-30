@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.adaming.entities.Assurance;
 import fr.adaming.entities.ChoixAssurance;
@@ -205,9 +205,15 @@ public class ReservationControleur {
 
 		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
 		
+		// ajouter le dossier à la bd
+		Dossier ajout = dosService.addDossier(dossier);
+		
+		// stockage de l'id de ajout dans le dossier stocké dans la session
+		dossier.setId(ajout.getId());
+		
 		System.out.println(selection);
 		
-		dossier.setAssurances(new ArrayList<Assurance>());
+		dossier.setAssurances(new HashSet<Assurance>());
 		
 		System.out.println("voyage associé au dossier :"+dossier.getVoyage().getPrixBoVoyage());
 		
@@ -219,8 +225,13 @@ public class ReservationControleur {
 				// récupérer l'assurance dans la bd
 				Assurance assuranceOut = assuService.getAssuranceByType(elem);
 				System.out.println(assuranceOut);
-				// ajout de cette assurance à la liste des assurances du dossier
-				dossier.getAssurances().add(assuranceOut);
+				// lier l'assurance au dossier (ManyToMany)
+				ajout.getAssurances().add(assuranceOut);
+				
+				assuranceOut.getDossiers().add(ajout);
+				
+				// modifier assuranceOut dans la bd
+				assuService.update(assuranceOut);
 				
 				// maj du prix total à régler par le client
 				prix+=assuranceOut.getMontant();
@@ -236,14 +247,14 @@ public class ReservationControleur {
 	
 	@RequestMapping(value="/validerReservation", method=RequestMethod.GET)
 	public String validerReservation(HttpServletRequest req, Model model) {
-		// récupérer le dossier stocké dans la session
+		// récupérer le dossier stocké dans bd
 		HttpSession maSession = req.getSession();
 
 		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
 		
-		// ajout du dossier à la bd
-		Dossier ajout = dosService.addDossier(dossier);
-
+		// récupérer le dossier stocké dans la bd
+		Dossier dossierBd = dosService.getById(dossier.getId());
+		
 		// ajout des voyageurs à la bd
 		boolean verif = true;
 		
@@ -256,17 +267,17 @@ public class ReservationControleur {
 			}
 		}
 		
-		// mettre à jour le nombre de places disponibles pour le voyage
-		Voyage voyage = voyService.getVoyageById(dossier.getVoyage().getId());
-		
-		voyage.setNombrePlace(voyage.getNombrePlace()-dossier.getNbPlaces());
-		
-		voyService.updateVoyage(voyage);
-		
-		// supprimer le dossier de la session
-		maSession.removeAttribute("dossier");
-		
-		if (ajout.getId()!=0 && verif==true) {
+		if (verif==true) {
+			// mettre à jour le nombre de places disponibles pour le voyage
+			Voyage voyage = voyService.getVoyageById(dossierBd.getVoyage().getId());
+			
+			voyage.setNombrePlace(voyage.getNombrePlace()-dossierBd.getNbPlaces());
+			
+			voyService.updateVoyage(voyage);
+			
+			// supprimer le dossier de la session
+			maSession.removeAttribute("dossier");
+			
 			// appel de la méthode permettant d'afficher la liste des dossiers du client connecté
 			return "redirect:listeDossiers";
 		} else {

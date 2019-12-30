@@ -101,7 +101,7 @@
 		<br />
 
 		<form action="validerReservation" method="get">
-			<input class="btn btn-success" type="button" value="Valider ma réservation" />
+			<button class="btn btn-success" >Valider ma réservation</button>
 		</form>
 
 	</div>

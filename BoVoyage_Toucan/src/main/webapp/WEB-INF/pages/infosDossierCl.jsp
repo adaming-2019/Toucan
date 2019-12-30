@@ -59,7 +59,7 @@
 		<b><span>Informations sur les passagers :</span></b>
 	</p>
 	<c:forEach var="passager" items="${voyageurs}">
-		<p>${passager.civilite}.${passager.nom}${passager.prenom}</p>
+		<p>${passager.civilite}. ${passager.nom} ${passager.prenom}</p>
 		<br />
 		<p>
 			<b><span>Date de naissance :</span></b> ${passager.dn}
@@ -83,7 +83,7 @@
 	<p>
 		<b><span>Vous avez séléctionné les assurances suivantes :</span></b>
 	</p>
-	<c:forEach var="assurance" items="${dossier.assurances}">
+	<c:forEach var="assurance" items="${assurances}">
 			${assurance.type} (montant : ${assurance.montant} EUR)
 			<br />
 	</c:forEach>

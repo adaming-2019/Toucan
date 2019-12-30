@@ -2,6 +2,7 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.IndexColumn;
 
 @Entity
 @Table(name="dossiers")
@@ -33,10 +36,10 @@ public class Dossier implements Serializable {
 	private int nbPlaces;
 	
 	// transformation de l'association UML en Java
-	@ManyToMany(mappedBy="dossiers")
-	private List<Assurance> assurances;
+	@ManyToMany(mappedBy="dossiers", fetch=FetchType.EAGER)
+	private Set<Assurance> assurances;
 	
-	@OneToMany(mappedBy="dossier")
+	@OneToMany(mappedBy="dossier", fetch=FetchType.EAGER)
 	private List<Voyageur> voyageurs;
 	
 	@ManyToOne
@@ -84,10 +87,10 @@ public class Dossier implements Serializable {
 	public void setNbPlaces(int nbPlaces) {
 		this.nbPlaces = nbPlaces;
 	}
-	public List<Assurance> getAssurances() {
+	public Set<Assurance> getAssurances() {
 		return assurances;
 	}
-	public void setAssurances(List<Assurance> assurances) {
+	public void setAssurances(Set<Assurance> assurances) {
 		this.assurances = assurances;
 	}
 	public List<Voyageur> getVoyageurs() {

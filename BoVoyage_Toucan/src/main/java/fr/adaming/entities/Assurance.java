@@ -2,9 +2,11 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,9 +32,9 @@ public class Assurance implements Serializable {
 	private double montant;
 	
 	// transformation de l'association UML en Java
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="dossiersassurances", joinColumns=@JoinColumn(name="as_id"), inverseJoinColumns=@JoinColumn(name="do_id"))
-	private List<Dossier> dossiers;
+	private Set<Dossier> dossiers;
 	
 	// déclaration des constructeurs
 	public Assurance() {
@@ -70,6 +72,12 @@ public class Assurance implements Serializable {
 		this.montant = montant;
 	}
 	
+	public Set<Dossier> getDossiers() {
+		return dossiers;
+	}
+	public void setDossiers(Set<Dossier> dossiers) {
+		this.dossiers = dossiers;
+	}
 	// redéfinition de la méthode toString
 	@Override
 	public String toString() {
