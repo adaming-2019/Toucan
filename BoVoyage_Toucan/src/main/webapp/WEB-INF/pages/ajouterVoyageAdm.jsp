@@ -73,7 +73,7 @@
 		<br />
 		<br />
 		
-		
+
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idAgence">Agence</label>
 			<div class="col-sm-2">
@@ -83,12 +83,10 @@
 							<option value="${agences.id}" >${agences}</option>
 							-->
 							<option value="${loop.index+1}" >${agences.nom}</option>
-					</c:forEach>	
+					</c:forEach>
 				  </form:select>
 			</div>
 		</div>	
-		
-
 		<br />
 		<br />
 		<div class="form-group">
