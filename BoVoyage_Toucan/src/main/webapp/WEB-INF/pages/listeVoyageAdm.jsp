@@ -36,6 +36,10 @@
 				<th>Photo</th>
 				<th>Prix Agence</th>
 				<th>Prix BoVoyage</th>
+				<th>CategorieVehicule</th>
+				<th>Formule</th>
+				<th>LoueurVehicule</th>
+				<th>Prestation</th>
 				<th>Operations</th>
 			</tr>
 
@@ -49,6 +53,10 @@
 					<td>${v.photos}</td>
 					<td>${v.prixAgence}</td>
 					<td>${v.prixBoVoyage}</td>
+					<td>${v.categorieVehicule.categorieVehicule}</td>
+					<td>${v.formule.formule}</td>
+					<td>${v.loueurVehicule.loueurVehicule}</td>
+					<td>${v.prestation.prestation}</td>
 					<td><a href="<c:url value='/admin/afficherAddVoyage'/>">Ajouter</a> | <a
 						href="<c:url value='/admin/linkUpdateVoyage?pId=${v.id}'/>">Modifier</a> | 
 						<a
@@ -60,5 +68,7 @@
 			</c:forEach>
 		</table>
 	</div>
+
+
 </body>
 </html>
