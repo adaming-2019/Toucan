@@ -29,17 +29,36 @@ import fr.adaming.entities.Formules;
 import fr.adaming.entities.LoueurVehicules;
 import fr.adaming.entities.Prestations;
 import fr.adaming.entities.Voyage;
+import fr.adaming.service.IAgenceService;
+import fr.adaming.service.IDestinationService;
 import fr.adaming.service.IVoyageService;
 
 @Controller
 public class VoyageController {
-	// Transformation de l'association uml en java
+	// Transformation de l'association uml en java (voyage)
 	@Autowired
 	private IVoyageService voyageService;
 
 	// Setter pour injection dépendance
 	public void setVoyageService(IVoyageService voyageService) {
 		this.voyageService = voyageService;
+	}
+	
+	// Transformation de l'association uml en java (agence)
+	@Autowired
+	private IAgenceService agenceService;
+
+	// Le setter pour l'injection dépendance
+	public void setAgenceService(IAgenceService agenceService) {
+		this.agenceService = agenceService;
+	}
+	
+	//transformation UML en java
+	@Autowired
+	private IDestinationService destiService;
+
+	public void setDestiService(IDestinationService destiService) {
+		this.destiService = destiService;
 	}
 	
 	@InitBinder
@@ -92,12 +111,18 @@ public class VoyageController {
 		List<Agences> listeFormules = new ArrayList<Agences>(Arrays.asList(Agences.values()));
 		model.addAttribute("listeAgences", listeAgences);
 		**/
+		List<Agence> listeAgences = agenceService.getAllAgence();
+		model.addAttribute("listeAgences", listeAgences);
+		
 		List<CategorieVehicules> listeCategorieVehicules = new ArrayList<CategorieVehicules>(Arrays.asList(CategorieVehicules.values()));
 		model.addAttribute("listeCategorieVehicules", listeCategorieVehicules);
 		/**
 		List<Destinations> listeDestination = new ArrayList<Destinations>(Arrays.asList(Destinations.values()));
 		model.addAttribute("listeDestinations", listeDestinations);
 		**/
+		List<Destination> listeDestinations = destiService.getAll();
+		model.addAttribute("listeDestinations", listeDestinations);		
+		
 		List<Formules> listeFormules = new ArrayList<Formules>(Arrays.asList(Formules.values()));
 		model.addAttribute("listeFormules", listeFormules);
 		

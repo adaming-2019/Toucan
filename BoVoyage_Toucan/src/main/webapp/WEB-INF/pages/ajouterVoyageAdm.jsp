@@ -21,6 +21,7 @@
 	<%@include file="/templates/menuAdm.html"%>
 	<form:form method="POST" action="submitAddVoyage"
 		modelAttribute="voyageAdd">
+		<!--
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idDdebut">Date de
 				debut</label>
@@ -39,6 +40,7 @@
 					id="idDretour" placeholder="Date de retour" />
 			</div>
 		</div>
+		-->
 		<br />
 		<br />
 		<div class="form-group">
@@ -71,6 +73,22 @@
 		<br />
 		<br />
 		
+		
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idAgence">Agence</label>
+			<div class="col-sm-2">
+				  <form:select path="agence.id" >
+					<c:forEach var="agences" items="${listeAgences}" varStatus="loop">
+							<!--
+							<option value="${agences.id}" >${agences}</option>
+							-->
+							<option value="${loop.index+1}" >${agences.nom}</option>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>	
+		
+
 		<br />
 		<br />
 		<div class="form-group">
@@ -85,6 +103,26 @@
 				  </form:select>
 			</div>
 		</div>
+		
+		
+				<br />
+		<br />
+		
+			<div class="form-group">
+			<label class="control-label col-sm-1" for="idDestination">Destination</label>
+			<div class="col-sm-2">
+				  <form:select path="destination.id" >
+					<c:forEach var="dest" items="${listeDestinations}" varStatus="loop">
+							<!--
+							<option value="${agences.id}" >${agences}</option>
+							-->
+							<option value="${loop.index+1}" >${dest.contient},${dest.pays}</option>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>	
+		
+		
 		<br />
 		<br />
 		<div class="form-group">
@@ -115,7 +153,6 @@
 		</div>
 		<br />
 		<br />
-		
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idPrestation">Prestation</label>
 			<div class="col-sm-2">
@@ -128,6 +165,10 @@
 				  </form:select>
 			</div>
 		</div>		
+			
+		
+		
+		
 		
 		<br />
 		<br />

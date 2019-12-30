@@ -36,7 +36,9 @@
 				<th>Photo</th>
 				<th>Prix Agence</th>
 				<th>Prix BoVoyage</th>
+				<th>Agence</th>
 				<th>CategorieVehicule</th>
+				<th>Destination</th>
 				<th>Formule</th>
 				<th>LoueurVehicule</th>
 				<th>Prestation</th>
@@ -53,7 +55,9 @@
 					<td>${v.photos}</td>
 					<td>${v.prixAgence}</td>
 					<td>${v.prixBoVoyage}</td>
+					<td>${v.agence.nom}</td>
 					<td>${v.categorieVehicule.categorieVehicule}</td>
+					<td>${v.destination.continent},${v.destination.pays}</td>
 					<td>${v.formule.formule}</td>
 					<td>${v.loueurVehicule.loueurVehicule}</td>
 					<td>${v.prestation.prestation}</td>
