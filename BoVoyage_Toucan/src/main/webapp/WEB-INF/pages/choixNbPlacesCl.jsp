@@ -22,11 +22,13 @@
 	<%@include file="/templates/header.html"%>
 	<h2 style="color: slateBlue; text-align: center">Combien de places
 		souhaitez-vous réserver ?</h2>
+		
+	<div class="formulaire">
 
 	<form:form class="form-horizontal" method="POST"
 		action="saisieVoyageur" modelAttribute="dossier">
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="idChx">Choix du
+			<label class="control-label col-sm-4" for="idChx">Choix du
 				nombre de places</label>
 			<div class="col-sm-2">
 				<form:input path="nbPlaces" type="text" class="form-control"
@@ -41,6 +43,8 @@
 		<br /> --%>
 		<input class="btn btn-primary" type="submit" value="Continuer" />
 	</form:form>
+	
+	</div>
 	
 	<!--  inclure le footer -->
 	<%@include file="/templates/footer.html"%>
