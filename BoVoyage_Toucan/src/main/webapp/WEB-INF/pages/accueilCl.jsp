@@ -22,14 +22,12 @@
 	<div id="login">
 		<form:form class="form-horizontal" method="get"
 			action="submitChoixContinent">
-			<div class="col-sm-2">
-				<select name="pContinent" class="form-control">
-					<c:forEach var="cont" items="${listeCont}">
-						<option>${cont}</option>
-					</c:forEach>
+			<select name="pContinent" class="form-control">
+				<c:forEach var="cont" items="${listeCont}">
+					<option>${cont}</option>
+				</c:forEach>
 
-				</select>
-			</div>
+			</select>
 			<br />
 			<br />
 			<br />
