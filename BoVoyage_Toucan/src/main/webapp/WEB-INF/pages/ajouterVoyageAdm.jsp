@@ -70,6 +70,91 @@
 		</div>
 		<br />
 		<br />
+		
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idCategorieVehicule">CategorieVehicule</label>
+			<div class="col-sm-2">
+				  <form:select path="categorieVehicule.id" >
+					<c:forEach var="cv" items="${listeCategorieVehicules}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${cv}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idFormule">Formule</label>
+			<div class="col-sm-2">
+				  <form:select path="formule.id" >
+					<c:forEach var="form" items="${listeFormules}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${form}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idLoueurVehicule">LoueurVehicule</label>
+			<div class="col-sm-2">
+				  <form:select path="loueurVehicule.id" >
+					<c:forEach var="lv" items="${listeLoueurVehicules}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${lv}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>
+		<br />
+		<br />
+		
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idPrestation">Prestation</label>
+			<div class="col-sm-2">
+				  <form:select path="prestation.id" >
+					<c:forEach var="prest" items="${listePrestations}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${prest}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>		
+		
+		
+		
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idStatut">Statut</label>
+			<div class="col-sm-2">
+				<form:input path="statut" type="text" class="form-control"
+					id="idStatut" placeholder="Statut" />
+			</div>
+			<div class="col-sm-3">
+				<input class="btn btn-success" type="submit" value="Ajouter" />
+			</div>
+		</div>		
+		<br />
+		<br />
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idStatut">Statut</label>
 			<div class="col-sm-2">
