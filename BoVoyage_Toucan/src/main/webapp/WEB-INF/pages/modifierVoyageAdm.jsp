@@ -79,6 +79,102 @@
 					id="idPrixBV" placeholder="Prix BoVoyage" />
 			</div>
 		</div>
+		
+		
+				
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idAgence">Agence</label>
+			<div class="col-sm-2">
+				  <form:select path="agence.id" >
+					<c:forEach var="agences" items="${listeAgences}" varStatus="loop">
+							<!--
+							<option value="${agences.id}" >${agences}</option>
+							-->
+							<option value="${loop.index+1}" >${agences.nom}</option>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>	
+		
+
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idCategorieVehicule">CategorieVehicule</label>
+			<div class="col-sm-2">
+				  <form:select path="categorieVehicule.id" >
+					<c:forEach var="cv" items="${listeCategorieVehicules}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${cv}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>
+		
+		
+		<br />
+		<br />
+		
+			<div class="form-group">
+			<label class="control-label col-sm-1" for="idDestination">Destination</label>
+			<div class="col-sm-2">
+				  <form:select path="destination.id" >
+					<c:forEach var="dest" items="${listeDestinations}" varStatus="loop">
+							<!--
+							<option value="${agences.id}" >${agences}</option>
+							-->
+							<option value="${loop.index+1}" >${dest.contient},${dest.pays}</option>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>	
+		
+		
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idFormule">Formule</label>
+			<div class="col-sm-2">
+				  <form:select path="formule.id" >
+					<c:forEach var="form" items="${listeFormules}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${form}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idLoueurVehicule">LoueurVehicule</label>
+			<div class="col-sm-2">
+				  <form:select path="loueurVehicule.id" >
+					<c:forEach var="lv" items="${listeLoueurVehicules}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${lv}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<label class="control-label col-sm-1" for="idPrestation">Prestation</label>
+			<div class="col-sm-2">
+				  <form:select path="prestation.id" >
+					<c:forEach var="prest" items="${listePrestations}" varStatus="loop">
+						<c:if test="${not loop.first}">
+							<option value="${loop.index}" >${prest}</option>
+						</c:if>
+					</c:forEach>	
+				  </form:select>
+			</div>
+		</div>	
+		
+		
 		<br />
 		<br />
 		<div class="form-group">

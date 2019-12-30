@@ -21,7 +21,7 @@
 	<%@include file="/templates/menuAdm.html"%>
 	<form:form method="POST" action="submitAddVoyage"
 		modelAttribute="voyageAdd">
-		<!--
+		
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idDdebut">Date de
 				debut</label>
@@ -40,7 +40,7 @@
 					id="idDretour" placeholder="Date de retour" />
 			</div>
 		</div>
-		-->
+		
 		<br />
 		<br />
 		<div class="form-group">
@@ -64,7 +64,7 @@
 		<br />
 		<br />
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="idPrixBV">ID</label>
+			<label class="control-label col-sm-1" for="idPrixBV">Prix BoVoyage</label>
 			<div class="col-sm-2">
 				<form:input path="prixBoVoyage" type="text" class="form-control"
 					id="idPrixBV" placeholder="Prix BoVoyage" />
@@ -116,7 +116,7 @@
 							<!--
 							<option value="${agences.id}" >${agences}</option>
 							-->
-							<option value="${loop.index+1}" >${dest.contient},${dest.pays}</option>
+							<option value="${loop.index+1}" >${dest.continent} ${dest.pays}</option>
 					</c:forEach>	
 				  </form:select>
 			</div>

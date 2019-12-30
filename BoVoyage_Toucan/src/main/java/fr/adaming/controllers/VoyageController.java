@@ -153,7 +153,34 @@ public class VoyageController {
 	}
 
 	@RequestMapping(value = "/admin/afficherUpdateVoyage", method = RequestMethod.GET)
-	public ModelAndView afficheModifier() {
+	public ModelAndView afficheModifier(Model model) {
+		
+		// Listes des enum
+		/**
+		List<Agences> listeFormules = new ArrayList<Agences>(Arrays.asList(Agences.values()));
+		model.addAttribute("listeAgences", listeAgences);
+		**/
+		List<Agence> listeAgences = agenceService.getAllAgence();
+		model.addAttribute("listeAgences", listeAgences);
+		
+		List<CategorieVehicules> listeCategorieVehicules = new ArrayList<CategorieVehicules>(Arrays.asList(CategorieVehicules.values()));
+		model.addAttribute("listeCategorieVehicules", listeCategorieVehicules);
+		/**
+		List<Destinations> listeDestination = new ArrayList<Destinations>(Arrays.asList(Destinations.values()));
+		model.addAttribute("listeDestinations", listeDestinations);
+		**/
+		List<Destination> listeDestinations = destiService.getAll();
+		model.addAttribute("listeDestinations", listeDestinations);		
+		
+		List<Formules> listeFormules = new ArrayList<Formules>(Arrays.asList(Formules.values()));
+		model.addAttribute("listeFormules", listeFormules);
+		
+		List<LoueurVehicules> listeLoueurVehicules = new ArrayList<LoueurVehicules>(Arrays.asList(LoueurVehicules.values()));
+		model.addAttribute("listeLoueurVehicules", listeLoueurVehicules);
+		
+		List<Prestations> listePrestations = new ArrayList<Prestations>(Arrays.asList(Prestations.values()));
+		model.addAttribute("listePrestations", listePrestations);
+		
 		return new ModelAndView("modifierVoyageAdm", "vUpdate", new Voyage());
 	}
 
@@ -214,6 +241,33 @@ public class VoyageController {
 	public String getModifLien(Model modele, @RequestParam("pId") int idIn) {
 		
 		Voyage vOut = voyageService.getVoyageById(idIn);
+		
+		// Listes des enum
+		/**
+		List<Agences> listeFormules = new ArrayList<Agences>(Arrays.asList(Agences.values()));
+		model.addAttribute("listeAgences", listeAgences);
+		**/
+		List<Agence> listeAgences = agenceService.getAllAgence();
+		modele.addAttribute("listeAgences", listeAgences);
+		
+		List<CategorieVehicules> listeCategorieVehicules = new ArrayList<CategorieVehicules>(Arrays.asList(CategorieVehicules.values()));
+		modele.addAttribute("listeCategorieVehicules", listeCategorieVehicules);
+		/**
+		List<Destinations> listeDestination = new ArrayList<Destinations>(Arrays.asList(Destinations.values()));
+		model.addAttribute("listeDestinations", listeDestinations);
+		**/
+		List<Destination> listeDestinations = destiService.getAll();
+		modele.addAttribute("listeDestinations", listeDestinations);		
+		
+		List<Formules> listeFormules = new ArrayList<Formules>(Arrays.asList(Formules.values()));
+		modele.addAttribute("listeFormules", listeFormules);
+		
+		List<LoueurVehicules> listeLoueurVehicules = new ArrayList<LoueurVehicules>(Arrays.asList(LoueurVehicules.values()));
+		modele.addAttribute("listeLoueurVehicules", listeLoueurVehicules);
+		
+		List<Prestations> listePrestations = new ArrayList<Prestations>(Arrays.asList(Prestations.values()));
+		modele.addAttribute("listePrestations", listePrestations);
+		
 		
 		modele.addAttribute("vUpdate", vOut);
 		

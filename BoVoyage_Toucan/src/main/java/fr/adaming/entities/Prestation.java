@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +26,7 @@ public class Prestation implements Serializable{
 	private int id;
 	
 	@Column(name="intitule_p")
+	@Enumerated(EnumType.STRING) //rajout au 30/12
 	Prestations prestation;
 	
 	// transformation de l'association UML en Java

@@ -42,8 +42,8 @@ public class Voyage implements Serializable {
 	@Column(name="statut_vg")
 	private boolean statut;
 	@Column(name="photos_vg")
-	private byte[] photos;
-	
+	//private byte[] photos;
+	private String photos;
 	
 	// Transformations des associations UML en JAVA
 	@OneToMany(mappedBy="voyage")
@@ -87,7 +87,7 @@ public class Voyage implements Serializable {
 	}
 
 	// constructeur complet sans id
-	public Voyage(Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage, boolean statut, byte[] photos) {
+	public Voyage(Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage, boolean statut, String photos) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateRetour = dateRetour;
@@ -99,7 +99,7 @@ public class Voyage implements Serializable {
 	}
 	
 	// constructeur complet sans id
-	public Voyage(int id, Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage, boolean statut, byte[] photos) {
+	public Voyage(int id, Date dateDebut, Date dateRetour, int nombrePlace, double prixAgence, double prixBoVoyage, boolean statut, String photos) {
 		super();
 		this.id = id;
 		this.dateDebut = dateDebut;
@@ -168,11 +168,11 @@ public class Voyage implements Serializable {
 		this.statut = statut;
 	}
 
-	public byte[] getPhotos() {
+	public String getPhotos() {
 		return photos;
 	}
 
-	public void setPhotos(byte[] photos) {
+	public void setPhotos(String photos) {
 		this.photos = photos;
 	}
 
@@ -234,14 +234,20 @@ public class Voyage implements Serializable {
 	}
 
 	// methodes metiers
+	/**
 	@Override
 	public String toString() {
 		return "Voyage [id=" + id + ", dateDebut=" + dateDebut + ", dateRetour=" + dateRetour + ", nombrePlace="
 				+ nombrePlace + ", prixAgence=" + prixAgence + ", prixBoVoyage=" + prixBoVoyage + ", statut=" + statut
 				+ ", photos=" + Arrays.toString(photos) + "]";
 	}
-	
-	
+	**/
+	@Override
+	public String toString() {
+		return "Voyage [id=" + id + ", dateDebut=" + dateDebut + ", dateRetour=" + dateRetour + ", nombrePlace="
+				+ nombrePlace + ", prixAgence=" + prixAgence + ", prixBoVoyage=" + prixBoVoyage + ", statut=" + statut
+				+ ", photos=" + photos + "]";
+	}	
 	
 	
 	
