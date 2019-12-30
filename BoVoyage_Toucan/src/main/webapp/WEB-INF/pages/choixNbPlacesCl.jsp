@@ -41,6 +41,9 @@
 		<br /> --%>
 		<input class="btn btn-primary" type="submit" value="Continuer" />
 	</form:form>
+	
+	<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 
 </body>
 </html>

@@ -105,6 +105,9 @@
 		</form>
 
 	</div>
+	
+	<!--  inclure le footer -->
+	<%@include file="/templates/footer.html"%>
 
 
 </body>
