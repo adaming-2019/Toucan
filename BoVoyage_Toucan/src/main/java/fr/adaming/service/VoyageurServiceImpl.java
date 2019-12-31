@@ -63,4 +63,10 @@ public class VoyageurServiceImpl implements IVoyageurService {
 		return false;
 	}
 
+	@Override
+	public Voyageur updateVoyageurClient(Voyageur eIn) {
+		// appel de la méthode dao
+		return voyageurDao.update(eIn);
+	}
+
 }

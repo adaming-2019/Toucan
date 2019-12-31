@@ -15,5 +15,7 @@ public interface IVoyageurService {
 	public boolean deleteVoyageur(Voyageur eIn);
 	
 	public boolean updateVoyageur(Voyageur eIn);
+	
+	public Voyageur updateVoyageurClient(Voyageur eIn);
 
 }

@@ -155,40 +155,20 @@ public class MenuClientControleur {
 		System.out.println(vgIn);
 		
 		// modifier le voyageur dans la bd
-		boolean verif = vgService.updateVoyageur(vgIn);
+		vgService.updateVoyageurClient(vgIn);
 		
-		System.out.println(verif);
-		
-		if (verif) {
-			// on redirige le client vers la page du dossier en cours, pour cela on ajoute l'id du dossier au RedirectAttributes
-			// récupération du dossier dans la session
-			HttpSession maSession = req.getSession();
+		// on redirige le client vers la page du dossier en cours, pour cela on ajoute l'id du dossier au RedirectAttributes
+		// récupération du dossier dans la session
+		HttpSession maSession = req.getSession();
 			
-			Dossier dossier = (Dossier) maSession.getAttribute("dossier");
+		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
 			
-			rda.addAttribute("pIdDossier", dossier.getId());
+		rda.addAttribute("pIdDossier", dossier.getId());
 			
-			// supprimer le dossier de la session
-			maSession.removeAttribute("dossier");
+		// supprimer le dossier de la session
+		maSession.removeAttribute("dossier");
 			
-			return "redirect:detailsDossier";
-		} else {
-			// même procédure que dans le if, avec ajout d'un message d'erreur
-			// récupération du dossier dans la session
-			HttpSession maSession = req.getSession();
-						
-			Dossier dossier = (Dossier) maSession.getAttribute("dossier");
-						
-			rda.addAttribute("pIdDossier", dossier.getId());
-						
-			// supprimer le dossier de la session
-			maSession.removeAttribute("dossier");
-			
-			// ajout du message d'erreur
-			rda.addFlashAttribute("msg", "La modification n'a pas pu être effectuée.");
-						
-			return "redirect:detailsDossier";
-		}
+		return "redirect:detailsDossier";
 		
 	}
 
