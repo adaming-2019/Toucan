@@ -20,8 +20,13 @@
 	<%@include file="/templates/header.html"%>
 
 	<h2 id="titre">Récapitulatif de votre commande</h2>
-	<div>
+	<div class="formulaire">
 		<h3>Voyage</h3>
+		<c:if test="${not empty dossier.voyage.destination.images}">
+			<c:forEach var="image" items="${dossier.voyage.destination.images}">
+				<img alt="${dossier.voyage.destination.pays}" src="image">
+			</c:forEach>
+		</c:if>
 		<p>
 			<b><span>Destination :</span></b> ${dossier.voyage.destination.pays}
 		</p>
@@ -39,6 +44,15 @@
 			</p>
 			<br />
 		</c:if>
+		
+		<c:if test="${not empty dossier.voyage.categorieVehicule}">
+			<p>
+				<b><span>Catégorie de véhicule :</span></b>
+				${dossier.voyage.categorieVehicule.categorieVehicule}
+			</p>
+			<br />
+		</c:if>
+		
 		<p>
 			<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR par personne
 		</p>
@@ -58,6 +72,7 @@
 			<b><span>Informations sur les passagers :</span></b>
 		</p>
 		<c:forEach var="passager" items="${dossier.voyageurs}">
+			<div class="encadre">
 			<p>${passager.civilite}.${passager.nom} ${passager.prenom}</p>
 			<br />
 			<p>
@@ -76,16 +91,22 @@
 				<b><span>Nationalité :</span></b> ${passager.nationalite}
 			</p>
 			<br />
-			<br />
+			</div>
 		</c:forEach>
 
-		<p>
-			<b><span>Vous avez séléctionné les assurances suivantes :</span></b>
-		</p>
-		<c:forEach var="assurance" items="${dossier.assurances}">
+		<c:if test="${not empty assurances}">
+			<p>
+				<b><span>Vous avez séléctionné les assurances suivantes :</span></b>
+			</p>
+			<c:forEach var="assurance" items="${assurances}">
 			${assurance.type} (montant : ${assurance.montant} EUR)
 			<br />
-		</c:forEach>
+			</c:forEach>
+		</c:if>
+
+		<c:if test="${empty assurances}">
+			<p>Vous n'avez sélectionné aucune assurance pour ce voyage.</p>
+		</c:if>
 
 		<br />
 		<p>

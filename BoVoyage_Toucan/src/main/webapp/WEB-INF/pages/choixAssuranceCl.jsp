@@ -23,6 +23,8 @@
 	<%@include file="/templates/header.html"%>
 	<h2 style="color: slateBlue; text-align: center">Souhaitez-vous
 		sélectionner des assurances pour votre voyage ?</h2>
+		
+	<div class="formulaire">
 
 	<h3>Liste des assurances disponibles</h3>
 	<table class="table table-bordered">
@@ -50,9 +52,13 @@
 		action="submitChoixAssurance" modelAttribute="selection">
 		<div class="form-group">
 			<form:checkboxes items="${types}" path="choix" />
+			<br/>
 		</div>
 		<input class="btn btn-primary" type="submit" value="Continuer" />
 	</form:form>
+	
+	</div>
+	
 <!--  inclure le footer -->
 	<%@include file="/templates/footer.html"%>
 </body>

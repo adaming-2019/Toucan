@@ -69,6 +69,12 @@ body {
 	width: 700px;
 }
 
+.encadre {
+	display: inline-block;
+	width: 250px;
+	border: 1px solid slateBlue;
+}
+
 .footer {
 	position: fixed;
 	left: 0;
