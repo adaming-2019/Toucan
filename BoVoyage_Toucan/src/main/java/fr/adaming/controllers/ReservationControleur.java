@@ -238,7 +238,13 @@ public class ReservationControleur {
 		System.out.println("voyage associé au dossier :" + dossier.getVoyage().getPrixBoVoyage());
 
 		// prix à régler par le client sans les assurances
-		double prix = dossier.getVoyage().getPrixBoVoyage();
+		double prix = 0;
+		
+		List<Voyageur> voyageurs = dossier.getVoyageurs();
+		
+		for (Voyageur v : voyageurs) {
+			prix += dossier.getVoyage().getPrixBoVoyage();
+		}
 
 		for (String elem : selection.getChoix()) {
 			if (elem != null) {

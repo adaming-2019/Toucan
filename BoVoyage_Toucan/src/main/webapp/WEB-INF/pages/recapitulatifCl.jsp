@@ -40,12 +40,12 @@
 			<br />
 		</c:if>
 		<p>
-			<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR
+			<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR par personne
 		</p>
 		<br />
 		<p>
 			<b><span>Prix BoVoyage :</span></b> ${dossier.voyage.prixBoVoyage}
-			EUR
+			EUR par personne
 		</p>
 		<br /> <br />
 

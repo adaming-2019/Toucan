@@ -97,10 +97,14 @@ public class MenuClientControleur {
 		Set<Assurance> assurances = dossier.getAssurances();
 		
 		// calcul du prix total payé par le client
-		double total = dossier.getVoyage().getPrixBoVoyage();
+		double total = 0;
+		
+		for (Voyageur v : voyageurs) {
+			total += dossier.getVoyage().getPrixBoVoyage();
+		}
 		
 		for (Assurance assurance : assurances) {
-			total+=assurance.getMontant();
+			total += assurance.getMontant();
 		}
 		
 		// ajout du dossier récupéré au modele mvc
