@@ -56,7 +56,7 @@ public class MenuClientControleur {
 	@PostConstruct
 	public void init() {
 		this.client = new Client();
-		this.client.setId(57);
+		this.client.setId(72);
 	}
 	
 	@InitBinder
@@ -95,6 +95,10 @@ public class MenuClientControleur {
 		
 		// récupération de la liste de assurances associée au dossier
 		Set<Assurance> assurances = dossier.getAssurances();
+		
+		for (Assurance a : assurances) {
+			System.out.println(a);
+		}
 		
 		// calcul du prix total payé par le client
 		double total = 0;

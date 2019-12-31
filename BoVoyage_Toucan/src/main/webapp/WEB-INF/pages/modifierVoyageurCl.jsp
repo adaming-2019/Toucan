@@ -29,6 +29,8 @@
 	<form:form action="submitModifVoyageur" method="post" modelAttribute="voyageur">
 	
 		<form:input path="id" type="hidden"/>
+		
+		<form:input path="dossier" type="hidden"/>
 	
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idCivilite">Civilite</label>

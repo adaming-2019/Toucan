@@ -91,6 +91,7 @@
 		<br />
 	</c:forEach>
 
+	<c:if test="${not empty assurances}">
 	<p>
 		<b><span>Vous avez séléctionné les assurances suivantes :</span></b>
 	</p>
@@ -98,6 +99,11 @@
 			${assurance.type} (montant : ${assurance.montant} EUR)
 			<br />
 	</c:forEach>
+	</c:if>
+	
+	<c:if test="${empty assurances}">
+		<p>Vous n'avez sélectionné aucune assurance pour ce voyage.</p>
+	</c:if>
 
 	<br />
 	<p><b><span>Prix total :</span></b> ${total} EUR</p>
