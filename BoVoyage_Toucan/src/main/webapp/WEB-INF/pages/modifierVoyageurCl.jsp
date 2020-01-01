@@ -32,7 +32,7 @@
 	
 		<form:input path="id" type="hidden"/>
 		
-		<form:input path="dossier" type="hidden"/>
+		<form:input path="dossier.id" type="hidden"/>
 		
 		<form:input path="numSiege" type="hidden"/>
 	

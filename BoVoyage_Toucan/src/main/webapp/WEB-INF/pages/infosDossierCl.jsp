@@ -107,6 +107,9 @@
 
 	<br />
 	<p><b><span>Prix total :</span></b> ${total} EUR</p>
+	
+	
+	
 <!--  inclure le footer -->
 	<%@include file="/templates/footer.html"%>
 </body>
