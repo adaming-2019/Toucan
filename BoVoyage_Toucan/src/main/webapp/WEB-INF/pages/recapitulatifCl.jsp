@@ -39,7 +39,7 @@
 			</p>
 			<br />
 		</c:if>
-		
+
 		<c:if test="${not empty dossier.voyage.categorieVehicule}">
 			<p>
 				<b><span>Catégorie de véhicule :</span></b>
@@ -47,9 +47,10 @@
 			</p>
 			<br />
 		</c:if>
-		
+
 		<p>
-			<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR par personne
+			<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR
+			par personne
 		</p>
 		<br />
 		<p>
@@ -68,24 +69,24 @@
 		</p>
 		<c:forEach var="passager" items="${dossier.voyageurs}">
 			<div class="encadre">
-			<p>${passager.civilite}.${passager.nom} ${passager.prenom}</p>
-			<br />
-			<p>
-				<b><span>Date de naissance :</span></b> ${passager.dn}
-			</p>
-			<br />
-			<p>
-				<b><span>Adresse :</span></b> ${passager.adresse}
-			</p>
-			<br />
-			<p>
-				<b><span>Téléphone :</span></b> ${passager.telephone}
-			</p>
-			<br />
-			<p>
-				<b><span>Nationalité :</span></b> ${passager.nationalite}
-			</p>
-			<br />
+				<p>${passager.civilite}.${passager.nom}${passager.prenom}</p>
+				<br />
+				<p>
+					<b><span>Date de naissance :</span></b> ${passager.dn}
+				</p>
+				<br />
+				<p>
+					<b><span>Adresse :</span></b> ${passager.adresse}
+				</p>
+				<br />
+				<p>
+					<b><span>Téléphone :</span></b> ${passager.telephone}
+				</p>
+				<br />
+				<p>
+					<b><span>Nationalité :</span></b> ${passager.nationalite}
+				</p>
+				<br />
 			</div>
 		</c:forEach>
 
@@ -117,11 +118,11 @@
 		<br />
 
 		<form action="validerReservation" method="get">
-			<button class="btn btn-success" >Valider ma réservation</button>
+			<button class="btn btn-success">Valider ma réservation</button>
 		</form>
 
 	</div>
-	
+
 	<!--  inclure le footer -->
 	<%@include file="/templates/footer.html"%>
 
