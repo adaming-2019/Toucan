@@ -31,7 +31,7 @@ public class FirstPdf {
 	public static void creerPdf(Destination destination, Date dateDebut, Date dateRetour, Formule formule,
 			Prestation prestation, CategorieVehicule categorieVehicule, double prixBoVoyage, int nbPlaces,
 			String civilite, String nom, String prenom, String adresse, String telephone, String nationalite, Date dn,
-			Set<Assurance> assurances, double total) {
+			Set<Assurance> assurances, double total, int id) {
 		try {
 			Document document = new Document();
 			PdfWriter.getInstance(document, new FileOutputStream(FILE));
@@ -39,7 +39,7 @@ public class FirstPdf {
 			addMetaData(document);
 			addTitlePage(document, destination, dateDebut, dateRetour, formule, prestation, categorieVehicule,
 					prixBoVoyage, nbPlaces, civilite, nom, prenom, adresse, telephone, nationalite, dn, assurances,
-					total);
+					total, id);
 			document.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,7 +60,7 @@ public class FirstPdf {
 	private static void addTitlePage(Document document, Destination destination, Date dateDebut, Date dateRetour,
 			Formule formule, Prestation prestation, CategorieVehicule categorieVehicule, double prixBoVoyage,
 			int nbPlaces, String civilite, String nom, String prenom, String adresse, String telephone,
-			String nationalite, Date dn, Set<Assurance> assurances, double total) throws DocumentException {
+			String nationalite, Date dn, Set<Assurance> assurances, double total, int id) throws DocumentException {
 		Paragraph preface = new Paragraph();
 		// We add one empty line
 		addEmptyLine(preface, 1);

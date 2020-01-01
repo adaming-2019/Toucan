@@ -121,7 +121,7 @@ public class PDFController {
 				dossier.getVoyage().getPrixBoVoyage(), dossier.getNbPlaces(), dossier.getClient().getCivilite(),
 				dossier.getClient().getNom(), dossier.getClient().getPrenom(), dossier.getClient().getAdresse(),
 				dossier.getClient().getTelephone(), dossier.getClient().getNationalite(), dossier.getClient().getDn(),
-				dossier.getAssurances(), total);
+				dossier.getAssurances(), total, dossier.getId());
 
 		return "infosDossierCl";
 	}

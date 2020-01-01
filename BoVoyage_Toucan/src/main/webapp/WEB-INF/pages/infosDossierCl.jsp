@@ -118,7 +118,8 @@
 		</p>
 
 		<p>
-			<b><span><a href="<c:url value='/client/PDF'/>">Télécharger
+			<b><span><a
+					href="<c:url value='/client/PDF?pIdDossier=${dossier.id}'/>">Télécharger
 						un recapitulatif (format PDF)</a></span></b>
 		</p>
 
