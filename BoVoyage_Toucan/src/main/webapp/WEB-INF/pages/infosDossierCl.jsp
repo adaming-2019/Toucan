@@ -15,21 +15,16 @@
 <link rel="stylesheet"
 	href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
 
+<script src="<c:url value='/assets/js/bootstrap.js' />"></script>
+<script src="<c:url value='/assets/js/BoVoyageJs.js' />"></script>
+
 </head>
 <body>
 
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-
-	<c:if test="${not empty msg}">
-	<div class="alert alert-warning alert-dismissible" role="alert">
-		<button type="button" class="close" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<strong>Erreur</strong> ${msg}
-	</div>
-	</c:if>
+	
+	<div class="formulaire">
 
 	<h2 id="titre">Détails du dossier</h2>
 	<h3 style="color: darkblue">Voyage</h3>
@@ -50,6 +45,15 @@
 		</p>
 		<br />
 	</c:if>
+
+	<c:if test="${not empty dossier.voyage.categorieVehicule}">
+		<p>
+			<b><span>Catégorie de véhicule :</span></b>
+			${dossier.voyage.categorieVehicule.categorieVehicule}
+		</p>
+		<br />
+	</c:if>
+
 	<p>
 		<b><span>Prix agence :</span></b> ${dossier.voyage.prixAgence} EUR par personne
 	</p>
@@ -69,6 +73,7 @@
 		<b><span>Informations sur les passagers :</span></b>
 	</p>
 	<c:forEach var="passager" items="${voyageurs}">
+		<div class="encadre">
 		<p>${passager.civilite}. ${passager.nom} ${passager.prenom}</p>
 		<br />
 		<p>
@@ -89,6 +94,7 @@
 		<br />
 			<a class="btn btn-info" href="<c:url value='/client/modifVoyageur?pId=${passager.id}'/>">Modifier</a>
 		<br />
+		</div>
 	</c:forEach>
 
 	<c:if test="${not empty assurances}">
@@ -108,9 +114,20 @@
 	<br />
 	<p><b><span>Prix total :</span></b> ${total} EUR</p>
 	
-	
-	
-<!--  inclure le footer -->
+	<button type="button" class="btn btn-danger" onclick="confirmerAnnulation();" style="margin-bottom: 10px;">Annuler la réservation</button>
+
+	<div id="message" class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close" onclick="retourAnnulation();">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		Etes-vous sûr de vouloir annuler cette réservation ? 
+		<a href="annulerReservation?pId=${dossier.id}" class="alert-link">Oui</a>
+	</div>
+
+	</div>
+
+	<!--  inclure le footer -->
 	<%@include file="/templates/footer.html"%>
 </body>
 </html>

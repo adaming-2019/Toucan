@@ -2,6 +2,7 @@ package fr.adaming.controllers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -56,7 +57,7 @@ public class MenuClientControleur {
 	@PostConstruct
 	public void init() {
 		this.client = new Client();
-		this.client.setId(72);
+		this.client.setId(1);
 	}
 	
 	@InitBinder
@@ -118,7 +119,12 @@ public class MenuClientControleur {
 		model.addAttribute("voyageurs", voyageurs);
 		
 		// ajout de la liste d'assurances au modele mvc
-		model.addAttribute("assurances", assurances);
+		List<Assurance> listeAssurances = new ArrayList<Assurance>();
+		for (Assurance a : assurances) {
+			listeAssurances.add(a);
+		}
+		
+		model.addAttribute("assurances", listeAssurances);
 		
 		// ajout du prix total au modele mvc
 		model.addAttribute("total", total);
@@ -138,13 +144,6 @@ public class MenuClientControleur {
 		// récupérer le voyageur associé à pId
 		Voyageur vgModif = vgService.getVoyageurById(vgIn);
 		
-		// récupérer le dossier lié au voyageur pour l'ajouter dans la session
-		Dossier dossier = vgModif.getDossier();
-		
-		HttpSession maSession = req.getSession();
-		
-		maSession.setAttribute("dossier", dossier);
-		
 		// associer le voyageur au modele mvc
 		model.addAttribute("voyageur", vgModif);
 		
@@ -161,19 +160,23 @@ public class MenuClientControleur {
 		// modifier le voyageur dans la bd
 		vgService.updateVoyageurClient(vgIn);
 		
-		// on redirige le client vers la page du dossier en cours, pour cela on ajoute l'id du dossier au RedirectAttributes
-		// récupération du dossier dans la session
-		HttpSession maSession = req.getSession();
-			
-		Dossier dossier = (Dossier) maSession.getAttribute("dossier");
-			
-		rda.addAttribute("pIdDossier", dossier.getId());
-			
-		// supprimer le dossier de la session
-		maSession.removeAttribute("dossier");
+		// on redirige le client vers la page du dossier en cours, pour cela on ajoute l'id du dossier au RedirectAttributes	
+		rda.addAttribute("pIdDossier", vgIn.getDossier().getId());
 			
 		return "redirect:detailsDossier";
 		
+	}
+	
+	@RequestMapping(value="/annulerReservation", method=RequestMethod.GET)
+	public String annulerReservation(Model model, @RequestParam(value="pId") Integer idDossier) {
+		// définier le statut du dossier sur "annule"
+		Dossier dossier = dosService.getById(idDossier);
+		
+		dossier.setEtat("annule");
+		
+		dosService.updateDossier(dossier);
+		
+		return "redirect:listeDossiers";
 	}
 
 }

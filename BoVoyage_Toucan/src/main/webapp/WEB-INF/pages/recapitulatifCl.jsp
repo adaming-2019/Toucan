@@ -22,11 +22,6 @@
 	<h2 id="titre">Récapitulatif de votre commande</h2>
 	<div class="formulaire">
 		<h3>Voyage</h3>
-		<c:if test="${not empty dossier.voyage.destination.images}">
-			<c:forEach var="image" items="${dossier.voyage.destination.images}">
-				<img alt="${dossier.voyage.destination.pays}" src="image">
-			</c:forEach>
-		</c:if>
 		<p>
 			<b><span>Destination :</span></b> ${dossier.voyage.destination.pays}
 		</p>

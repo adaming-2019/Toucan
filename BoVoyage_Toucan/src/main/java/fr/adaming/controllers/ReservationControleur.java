@@ -263,6 +263,14 @@ public class ReservationControleur {
 				prix += assuranceOut.getMontant();
 			}
 		}
+		
+		// ajout de la liste d'assurances au modele mvc
+		List<Assurance> listeAssurances = new ArrayList<Assurance>();
+		for (Assurance a : ajout.getAssurances()) {
+			listeAssurances.add(a);
+		}
+		
+		model.addAttribute("assurances", listeAssurances);
 
 		model.addAttribute("dossier", dossier);
 		model.addAttribute("total", prix);

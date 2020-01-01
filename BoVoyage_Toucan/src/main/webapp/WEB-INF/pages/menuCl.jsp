@@ -20,6 +20,8 @@
 
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
+	
+	<div class="formulaire">
 
 	<form class="form-inline" action="detailsDossier" method="get">
 		<div class="form-group">
@@ -39,22 +41,22 @@
 			<th>Etat</th>
 			<th>Opérations</th>
 		</tr>
-		<c:if test="${not empty dossiers}">
+		<c:if test="${empty dossiers}">
 			<tr>Vous n'avez aucune réservation en cours.</tr>
 		</c:if>
 		<c:forEach var="d" items="${dossiers}">
-		<c:if test="${d.etat!=annule}">
 			<tr>
 				<td>${d.id}</td>
 				<td>${d.etat}</td>
 				<td><a
 					href="<c:url value='/client/detailsDossier?pIdDossier=${d.id}'/>">Consulter</a></td>
 			</tr>
-		</c:if>
 		</c:forEach>
 		
 
 	</table>
+	
+	</div>
 <!--  inclure le footer -->
 	<%@include file="/templates/footer.html"%>
 </body>

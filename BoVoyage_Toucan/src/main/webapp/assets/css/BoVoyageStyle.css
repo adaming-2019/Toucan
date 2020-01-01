@@ -73,6 +73,7 @@ body {
 	display: inline-block;
 	width: 250px;
 	border: 1px solid slateBlue;
+	margin-right: 20px;
 }
 
 .footer {
