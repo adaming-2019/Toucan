@@ -15,7 +15,6 @@
 <link rel="stylesheet"
 	href="<c:url value='/assets/css/BoVoyageStyle.css' />" />
 
-<script src="<c:url value='/assets/js/bootstrap.js' />"></script>
 <script src="<c:url value='/assets/js/BoVoyageJs.js' />"></script>
 
 </head>
