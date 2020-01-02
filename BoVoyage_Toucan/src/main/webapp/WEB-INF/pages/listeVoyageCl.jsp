@@ -25,32 +25,50 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">${v.destination.pays}</div>
 				<div class="panel-body">
-					<table>
-						<tr>
-							<!-- 	<th>Destination</th> -->
-							<th>Depart</th>
-							<th>Retour</th>
-							<th>Places disponibles</th>
-							<th>Prix agence</th>
-							<th>Prix réduit BoVoyage</th>
-							<th>Opération</th>
-						</tr>
-						<tr>
-							<%-- 	<td><c:forEach var="ph" items="${v.destination.images}">
-									<img src="${ph.photoString}" style="width: 90px; height: 90px" />
-								</c:forEach></td> --%>
-							<%-- <td>${v.destination.pays}</td> --%>
-							<td><fmt:formatDate value="${v.dateDebut}"
-									pattern="dd/MM/yyyy" /></td>
-							<td><fmt:formatDate value="${v.dateRetour}"
-									pattern="dd/MM/yyyy" /></td>
-							<td>${v.nombrePlace}</td>
-							<td>${v.prixAgence}</td>
-							<td>${v.prixBoVoyage}</td>
-							<td><a
-								href="<c:url value='/client/choixNbPlaces?pId=${v.id}' />">Réserver</a>
-						</tr>
-					</table>
+					<c:forEach var="ph" items="${v.destination.images}">
+						<img src="${ph.photoString}" style="width: 90px; height: 90px" />
+					</c:forEach>
+					<p>${v.destination.pays}</p>
+					<p>
+						<fmt:formatDate value="${v.dateDebut}" pattern="dd/MM/yyyy" />
+					</p>
+					<p>
+						<fmt:formatDate value="${v.dateRetour}" pattern="dd/MM/yyyy" />
+					</p>
+					<p>Nom de places : ${v.nombrePlace}</p>
+					<p>${v.destination.pays}</p>
+					<p>Prix Agence : ${v.prixAgence}</p>
+					<p>Prix BoVoyage : ${v.prixBoVoyage}</p>
+					<input class="btn btn-primary"
+						href="<c:url value='/client/choixNbPlaces?pId=${v.id}' />">Réserver</a>
+
+
+					<!-- 					<table> -->
+					<!-- 						<tr> -->
+					<!-- 								<th>Destination</th> -->
+					<!-- 							<th>Depart</th> -->
+					<!-- 							<th>Retour</th> -->
+					<!-- 							<th>Places disponibles</th> -->
+					<!-- 							<th>Prix agence</th> -->
+					<!-- 							<th>Prix réduit BoVoyage</th> -->
+					<!-- 							<th>Opération</th> -->
+					<!-- 						</tr> -->
+					<!-- 						<tr> -->
+					<%-- 								<td><c:forEach var="ph" items="${v.destination.images}">
+<%-- 									<img src="${ph.photoString}" style="width: 90px; height: 90px" /> --%>
+					<%-- 								</c:forEach></td> --%>
+					<%-- 							<td>${v.destination.pays}</td> --%>
+					<%-- 							<td><fmt:formatDate value="${v.dateDebut}" --%>
+					<%-- 									pattern="dd/MM/yyyy" /></td> --%>
+					<%-- 							<td><fmt:formatDate value="${v.dateRetour}" --%>
+					<%-- 									pattern="dd/MM/yyyy" /></td> --%>
+					<%-- 							<td>${v.nombrePlace}</td> --%>
+					<%-- 							<td>${v.prixAgence}</td> --%>
+					<%-- 							<td>${v.prixBoVoyage}</td> --%>
+					<!-- 							<td><a -->
+					<%-- 								href="<c:url value='/client/choixNbPlaces?pId=${v.id}' />">Réserver</a> --%>
+					<!-- 						</tr> -->
+					<!-- 					</table> -->
 				</div>
 			</div>
 		</div>
