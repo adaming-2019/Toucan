@@ -118,9 +118,7 @@ public class PDFController {
 		FirstPdf.creerPdf(dossier.getVoyage().getDestination(), dossier.getVoyage().getDateDebut(),
 				dossier.getVoyage().getDateRetour(), dossier.getVoyage().getFormule(),
 				dossier.getVoyage().getPrestation(), dossier.getVoyage().getCategorieVehicule(),
-				dossier.getVoyage().getPrixBoVoyage(), dossier.getNbPlaces(), dossier.getClient().getCivilite(),
-				dossier.getClient().getNom(), dossier.getClient().getPrenom(), dossier.getClient().getAdresse(),
-				dossier.getClient().getTelephone(), dossier.getClient().getNationalite(), dossier.getClient().getDn(),
+				dossier.getVoyage().getPrixBoVoyage(), dossier.getNbPlaces(), dossier.getVoyageurs(),
 				dossier.getAssurances(), total, dossier.getId());
 
 		return "infosDossierCl";
