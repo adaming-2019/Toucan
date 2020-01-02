@@ -135,7 +135,7 @@ public class MenuClientControleur {
 	
 	// afficher le formulaire de modification d'un voyageur
 	@RequestMapping(value="/modifVoyageur", method=RequestMethod.GET)
-	public String modifierVoyageur(HttpServletRequest req, Model model, @RequestParam(value="pId") Integer idIn) {
+	public String modifierVoyageur(Model model, @RequestParam(value="pId") Integer idIn) {
 		
 		// instanciation d'un nouveau voyageur pour lui associer la valeur de pId
 		Voyageur vgIn = new Voyageur();
@@ -153,7 +153,7 @@ public class MenuClientControleur {
 	
 	// soumettre la modification d'un voyageur
 	@RequestMapping(value="/submitModifVoyageur", method=RequestMethod.POST)
-	public String soumettreModifVoyageur(HttpServletRequest req, Model model, @ModelAttribute("voyageur") Voyageur vgIn, RedirectAttributes rda) {
+	public String soumettreModifVoyageur(Model model, @ModelAttribute("voyageur") Voyageur vgIn, RedirectAttributes rda) {
 		
 		System.out.println(vgIn);
 		

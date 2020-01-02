@@ -22,7 +22,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class FirstPdf {
-	private static String FILE = "C:\\Users\\IN-BR-002\\Desktop\\Recaputilatif.pdf";
+	private static String FILE = "C:\\Users\\IN-BR-030\\Desktop\\Recaputilatif.pdf";
 	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
 	private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.RED);
 	private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD);
@@ -75,9 +75,16 @@ public class FirstPdf {
 		preface.add(new Paragraph("Destination :  " + destination.getPays() + " (" + destination.getContinent() + ")", smallBold));
 		preface.add(new Paragraph("Date d'aller :  " + dateDebut, smallBold));
 		preface.add(new Paragraph("Date de retour :  " + dateRetour, smallBold));
-		preface.add(new Paragraph("Formule :  " + formule.getFormule(), smallBold));
-		preface.add(new Paragraph("Prestation :  " + prestation.getPrestation(), smallBold));
-		preface.add(new Paragraph("Categorie de vehicule :  " + categorieVehicule.getCategorieVehicule(), smallBold));
+		if (formule!=null) {
+			preface.add(new Paragraph("Formule :  " + formule.getFormule(), smallBold));
+		}
+		if (prestation!=null) {
+			preface.add(new Paragraph("Prestation :  " + prestation.getPrestation(), smallBold));
+		}
+		if(categorieVehicule!=null) {
+			preface.add(new Paragraph("Categorie de vehicule :  " + categorieVehicule.getCategorieVehicule(), smallBold));
+		}
+		
 		preface.add(new Paragraph("Prix BoVoyage :  " + prixBoVoyage + "€", smallBold));
 		addEmptyLine(preface, 2);
 
