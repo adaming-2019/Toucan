@@ -40,7 +40,7 @@
 			login-processing-url="admin/connexionAdm" />
 
 		<security:access-denied-handler
-			error-page="/denied" />
+			error-page="/accesDenied" />
 
 		<security:logout logout-success-url="/logout" />
 	</security:http>
