@@ -7,7 +7,6 @@ import javax.security.auth.Subject;
 
 import java.util.Properties;
 
-import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,8 +14,8 @@ public class MailConfig {
 
 	public boolean sendMail(String sendTo, String content, String subject) {
 
-		final String username = "leskiwis2019@gmail.com";
-		final String password = "Kiwi2019";
+		final String username = "lestoucans2019@gmail.com";
+		final String password = "Toucan2019";
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.adaming.entities.Contact;
 import fr.adaming.entities.MailConfig;
 
 @Controller
@@ -24,19 +25,22 @@ public class ContactFormController {
 		if (c == null) {
 			c = new Contact();
 		}
-		return new ModelAndView("public/contact", "contact", c);
+		return new ModelAndView("contact", "contact", c);
 	}
 
 	// Envoyer un mail
-	@RequestMapping(value = "sendSimpleEmail", method = RequestMethod.POST)
+	@RequestMapping(value = "/sendSimpleEmail", method = RequestMethod.POST)
 	public String sendSimpleEmail(RedirectAttributes rda, Model model, @ModelAttribute("contact") Contact c) {
 
 		// idealement il faudrait envoyer le mail à un conseiller
-		mailService.sendMail("carole.fouche33@gmail.com", " Vous avez recu un message de " + c.getName() + " ( email: "
-				+ c.getEmail() + " )" + System.getProperty("line.separator") + c.getText(), c.getSubject());
+		mailService
+				.sendMail(
+						"miloune.lepeltier@gmail.com", " Vous avez recu un message de " + c.getName() + " ( email: "
+								+ c.getEmail() + " )" + System.getProperty("line.separator") + c.getText(),
+						c.getSubject());
 		// Redirection vers la page
 		rda.addFlashAttribute("successMsg", "Mail sent");
-		return "redirect:/contact";
+		return "redirect:/afficheListeContinent";
 
 	}
 
