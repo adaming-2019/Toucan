@@ -17,25 +17,7 @@
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	<!-- 	<div id="carouselExampleSlidesOnly" class="carousel slide" -->
-	<!-- 		data-ride="carousel"> -->
-	<!-- 		<div class="carousel-inner"> -->
-	<!-- 			<div class="carousel-item active"> -->
-	<!-- 				<img class="d-block w-100" src="/assets/images/voyages.jpg" -->
-	<!-- 					alt="Des voyages dans des pays du monde entier !"> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="carousel-item"> -->
-	<!-- 				<img class="d-block w-100" src="/assets/images/prestations.jpg" -->
-	<!-- 					alt="Un large choix de prestations et de formules !"> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="carousel-item"> -->
-	<!-- 				<img class="d-block w-100" src="/assets/images/dossier.jpg" -->
-	<!-- 					alt="Gérer toutes vos reservations en ligne !"> -->
-	<!-- 			</div> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
 	<h1 id="titre">Listes des continents disponibles</h1>
-
 	<br />
 	<div id="login">
 		<form:form class="form-horizontal" method="get"
@@ -52,11 +34,9 @@
 					</select>
 				</div>
 			</div>
-
 			<br />
 			<br />
 			<br />
-
 			<button type="submit" class="btn btn-info" value="Rechercher">Recherche</button>
 			<br />
 			<br />
