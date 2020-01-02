@@ -35,14 +35,14 @@
 		<security:intercept-url pattern="/client/**"
 			access="ROLE_ADMIN, ROLE_CLIENT" />
 		<!-- <security:http-basic /> -->
-		<security:form-login login-page="/loginAdm"
+		<security:form-login login-page="/login"
 			authentication-failure-url="/echec"
-			login-processing-url="admin/connexionAdm" />
+			login-processing-url="public/connexion" />
 
 		<security:access-denied-handler
 			error-page="/accesDenied" />
 
-		<security:logout logout-success-url="/logout" />
+		<security:logout logout-success-url="public/afficheListeContinent" />
 	</security:http>
 
 	<!-- Partie 2 : authentification -->
@@ -50,11 +50,15 @@
 		<security:authentication-provider>
 			<security:jdbc-user-service
 				data-source-ref="dataSourceBean"
+				users-by-username-query="select login_cl, mdp_cl, active_cl from clients where login_cl=?"
+				authorities-by-username-query="select cl.login_cl, r.rolename from clients as cl, roles as r where cl.login_cl=? and cl.ro_id=r.id_ro" />
+		</security:authentication-provider>
+	
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="dataSourceBean"
 				users-by-username-query="select login_ad, mdp_ad, active_ad from administrateurs where login_ad=?"
-				authorities-by-username-query="select ad.login_ad, r.rolename_r from administrateurs as ad, roles as r where ad.login_ad=? and ad.id_ad=r.ad_id" />
-
-
-
+				authorities-by-username-query="select ad.login_ad, r.rolename from administrateurs as ad, roles as r where ad.login_ad=? and ad.ro_id=r.id_ro" />
 		</security:authentication-provider>
 
 

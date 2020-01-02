@@ -15,26 +15,30 @@
 <body>
 	<!--  inclure le header -->
 	<%@include file="/templates/header.html"%>
-	<h1 id="titre">Entrez vos identifiants pour connecter</h1>
+	<h1 id="titre">Connexion à votre compte</h1>
 	<br />
-	<form action="admin/connexionAdm" method="post">
+	
+	<div class="formulaire">
+	<form action="public/connexion" method="post">
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="idUsername">Username</label>
+			<label class="control-label col-sm-1" for="idUsername">Login : </label>
 			<div class="col-sm-2">
 				<input name="j_username" type="text" class="form-control"
-					id="idUsername" placeholder="Username" />
+					id="idUsername" placeholder="Login" />
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="idPassword">Password</label>
+			<label class="control-label col-sm-1" for="idPassword">Mot de passe : </label>
 			<div class="col-sm-2">
 				<input name="j_password" type="password" class="form-control"
-					id="idPassword" placeholder="Password" />
+					id="idPassword" placeholder="Mot de passe" />
 			</div>
 		</div>
 		<input class="btn btn-info" type="submit" value="Se connecter" />
 	</form>
 	<br />
 	<h1 style="color: red; text-align: center">${msg}</h1>
+	</div>
+	
 </body>
 </html>
