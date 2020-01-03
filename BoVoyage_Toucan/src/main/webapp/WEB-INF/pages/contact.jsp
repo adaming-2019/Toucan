@@ -16,7 +16,7 @@
 </head>
 <body>
 	<!--  inclure le header -->
-	<%@include file="/templates/header.html"%>
+	<%@include file="/templates/headerPublic.html"%>
 
 	<h1 id="titre">Veulliez remplir ce formulaire afin de nous
 		contacter</h1>

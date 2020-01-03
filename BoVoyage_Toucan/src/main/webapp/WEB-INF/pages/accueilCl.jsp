@@ -16,7 +16,7 @@
 </head>
 <body>
 	<!--  inclure le header -->
-	<%@include file="/templates/header.html"%>
+	<%@include file="/templates/headerPublic.html"%>
 	<h1 id="titre">Listes des continents disponibles</h1>
 	<br />
 	<div id="login">
