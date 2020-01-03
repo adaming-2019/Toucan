@@ -14,7 +14,7 @@
 </head>
 <body>
 	<!--  inclure le header -->
-	<%@include file="/templates/header.html"%>
+	<%@include file="/templates/headerPublic.html"%>
 	<h1 id="titre">Connexion à votre compte</h1>
 	<br />
 	

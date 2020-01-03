@@ -15,7 +15,7 @@
 </head>
 <body>
 	<!--  inclure le header -->
-	<%@include file="/templates/header.html"%>
+	<%@include file="/templates/headerPublic.html"%>
 	<h1 id="titre">Créer votre compte client BoVoyage</h1>
 	<br />
 	<br />

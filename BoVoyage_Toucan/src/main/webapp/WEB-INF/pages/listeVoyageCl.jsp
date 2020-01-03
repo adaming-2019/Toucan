@@ -16,7 +16,7 @@
 </head>
 <body>
 	<!--  inclure le header -->
-	<%@include file="/templates/header.html"%>
+	<%@include file="/templates/headerPublic.html"%>
 	<h1 id="titre">Listes des voyages disponibles</h1>
 	<br />
 	<c:forEach var="v" items="${voyages}">
