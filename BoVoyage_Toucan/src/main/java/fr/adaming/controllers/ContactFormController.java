@@ -21,7 +21,7 @@ public class ContactFormController {
 	public IMailConfig mailService;
 
 	// Affichage du formulaire de contact
-	@RequestMapping(value="/contact",method = RequestMethod.GET)
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public ModelAndView afficherForm(@ModelAttribute("contact") Contact c) {
 		if (c == null) {
 			c = new Contact();
@@ -34,11 +34,8 @@ public class ContactFormController {
 	public String sendSimpleEmail(RedirectAttributes rda, Model model, @ModelAttribute("contact") Contact c) {
 
 		// idealement il faudrait envoyer le mail à un conseiller
-		mailService
-				.sendMail(
-						"miloune.lepeltier@gmail.com", " Vous avez recu un message de " + c.getName() + " ( email: "
-								+ c.getEmail() + " )" + System.getProperty("line.separator") + c.getText(),
-						c.getSubject());
+		mailService.sendMail("emilie.lepeltier@yahoo.fr", " Vous avez recu un message de " + c.getName() + " ( email: "
+				+ c.getEmail() + " )" + System.getProperty("line.separator") + c.getText(), c.getSubject());
 		// Redirection vers la page
 		rda.addFlashAttribute("successMsg", "Mail sent");
 		return "redirect:/afficheListeContinent";

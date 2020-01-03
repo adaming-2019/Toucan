@@ -16,8 +16,8 @@ public class MailConfig implements IMailConfig {
 
 	public boolean sendMail(String sendTo, String content, String subject) {
 
-		final String username = "lestoucans2019@gmail.com";
-		final String password = "Toucan2019";
+		final String username = "miloune.lepeltier@gmail.com";
+		final String password = "cynder0147";
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
