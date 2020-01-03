@@ -74,6 +74,8 @@ body {
 	width: 250px;
 	border: 1px solid slateBlue;
 	margin-right: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
 }
 
 .footer {
