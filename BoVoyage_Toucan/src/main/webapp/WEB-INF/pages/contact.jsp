@@ -25,7 +25,7 @@
 	<div id="login">
 		<div class="row">
 			<form:form class="form-horizontal " method="POST"
-				modelAttribute="contact" action="public/sendSimpleEmail">
+				modelAttribute="contact" action="sendSimpleEmail">
 				<label class="col-md-3" for="name">Nom :</label>
 				<form:input class="col-md-5" id="name" path="name" />
 				<br />
