@@ -11,16 +11,17 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.entities.Contact;
-import fr.adaming.entities.MailConfig;
+import fr.adaming.service.IMailConfig;
 
 @Controller
+@RequestMapping("/public")
 public class ContactFormController {
 
 	@Autowired
-	public MailConfig mailService;
+	public IMailConfig mailService;
 
 	// Affichage du formulaire de contact
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="/contact",method = RequestMethod.GET)
 	public ModelAndView afficherForm(@ModelAttribute("contact") Contact c) {
 		if (c == null) {
 			c = new Contact();

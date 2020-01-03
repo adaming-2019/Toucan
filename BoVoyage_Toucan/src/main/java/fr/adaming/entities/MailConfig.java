@@ -9,8 +9,10 @@ import java.util.Properties;
 
 import org.springframework.stereotype.Component;
 
+import fr.adaming.service.IMailConfig;
+
 @Component
-public class MailConfig {
+public class MailConfig implements IMailConfig {
 
 	public boolean sendMail(String sendTo, String content, String subject) {
 
