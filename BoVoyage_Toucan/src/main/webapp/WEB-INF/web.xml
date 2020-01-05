@@ -9,7 +9,7 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
 	<!-- specifier le chemin du fichier de config de context spring ioc pour 
 		le conteneur puisse le charger -->
 	<context-param>
@@ -33,7 +33,7 @@
 		<servlet-name>mvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
 	<!-- La page d'accueil de mon projet -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

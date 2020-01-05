@@ -19,7 +19,7 @@
 	<br />
 	
 	<div class="formulaire">
-	<form action="public/connexion" method="post">
+	<form action="connexion" method="post">
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idUsername">Login : </label>
 			<div class="col-sm-2">

@@ -37,10 +37,10 @@
 		<!-- <security:http-basic /> -->
 		<security:form-login login-page="/login"
 			authentication-failure-url="/echec"
-			login-processing-url="public/connexion" />
+			login-processing-url="/connexion" />
 
 		<security:access-denied-handler
-			error-page="/accesDenied" />
+			error-page="/denied" />
 
 		<security:logout logout-success-url="public/afficheListeContinent" />
 	</security:http>

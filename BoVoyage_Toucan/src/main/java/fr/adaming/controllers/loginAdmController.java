@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class loginAdmController {
 
-	@RequestMapping(value = "/afficherLoginAdm", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String afficheFormLogin() {
-		return "loginAdm";
+		return "login";
 	}
 
 	@RequestMapping(value = "/admin/connexionAdm", method = RequestMethod.POST)
@@ -22,19 +22,21 @@ public class loginAdmController {
 	public String echecLogin(Model model) {
 		model.addAttribute("msg", "Identifiants incorrects");
 
-		return "loginAdm";
+		return "login";
 	}
 
 	@RequestMapping(value = "/denied", method = RequestMethod.GET)
-	public String afficheDenied() {
-		return "deniedPage";
+	public String afficheDenied(Model model) {
+		model.addAttribute("msg", "Vous n'êtes pas autorisé(e) à accéder à cet espace");
+
+		return "redirect:public/afficheListeContinents";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String afficheLogout(Model model) {
 		model.addAttribute("msg", "Vous êtes déconnecté(e)");
 
-		return "accueil";
+		return "redirect:public/afficheListeContinents";
 	}
 
 }
