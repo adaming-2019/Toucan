@@ -19,8 +19,8 @@
 	<h1 id="titre">Formulaire d'ajout</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
-	<form:form class="form-horizontal" method="POST"
-		action="submitAddAssurance" modelAttribute="asAdd">
+	<form:form method="POST" action="submitAddAssurance"
+		modelAttribute="asAdd">
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idMontant">Montant</label>
 			<div class="col-sm-2">

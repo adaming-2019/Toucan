@@ -23,19 +23,19 @@
 	<h1 id="titre">Formulaire de modification</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
+	<div id="login">
 	<form:form method="POST" action="updateVoyageur" modelAttribute="vgrModif">
-	
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="idSiege">Numero du siège</label>
-			<div class="col-sm-2">
+			<label class="control-label col-sm-2" for="idSiege">Numero du siège</label>
+			<div class="col-sm-4">
 				<form:input path="numSiege"  type="text" class="form-control" id="idSiege" placeholder="numero siege" />
 			</div>
 	
 		<br />
 		<br />
 		<div class="form-group">
-			<label class="control-label col-sm-1" for="idDossier">Dossier</label>
-			<div class="col-sm-2">
+			<label class="control-label col-sm-2" for="idDossier">Dossier</label>
+			<div class="col-sm-4">
 				<form:input path="dossier" type="text" class="form-control" id="idDossier" placeholder="Dossier" />
 			</div>
 	
@@ -46,6 +46,7 @@
 		</div>
 
 	</form:form>
+	</div>
 
 	<h1 style="color: red; text-align: center;">${msg}</h1>
 <body>
