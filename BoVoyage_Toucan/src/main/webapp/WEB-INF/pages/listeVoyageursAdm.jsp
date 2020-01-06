@@ -45,7 +45,7 @@
 					<td>${v.nom}</td>
 					<td>${v.prenom}</td>
 					<td>${v.numSiege}</td>
-					<td>${v.dossier}</td>
+					<td>${v.dossier.id}</td>
 					<td><fmt:formatDate value="${v.dn}" pattern="dd/MM/yyyy" /></td>
 					<td>${v.adresse}</td>
 					<td>${v.telephone}</td>
