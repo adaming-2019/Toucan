@@ -64,7 +64,7 @@ public class DossierController {
 		return "supprimerDossierAdm";
 	}
 	
-	@RequestMapping(value="/deleteDossier", method=RequestMethod.POST)
+	@RequestMapping(value="/deleteDossier", method=RequestMethod.GET)
 	public String deleteDossier(RedirectAttributes rda, @RequestParam("pId") int idIn) {
 
 		Dossier dossierIn = new Dossier();

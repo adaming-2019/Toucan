@@ -30,29 +30,23 @@
 	<table class="table table-bordered">
 	<tr>
 		<th  style="text-align: center" >Id</th>
-		<th  style="text-align: center" >Voyage</th>
 		<th  style="text-align: center" >Etat</th>
 		<th  style="text-align: center" >Nombre de places</th>
 		<th  style="text-align: center" >Nom Client</th>
 		<th  style="text-align: center" >Prénom Client</th>
-		<th  style="text-align: center" >Voyageurs accompagnants</th>
-		<th  style="text-align: center" >Assurance</th>
 		<th  style="text-align: center" >Opérations</th>
 	</tr>
 <c:forEach var="d" items="${dossiers}">
 			<tr>
 				<td>${d.id}</td>
-				<td>${d.voyage}</td>
 				<td>${d.etat}</td>
 				<td>${d.nbPlaces}</td>
 				<td>${d.client.nom}</td>
 				<td>${d.client.prenom}</td>
-				<td>${d.client.voyageur}</td>
-				<td>${d.assurances}</td>
 				
 				<td><a href="<c:url value='/admin/updateDossier=${d.id}'/>"><b>Modifier</b></a> |
 				<!-- supprimer directement le dossier via la page de la liste -->
-				<a href="<c:url value='/admin/deleteDossier =${d.id}'/>"><b>Supprimer</b></a></td>
+				<a href="<c:url value='/admin/deleteDossier?pId=${d.id}'/>"><b>Supprimer</b></a></td>
 			</tr>
 			</c:forEach>
 	</table>

@@ -3,6 +3,7 @@ package fr.adaming.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -28,7 +29,7 @@ public class Client extends Personne {
 	private boolean active;
 	
 	// transformation de l'association UML en Java
-	@OneToMany(mappedBy="client")
+	@OneToMany(mappedBy="client",cascade=CascadeType.ALL)
 	private List<Dossier> dossiers;
 	
 	@ManyToOne
