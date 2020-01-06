@@ -63,8 +63,7 @@
 		<br />
 		<br />
 		<div class="form-group">
-			<label class="control-label col-sm-3" for="idDn">Date de
-				naissance</label>
+			<label class="control-label col-sm-3" for="idDn">Date de naissance</label>
 			<div class="col-sm-3">
 				<form:input path="dn" type="date" class="form-control" id="idDn" />
 			</div>

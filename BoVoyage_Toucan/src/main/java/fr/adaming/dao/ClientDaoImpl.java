@@ -9,7 +9,7 @@ import fr.adaming.entities.Client;
 public class ClientDaoImpl extends GenericDaoImpl<Client>implements IClientDao{
 
 	// specifier le vrai type de T (la vraie Entity à utiliser ) ici c'est Client
-	public ClientDaoImpl() {
+	public ClientDaoImpl() { 
 		clazz=Client.class;
 	}
 }

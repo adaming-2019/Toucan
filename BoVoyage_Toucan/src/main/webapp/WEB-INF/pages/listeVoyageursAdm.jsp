@@ -23,19 +23,20 @@
 	<h1 id="titre">Liste des voyageurs</h1>
 	<br />
 	<%@include file="/templates/menuAdm.html"%>
+	
 	<div style="text-align: center" class="control-label col-sm-9">
 		<table class="table table-bordered">
 			<tr>
 
-				<th>Nom</th>
-				<th>Prénom</th>
-				<th>Numéro de siège</th>
-				<th>Numéro de dossier</th>
-				<th>Date de naissance</th>
-				<th>Adresse</th>
-				<th>Téléphone</th>
-				<th>Nationalité</th>
-				<th>Opérations</th>
+				<th style="text-align: center">Nom</th>
+				<th style="text-align: center">Prénom</th>
+				<th style="text-align: center">Numéro de siège</th>
+				<th style="text-align: center">Numéro de dossier</th>
+				<th style="text-align: center">Date de naissance</th>
+				<th style="text-align: center">Adresse</th>
+				<th style="text-align: center">Téléphone</th>
+				<th style="text-align: center">Nationalité</th>
+				<th style="text-align: center">Opérations</th>
 
 			</tr>
 
@@ -51,7 +52,7 @@
 					<td>${v.nationalite}</td>
 					<!-- pour accèder directement au dossier voyageur-->
 					<td><a href="<c:url value='/admin/listeDossiers'/>"><b>Accès dossier</b></a> | <a
-						href="<c:url value='/admin//linkUpdateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a>
+						href="<c:url value='/admin/linkUpdateVoyageur?pId=${v.id}'/>"><b>Modifier</b></a>
 						| <a href="<c:url value='/admin/submitVoyageur?pId=${v.id}'/>"><b>Supprimer</b></a>
 				</tr>
 			</c:forEach>

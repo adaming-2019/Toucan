@@ -28,9 +28,9 @@
 		<div class="form-group">
 			<label class="control-label col-sm-1" for="idSiege">Numero du siège</label>
 			<div class="col-sm-2">
-				<form:input path="numSiege"  type="text" class="form-control" id="idSiege" />
+				<form:input path="numSiege"  type="text" class="form-control" id="idSiege" placeholder="numero siege" />
 			</div>
-		</div>
+	
 		<br />
 		<br />
 		<div class="form-group">
@@ -42,6 +42,7 @@
 			<div class="col-sm-3">
 				<input class="btn btn-warning" type="submit" value="Modifier" />
 			</div>
+		</div>
 		</div>
 
 	</form:form>

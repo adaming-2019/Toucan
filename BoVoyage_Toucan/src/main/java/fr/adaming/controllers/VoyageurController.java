@@ -55,7 +55,6 @@ public class VoyageurController {
 		return new ModelAndView("listeVoyageursAdm", "voyageurs", listeVoyageur);
 	}
 
-	
 	// formulaire de suppression d'un voyageur.
 	@RequestMapping(value = "/deleteVoyageur", method = RequestMethod.GET)
 	public String supprimerVoyageur() {
@@ -101,14 +100,14 @@ public class VoyageurController {
 	}
 
 	// lien pour modifier un voyageur
-	@RequestMapping(value="/linkUpdateVoyageur", method=RequestMethod.GET)
-	public String getModifLien(Model modele, @RequestParam ("pId") Voyageur eIn) {
-	
-	Voyageur vOut=vrService.getVoyageurById(eIn) ;
-	
-	
-	modele.addAttribute("vgrModif", vOut);
-	
-	return "modifierVoyageurAdm";
+	@RequestMapping(value = "/linkUpdateVoyageur", method = RequestMethod.GET)
+	public String getModifLien(Model modele, @RequestParam("pId") int id) {
+		 Voyageur vIn=new Voyageur();
+		 vIn.setId(id);
+		Voyageur vOut = vrService.getVoyageurById(vIn);
+
+		modele.addAttribute("vgrModif", vOut);
+
+		return "modifierVoyageurAdm";
 	}
 }

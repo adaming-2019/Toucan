@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mysql.fabric.xmlrpc.base.Array;
 
 import fr.adaming.entities.Destination;
 import fr.adaming.entities.Image;
@@ -36,7 +35,7 @@ public class DestinationController {
 	public ModelAndView afficherDestinations() {
 		// récupérer liste dossiers
 		List<Destination> listeDestinations = destiService.getAll();
-		return new ModelAndView("listeDestinationsAdm", "destination", listeDestinations);
+		return new ModelAndView("listeDestinationsAdm", "destinations", listeDestinations);
 	}
 
 
